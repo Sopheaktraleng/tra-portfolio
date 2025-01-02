@@ -1,5 +1,5 @@
 import Image from "next/image";
-import trapic from "./assets/pic.jpg";
+import trapic from "./assets/sopheaktra.jpg";
 import { ChevronDown, Eye } from "lucide-react";
 
 const HeroSection = () => {
@@ -42,10 +42,13 @@ const HeroSection = () => {
                                     </span>
                                 ))}
                             </div>
-                            <div className="px-6 py-3   rounded-xl   duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl border w-36 h-10">
+                            <a
+                                href="https://docs.google.com/document/d/1x0XMxtWcBSzp0PJl2r6HRH_HvpbB6nAi3CfV-Nztv30/edit?tab=t.0"
+                                className="px-6 py-3   rounded-xl   duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl border w-36 h-10"
+                            >
                                 <Eye className="w-5 h-5" />
                                 Veiw CV
-                            </div>
+                            </a>
                         </div>
                     </div>
 
@@ -54,17 +57,19 @@ const HeroSection = () => {
                         <div className="relative max-w-md mx-auto">
                             <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-primary/10 to-purple-500/10 backdrop-blur-sm shadow-2xl">
                                 <Image
+                                    width={500}
+                                    height={500}
                                     src={trapic} // Using the imported image
                                     alt="Profile"
-                                    className="w-[400px] h-[400px] object-cover rounded-3xl" // Add rounded-3xl here as well
+                                    className="w-full h-full object-cover rounded-3xl" // Add rounded-3xl here as well
                                 />
                             </div>
-                            <div className="absolute -right-0 -top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
+                            <div className="absolute -right-12 -top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
                                 <span className="text-sm font-medium text-foreground whitespace-nowrap">
                                     🚀 Open to Work
                                 </span>
                             </div>
-                            <div className="absolute -left-14 b -bottom-0 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
+                            <div className="absolute -left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
                                 <span className="text-sm font-medium text-foreground whitespace-nowrap">
                                     💻 Full Stack Developer
                                 </span>
