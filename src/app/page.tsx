@@ -10,7 +10,7 @@ export default function Home() {
             <div className="flex text-center justify-center">
                 <AboutMe />
             </div>
-            <div className="flex text-center justify-center">
+            <div className="flex text-center justify-center mb-10">
                 <Skills />
             </div>
             <div className="flex text-center justify-center">

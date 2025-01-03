@@ -1,3 +1,5 @@
+import { SkillsData } from "@/data/constants";
+
 const Skills = () => {
     return (
         <section className="py-16">
@@ -9,8 +11,36 @@ const Skills = () => {
                 A comprehensive overview of my technical expertise and
                 proficiency across different areas of software development.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
-            <div className="mt-20 text-2xl text-red-400">Comming Soon...</div>
+            <div className="grid grid-cols-2 w-[1000px] h-[500px] gap-8 p-4 ">
+                {SkillsData.map((category) => (
+                    <div key={category.title} className="border rounded-lg p-4">
+                        <h3 className="text-xl font-semibold mb-3 ">
+                            {category.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-3 text-center  p-4 items-center justify-center">
+                            {category.skills?.map((skill) => (
+                                <div
+                                    key={skill.name}
+                                    className="flex items-center gap-2 border rounded-lg p-2"
+                                >
+                                    {skill.image ? (
+                                        <img
+                                            src={skill.image}
+                                            alt={skill.name}
+                                            className="w-6 h-6"
+                                        />
+                                    ) : (
+                                        <div className="w-6 h-6"></div>
+                                    )}
+                                    <span className="text-sm font-medium">
+                                        {skill.name}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </section>
     );
 };

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import trapic from "./assets/sopheaktra.jpg";
+import trapic from "./assets/traaqq.jpg";
 import { ChevronDown, Eye } from "lucide-react";
 
 const HeroSection = () => {
