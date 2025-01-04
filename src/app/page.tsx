@@ -1,17 +1,22 @@
 import Skills from "@/components/Skills";
-import AboutMe from "../components/AboutMe";
+import Education from "../components/Education";
 import HeroSection from "../components/HeroSection";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
+import Experience from "@/components/Experience";
 export default function Home() {
     return (
         <div className="min-h-screen">
             <HeroSection />
-            <div className="flex text-center justify-center">
-                <AboutMe />
-            </div>
+
             <div className="flex text-center justify-center mb-10">
                 <Skills />
+            </div>
+            <div className="flex text-center justify-center">
+                <Education />
+            </div>
+            <div className="flex text-center justify-center">
+                <Experience />
             </div>
             <div className="flex text-center justify-center">
                 <Projects />

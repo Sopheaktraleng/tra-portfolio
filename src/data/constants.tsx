@@ -116,3 +116,103 @@ export const SkillsData = [
         ],
     },
 ];
+export const EducationData = [
+    {
+        id: 1,
+        img: "https://upload.wikimedia.org/wikipedia/en/a/a2/RUPP_logo.PNG",
+        school: "Royal University of Pnom Penh",
+        date: "March 2019 - June 2024",
+        degree: "Computer Science",
+        description:
+            "Contributed to government digital transformation initiatives:",
+        highlights: [
+            "Developed RESTful APIs using Node.js and Express",
+            "Implemented database optimization strategies",
+            "Collaborated with cross-functional teams on microservices architecture",
+        ],
+    },
+    {
+        id: 2,
+        img: "https://tfdevs.com/tfd_logo.jpeg",
+        school: "TFDev",
+        date: "April 2024 - September 2024",
+        degree: "Nest Js API Development",
+        description:
+            "Contributed to government digital transformation initiatives:",
+        highlights: [
+            "Developed RESTful APIs using Node.js and Express",
+            "Implemented database optimization strategies",
+            "Collaborated with cross-functional teams on microservices architecture",
+        ],
+    },
+    {
+        id: 3,
+        img: "https://tfdevs.com/tfd_logo.jpeg",
+        school: "TFDev",
+        date: "February 2024 - June 2024",
+        degree: "Full Stack Web Development",
+        description:
+            "Contributed to government digital transformation initiatives:",
+        highlights: [
+            "Developed RESTful APIs using Node.js and Express",
+            "Implemented database optimization strategies",
+            "Collaborated with cross-functional teams on microservices architecture",
+        ],
+    },
+    {
+        id: 4,
+        img: "https://png.pngtree.com/png-vector/20230823/ourmid/pngtree-school-building-illustration-vector-png-image_6866875.png",
+        school: "Demrus High School",
+        date: "Augest 2007 - December 2019",
+        degree: "General Knowledge",
+        description:
+            "Contributed to government digital transformation initiatives:",
+        highlights: [
+            "Developed RESTful APIs using Node.js and Express",
+            "Implemented database optimization strategies",
+            "Collaborated with cross-functional teams on microservices architecture",
+        ],
+    },
+];
+export const ExperienceData = [
+    {
+        id: 0,
+        image: "https://www.today.com.kh/wp-content/uploads/2021/12/TODAY-LOGO1.png",
+        role: "Full Stack Developer",
+        company: "TODAY Internet",
+        date: "Aug 2024 - Now",
+        description:
+            "Working on Flipr Platforms, managing DevOps, and streamlining the process with automation.",
+        skills: [
+            "Docker",
+            "React Js",
+            "Express Js",
+            "Supabase",
+            "Nginx",
+            "JavaScript",
+            "TypeScript",
+            "Node Js",
+            " Next Js",
+        ],
+    },
+    {
+        id: 1,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIRB-oQUDFAXMNu_dAXADYdFw7xXj5-EQtJw&shttps://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-azuid&psig=AOvVaw2hQ_kTLywfcNQZNR5vimJi&ust=1736051108190000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLj5yL-c24oDFQAAAAAdAAAAABAI",
+        role: "Freelancer",
+        company: "",
+        date: "May 2024 - Aug 2024",
+        description:
+            "Working on Flipr Platforms, managing DevOps, and streamlining the process with automation.",
+        skills: [
+            "Docker",
+            "React Js",
+            "Express Js",
+            "Supabase",
+            "Nginx",
+            "JavaScript",
+            "TypeScript",
+            "Node Js",
+            " Next Js",
+        ],
+    },
+];

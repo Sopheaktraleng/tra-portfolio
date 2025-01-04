@@ -6,7 +6,6 @@ const HeroSection = () => {
     const technologies = [
         "React",
         "TypeScript",
-        "Node.js",
         "Next.js",
         "AWS",
         "PostgreSQL",
