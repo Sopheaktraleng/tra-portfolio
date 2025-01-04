@@ -9,7 +9,7 @@ const Contact = () => {
                     I&apos;m currently open to new opportunities and interesting
                     projects. Feel free to reach out!
                 </p>
-                <div className="grid grid-cols-2 gap-4 mb-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
                     <div className="p-6 rounded-xl shadow-lg border border-border">
                         <Mail className="w-8 h-8 text-primary mx-auto mb-4" />
                         <div>Email</div>
@@ -41,8 +41,8 @@ const Contact = () => {
                         <Linkedin className="w-8 h-8 mr-2" />
                         Linkedin
                     </a>
-                    <a className="inline-flex items-center px-6 py-3 rounded-lg  duration-300 border">
-                        <Eye className="w-8 h-8 mr-2" />
+                    <a className="inline-flex items-center px-6 py-3 rounded-lg  duration-300 border mt-4">
+                        <Eye className="w-8 h-8 mr-2 " />
                         Veiw CV
                     </a>
                 </div>

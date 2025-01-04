@@ -7,11 +7,11 @@ const Skills = () => {
             <h2 className="text-4xl font-bold text-foreground mb-4">
                 Technique Skills
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center">
+            <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
                 A comprehensive overview of my technical expertise and
                 proficiency across different areas of software development.
             </p>
-            <div className="grid grid-cols-2 w-[1000px] h-[500px] gap-8 p-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 w-[450px] md:w-[1000px] md:h-[500px] gap-8 p-4 ">
                 {SkillsData.map((category) => (
                     <div key={category.title} className="border rounded-lg p-4">
                         <h3 className="text-xl font-semibold mb-3 ">

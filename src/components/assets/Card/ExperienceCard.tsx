@@ -1,4 +1,4 @@
-import { Flame, Rocket, Zap } from "lucide-react";
+import { Rocket, Zap } from "lucide-react";
 import React from "react";
 
 interface ExperienceCardProps {
@@ -36,7 +36,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp }) => {
                 Skills:
             </p>
             <div className="text-sm">
-                {exp.skills.map((skill, index) => (
+                {exp.skills.map((skill: string, index: string) => (
                     <span key={index} className="flex  gap-2">
                         <Zap className="w-3 h-3 flex-shrink-0 mt-2 " />
                         {skill}

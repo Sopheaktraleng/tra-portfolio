@@ -32,7 +32,7 @@ const Education = () => {
                             )}
 
                             {/* Center Separator */}
-                            <TimelineSeparator className="absolute left-1/2 transform -translate-x-1/2 h-full">
+                            <TimelineSeparator className="absolute md:left-1/2 transform -translate-x-1/2 h-full">
                                 <TimelineDot
                                     variant="outlined"
                                     color="secondary"
@@ -47,7 +47,7 @@ const Education = () => {
 
                             {/* Right Side Content for Odd Index */}
                             {index % 2 !== 0 ? (
-                                <TimelineContent className="w-1/2 pl-96 ml-12">
+                                <TimelineContent className="w-1/2 pl-0 ml-4 md:pl-96 md:ml-12">
                                     <EducationCard edu={edu} />
                                 </TimelineContent>
                             ) : (
