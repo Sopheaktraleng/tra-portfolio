@@ -7,7 +7,7 @@ interface EducationCardProps {
         degree: string;
         school: string;
         date: string;
-        highlights: string;
+        highlights: string[];
         description: string;
     };
 }
@@ -27,7 +27,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
             </div>
             <p className="">{edu.description}</p>
             <div className="text-sm">
-                {edu.highlights.map((highlight: string, index: string) => (
+                {edu.highlights.map((highlight: string, index: number) => (
                     <span key={index} className="flex  gap-2">
                         <Flame className="w-3 h-3 flex-shrink-0 mt-2 " />
                         {highlight}
