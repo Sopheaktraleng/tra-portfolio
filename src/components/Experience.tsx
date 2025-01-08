@@ -14,7 +14,7 @@ const Experience = () => {
         <section className="py-16">
             <div className="max-w-6xl mx-auto px-6"></div>
             <h2 className="text-4xl font-bold mb-4">Experience</h2>
-            <p className="text-lg max-w-2xl mx-auto text-center">
+            <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
             </p>
@@ -23,13 +23,16 @@ const Experience = () => {
                     {ExperienceData.map((exp, index) => (
                         <TimelineItem key={index} className="flex flex-col">
                             {/* Left Side Content for Even Index */}
-                            {index % 2 === 0 ? (
-                                <TimelineContent className="w-1/2">
+                            <TimelineContent
+                                sx={{
+                                    width: index % 2 === 0 ? "50%" : "auto", // Apply '50%' width if index is even, otherwise 'auto' (you can use display: 'none' if you want to hide it completely)
+                                    display: index % 2 === 0 ? "block" : "none", // Conditionally show or hide based on index
+                                }}
+                            >
+                                {index % 2 === 0 && (
                                     <ExperienceCard exp={exp} />
-                                </TimelineContent>
-                            ) : (
-                                <div></div> // Empty space for alignment
-                            )}
+                                )}
+                            </TimelineContent>
 
                             {/* Center Separator */}
                             <TimelineSeparator className="absolute md:left-1/2 transform -translate-x-1/2 h-full">
@@ -46,13 +49,22 @@ const Experience = () => {
                             </TimelineSeparator>
 
                             {/* Right Side Content for Odd Index */}
-                            {index % 2 !== 0 ? (
-                                <TimelineContent className="w-1/2 pl-0 ml-4 md:pl-96 md:ml-12">
+                            <TimelineContent
+                                sx={{
+                                    width: "50%",
+                                    paddingLeft: 0,
+                                    marginLeft: "1rem",
+                                    "@media (min-width: 768px)": {
+                                        paddingLeft: "24rem",
+                                        marginLeft: "3rem",
+                                    },
+                                    display: index % 2 !== 0 ? "block" : "none", // Show when index is odd, hide when even
+                                }}
+                            >
+                                {index % 2 !== 0 && (
                                     <ExperienceCard exp={exp} />
-                                </TimelineContent>
-                            ) : (
-                                <div></div> // Empty space for alignment
-                            )}
+                                )}
+                            </TimelineContent>
                         </TimelineItem>
                     ))}
                 </Timeline>

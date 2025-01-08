@@ -1,6 +1,6 @@
 import { Flame } from "lucide-react";
 import React from "react";
-
+import Image from "next/image";
 interface EducationCardProps {
     edu: {
         img: string;
@@ -17,7 +17,12 @@ const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
         <div className="w-96 p-4 border rounded-lg">
             <div className="flex flex-row gap-4 mb-4">
                 <span>
-                    <img src={edu.img} alt="Education" width={50} height={50} />
+                    <Image
+                        src={edu.img}
+                        alt="Education"
+                        width={50}
+                        height={50}
+                    />
                 </span>
                 <span>
                     <p className="flex gap-2 text-bold text-xl">{edu.degree}</p>
@@ -25,7 +30,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
                     <p className="text-xs ">{edu.date}</p>
                 </span>
             </div>
-            <p className="">{edu.description}</p>
+            <p>{edu.description}</p>
             <div className="text-sm">
                 {edu.highlights.map((highlight: string, index: number) => (
                     <span key={index} className="flex  gap-2">

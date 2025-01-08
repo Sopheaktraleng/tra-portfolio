@@ -5,7 +5,7 @@ const Projects = () => {
             <h2 className="text-4xl font-bold text-foreground mb-4">
                 Featured Projects
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-center">
+            <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
             </p>

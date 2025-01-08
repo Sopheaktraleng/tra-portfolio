@@ -1,5 +1,5 @@
 import { SkillsData } from "@/data/constants";
-
+import Image from "next/image";
 const Skills = () => {
     return (
         <section className="py-16">
@@ -11,7 +11,7 @@ const Skills = () => {
                 A comprehensive overview of my technical expertise and
                 proficiency across different areas of software development.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 w-[450px] md:w-[1000px] md:h-[500px] gap-8 p-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 w-[400px] md:w-[1000px] md:h-[500px] gap-8 px-9 md:p-4 ">
                 {SkillsData.map((category) => (
                     <div key={category.title} className="border rounded-lg p-4">
                         <h3 className="text-xl font-semibold mb-3 ">
@@ -24,10 +24,12 @@ const Skills = () => {
                                     className="flex items-center gap-2 border rounded-lg p-2"
                                 >
                                     {skill.image ? (
-                                        <img
+                                        <Image
                                             src={skill.image}
                                             alt={skill.name}
                                             className="w-6 h-6"
+                                            width={50}
+                                            height={50}
                                         />
                                     ) : (
                                         <div className="w-6 h-6"></div>

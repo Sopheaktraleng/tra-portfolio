@@ -1,6 +1,6 @@
 import { Rocket, Zap } from "lucide-react";
 import React from "react";
-
+import Image from "next/image";
 interface ExperienceCardProps {
     exp: {
         image: string;
@@ -17,7 +17,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp }) => {
         <div className="w-96 p-4 border rounded-lg">
             <div className="flex flex-row gap-4 mb-4">
                 <span className="flex-shrink-0 mt-2">
-                    <img
+                    <Image
                         src={exp.image}
                         alt="Experience"
                         width={50}

@@ -14,22 +14,23 @@ const Education = () => {
         <section className="py-16">
             <div className="max-w-6xl mx-auto px-6"></div>
             <h2 className="text-4xl font-bold mb-4">Education</h2>
-            <p className="text-lg max-w-2xl mx-auto text-center">
+            <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
             </p>
-            <div className="w-full mt-2.5 flex flex-col items-center justify-center gap-3">
+            <div className="md:w-full mt-2.5 flex flex-col items-center justify-center gap-3">
                 <Timeline>
                     {EducationData.map((edu, index) => (
                         <TimelineItem key={index} className="flex flex-col">
                             {/* Left Side Content for Even Index */}
-                            {index % 2 === 0 ? (
-                                <TimelineContent className="w-1/2">
-                                    <EducationCard edu={edu} />
-                                </TimelineContent>
-                            ) : (
-                                <div></div> // Empty space for alignment
-                            )}
+                            <TimelineContent
+                                sx={{
+                                    width: index % 2 === 0 ? "50%" : "auto", // Apply '50%' width if index is even, otherwise 'auto' (hidden can be controlled with conditional rendering)
+                                    display: index % 2 === 0 ? "block" : "none", // Conditionally show or hide based on index
+                                }}
+                            >
+                                {index % 2 === 0 && <EducationCard edu={edu} />}
+                            </TimelineContent>
 
                             {/* Center Separator */}
                             <TimelineSeparator className="absolute md:left-1/2 transform -translate-x-1/2 h-full">
@@ -46,13 +47,20 @@ const Education = () => {
                             </TimelineSeparator>
 
                             {/* Right Side Content for Odd Index */}
-                            {index % 2 !== 0 ? (
-                                <TimelineContent className="w-1/2 pl-0 ml-4 md:pl-96 md:ml-12">
-                                    <EducationCard edu={edu} />
-                                </TimelineContent>
-                            ) : (
-                                <div></div> // Empty space for alignment
-                            )}
+                            <TimelineContent
+                                sx={{
+                                    width: "50%",
+                                    paddingLeft: 0,
+                                    marginLeft: "1rem",
+                                    "@media (min-width: 768px)": {
+                                        paddingLeft: "24rem",
+                                        marginLeft: "3rem",
+                                    },
+                                    display: index % 2 !== 0 ? "block" : "none", // Show content when index is odd, hide it when even
+                                }}
+                            >
+                                {index % 2 !== 0 && <EducationCard edu={edu} />}
+                            </TimelineContent>
                         </TimelineItem>
                     ))}
                 </Timeline>
