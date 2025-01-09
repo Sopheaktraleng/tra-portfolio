@@ -51,7 +51,7 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-                    <div className=" relative order-first lg:order-last flex justify-center items-center ml-4 md:ml-0">
+                    <div className=" relative order-first lg:order-last flex justify-center items-center ">
                         {/*Right Coloum*/}
                         <div className="relative max-w-md mx-auto">
                             <div className="relative aspect-square rounded-3xl overflow-hidden from-primary/10 to-purple-500/10 backdrop-blur-sm shadow-2xl">
@@ -60,15 +60,15 @@ const HeroSection = () => {
                                     height={500}
                                     src={trapic} // Using the imported image
                                     alt="Profile"
-                                    className="w-[300px] h-[300px] md:w-full md:h-full object-cover rounded-3xl" // Add rounded-3xl here as well
+                                    className="w-[350px] h-[350px] md:w-full md:h-full object-cover rounded-3xl" // Add rounded-3xl here as well
                                 />
                             </div>
-                            <div className="absolute -right-7 top-[-20px] md:-right-10 md:-top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
+                            <div className="absolute -right-5 top-[-20px] md:-right-10 md:-top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
                                 <span className="text-sm font-medium text-foreground whitespace-nowrap">
                                     🚀 Open to Work
                                 </span>
                             </div>
-                            <div className="absolute -left-8 md:-left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
+                            <div className="absolute -left-5 md:-left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
                                 <span className="text-sm font-medium text-foreground whitespace-nowrap">
                                     💻 Full Stack Developer
                                 </span>

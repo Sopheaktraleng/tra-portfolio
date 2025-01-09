@@ -18,12 +18,12 @@ const Experience = () => {
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
             </p>
-            <div className="w-full ml-7 md:ml-0 md:mt-2.5 flex flex-col items-center justify-center gap-3">
+            <div className="w-full md:mt-2.5 flex flex-col items-center justify-center gap-3">
                 <Timeline>
                     {ExperienceData.map((exp, index) => (
                         <TimelineItem
                             key={index}
-                            className="flex flex-col scale-90 md:scale-100 mb-[-30px] md:mb-0"
+                            className="flex flex-col scale-90 md:scale-100 mb-[-30px] md:mb-0 ml-4 md:ml-0"
                         >
                             {/* Left Side Content for Even Index */}
                             <TimelineContent

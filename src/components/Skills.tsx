@@ -10,7 +10,7 @@ const Skills = () => {
                 A comprehensive overview of my technical expertise and
                 proficiency across different areas of software development.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 w-[380px] md:w-[1000px] md:h-[500px] gap-8 p-4 ml-8 md:ml-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 w-[380px] md:w-[1000px] md:h-[500px] gap-8 p-4 ">
                 {SkillsData.map((category) => (
                     <div
                         key={category.title}

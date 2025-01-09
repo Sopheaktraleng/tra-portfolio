@@ -8,7 +8,7 @@ import { Footer } from "@/components/Footer";
 import Head from "next/head";
 export default function Home() {
     return (
-        <div className="flex flex-col text-center justify-center">
+        <div className="flex flex-col text-center justify-center overflow-x-hidden">
             <Head>
                 <title>Leng Sopheaktra - Software Engineer</title>
                 <meta
