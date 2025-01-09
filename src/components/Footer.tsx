@@ -1,4 +1,3 @@
-import { Instagram } from "lucide-react";
 import GithubIcon from "./../../public/github-icon.svg";
 import LinkedinIcon from "./../../public/linkedin-icon.svg";
 import FacebookIcon from "./../../public/facebook-icon.svg";
