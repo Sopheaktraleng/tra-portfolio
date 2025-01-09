@@ -11,8 +11,8 @@ const HeroSection = () => {
         "PostgreSQL",
     ];
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden">
-            <div className="relative w-full max-w-7xl mx-auto px-6 py-12 md:py-24">
+        <section className="min-h-screen flex items-center justify-center text-start overflow-hidden">
+            <div className="w-full md:max-w-7xl mx-auto px-6 py-12 md:py-24">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/*Left Coloum*/}
                     <div className="inline-block px-4 py-2 backdrop-blur-sm  rounded-full text-sm font-medium">
@@ -51,24 +51,24 @@ const HeroSection = () => {
                         </div>
                     </div>
 
-                    <div className=" relative order-first lg:order-last">
+                    <div className=" relative order-first lg:order-last flex justify-center items-center ml-4 md:ml-0">
                         {/*Right Coloum*/}
                         <div className="relative max-w-md mx-auto">
-                            <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-primary/10 to-purple-500/10 backdrop-blur-sm shadow-2xl">
+                            <div className="relative aspect-square rounded-3xl overflow-hidden from-primary/10 to-purple-500/10 backdrop-blur-sm shadow-2xl">
                                 <Image
                                     width={500}
                                     height={500}
                                     src={trapic} // Using the imported image
                                     alt="Profile"
-                                    className="w-full h-full object-cover rounded-3xl" // Add rounded-3xl here as well
+                                    className="w-[300px] h-[300px] md:w-full md:h-full object-cover rounded-3xl" // Add rounded-3xl here as well
                                 />
                             </div>
-                            <div className="absolute -right-12 -top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
+                            <div className="absolute -right-7 top-[-20px] md:-right-10 md:-top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
                                 <span className="text-sm font-medium text-foreground whitespace-nowrap">
                                     🚀 Open to Work
                                 </span>
                             </div>
-                            <div className="absolute -left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
+                            <div className="absolute -left-8 md:-left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
                                 <span className="text-sm font-medium text-foreground whitespace-nowrap">
                                     💻 Full Stack Developer
                                 </span>
