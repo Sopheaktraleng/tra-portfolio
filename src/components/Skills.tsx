@@ -2,22 +2,24 @@ import { SkillsData } from "@/data/constants";
 import Image from "next/image";
 const Skills = () => {
     return (
-        <section className="py-16">
-            <div className="max-w-6xl mx-auto px-6"></div>
+        <section className="md:py-16 flex flex-col items-center justify-center">
             <h2 className="text-4xl font-bold text-foreground mb-4">
                 Technique Skills
             </h2>
-            <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
+            <p className="text-lg text-muted-foreground w-auto mx-auto text-center ">
                 A comprehensive overview of my technical expertise and
                 proficiency across different areas of software development.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 w-[400px] md:w-[1000px] md:h-[500px] gap-8 px-9 md:p-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 w-[380px] md:w-[1000px] md:h-[500px] gap-8 p-4 ml-8 md:ml-0">
                 {SkillsData.map((category) => (
-                    <div key={category.title} className="border rounded-lg p-4">
+                    <div
+                        key={category.title}
+                        className="border rounded-lg p-3 md:p-4"
+                    >
                         <h3 className="text-xl font-semibold mb-3 ">
                             {category.title}
                         </h3>
-                        <div className="flex flex-wrap gap-3 text-center  p-4 items-center justify-center">
+                        <div className="flex flex-wrap gap-3 text-center md:p-4 items-center justify-center">
                             {category.skills?.map((skill) => (
                                 <div
                                     key={skill.name}

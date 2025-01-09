@@ -4,33 +4,39 @@ import HeroSection from "../components/HeroSection";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
+import { Footer } from "@/components/Footer";
+import Head from "next/head";
 export default function Home() {
     return (
-        <div className="min-h-screen">
-            <HeroSection />
+        <div className="flex flex-col text-center justify-center">
+            <Head>
+                <title>Leng Sopheaktra - Software Engineer</title>
+                <meta
+                    name="description"
+                    content="Professional portfolio of Leng Sopheaktra - Software Engineer"
+                />
+            </Head>
+            <div>
+                <HeroSection />
+            </div>
 
-            <div className="flex text-center justify-center mb-10">
+            <div className="mb-10">
                 <Skills />
             </div>
-            <div className="flex text-center justify-center">
+            <div>
                 <Education />
             </div>
-            <div className="flex text-center justify-center">
+            <div>
                 <Experience />
             </div>
-            <div className="flex text-center justify-center">
+            <div>
                 <Projects />
             </div>
-            <div className="flex text-center justify-center">
+            <div>
                 <Contact />
             </div>
             <footer className="py-8 bg-gray-900 text-white">
-                <div className="container mx-auto px-6 text-center">
-                    <p className="text-gray-400">
-                        © {new Date().getFullYear()} Leng Sopheaktra. All rights
-                        reserved.
-                    </p>
-                </div>
+                <Footer />
             </footer>
         </div>
     );

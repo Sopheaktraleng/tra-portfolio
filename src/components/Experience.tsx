@@ -7,21 +7,24 @@ import {
     TimelineItem,
     TimelineSeparator,
 } from "@mui/lab";
-import ExperienceCard from "./assets/Card/ExperienceCard";
+import ExperienceCard from "./Card/ExperienceCard";
 
 const Experience = () => {
     return (
         <section className="py-16">
             <div className="max-w-6xl mx-auto px-6"></div>
-            <h2 className="text-4xl font-bold mb-4">Experience</h2>
+            <h2 className="text-4xl font-bold">Experience</h2>
             <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
             </p>
-            <div className="w-full mt-2.5 flex flex-col items-center justify-center gap-3">
+            <div className="w-full ml-7 md:ml-0 md:mt-2.5 flex flex-col items-center justify-center gap-3">
                 <Timeline>
                     {ExperienceData.map((exp, index) => (
-                        <TimelineItem key={index} className="flex flex-col">
+                        <TimelineItem
+                            key={index}
+                            className="flex flex-col scale-90 md:scale-100 mb-[-30px] md:mb-0"
+                        >
                             {/* Left Side Content for Even Index */}
                             <TimelineContent
                                 sx={{
