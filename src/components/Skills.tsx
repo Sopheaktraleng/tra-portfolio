@@ -14,7 +14,7 @@ const Skills = () => {
                 {SkillsData.map((category) => (
                     <div
                         key={category.title}
-                        className="border rounded-lg p-3 md:p-4"
+                        className="border border-[#33353F] rounded-lg p-3 md:p-4"
                     >
                         <h3 className="text-xl font-semibold mb-3 ">
                             {category.title}
