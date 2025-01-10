@@ -18,12 +18,12 @@ const Education = () => {
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
             </p>
-            <div className="md:w-full md:mt-2.5 flex flex-col items-center justify-center gap-3">
+            <div className="md:w-full md:mt-8 flex flex-col items-center justify-center gap-3">
                 <Timeline>
                     {EducationData.map((edu, index) => (
                         <TimelineItem
                             key={index}
-                            className="flex flex-col scale-90 md:scale-100 mb-[-30px] md:mb-0 ml-4 md:ml-0"
+                            className="flex flex-col scale-90 md:scale-110 mb-[-30px] md:mb-4 ml-4 md:ml-0 "
                         >
                             {/* Left Side Content for Even Index */}
                             <TimelineContent
@@ -56,7 +56,7 @@ const Education = () => {
                                     paddingLeft: 0,
                                     marginLeft: "1rem",
                                     "@media (min-width: 768px)": {
-                                        paddingLeft: "24rem",
+                                        paddingLeft: "25rem",
                                         marginLeft: "3rem",
                                     },
                                     display: index % 2 !== 0 ? "block" : "none", // Show content when index is odd, hide it when even

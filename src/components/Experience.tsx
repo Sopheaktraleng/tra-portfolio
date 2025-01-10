@@ -18,12 +18,12 @@ const Experience = () => {
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
             </p>
-            <div className="w-full md:mt-2.5 flex flex-col items-center justify-center gap-3">
+            <div className="w-full md:mt-8 flex flex-col items-center justify-center gap-3">
                 <Timeline>
                     {ExperienceData.map((exp, index) => (
                         <TimelineItem
                             key={index}
-                            className="flex flex-col scale-90 md:scale-100 mb-[-30px] md:mb-0 ml-4 md:ml-0"
+                            className="flex flex-col scale-90 md:scale-110 mb-[-30px] md:mb-8 ml-4 md:ml-0"
                         >
                             {/* Left Side Content for Even Index */}
                             <TimelineContent
@@ -38,7 +38,7 @@ const Experience = () => {
                             </TimelineContent>
 
                             {/* Center Separator */}
-                            <TimelineSeparator className="absolute md:left-1/2 transform -translate-x-1/2 h-full">
+                            <TimelineSeparator className="absolute md:left-1/2 transform -translate-x-1/2 h-full md:p-1">
                                 <TimelineDot
                                     variant="outlined"
                                     color="secondary"
@@ -58,7 +58,7 @@ const Experience = () => {
                                     paddingLeft: 0,
                                     marginLeft: "1rem",
                                     "@media (min-width: 768px)": {
-                                        paddingLeft: "24rem",
+                                        paddingLeft: "25rem",
                                         marginLeft: "3rem",
                                     },
                                     display: index % 2 !== 0 ? "block" : "none", // Show when index is odd, hide when even

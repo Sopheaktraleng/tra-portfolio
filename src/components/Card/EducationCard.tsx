@@ -14,7 +14,7 @@ interface EducationCardProps {
 
 const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
     return (
-        <div className="w-96 p-4 border rounded-lg">
+        <div className="w-96 p-4 border border-[#33353F] rounded-lg">
             <div className="flex flex-row gap-4 mb-4">
                 <span>
                     <Image

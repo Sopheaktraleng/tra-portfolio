@@ -14,7 +14,7 @@ interface ExperienceCardProps {
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp }) => {
     return (
-        <div className="w-96 p-4 border rounded-lg">
+        <div className="w-96 p-4 border border-[#33353F] rounded-lg">
             <div className="flex flex-row gap-4 mb-4">
                 <span className="flex-shrink-0 mt-2">
                     <Image

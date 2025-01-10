@@ -9,7 +9,7 @@ const Contact = () => {
                 </p>
                 <form
                     action=""
-                    className="flex flex-col gap-4 rounded-lg p-10 w-[450px] md:w-[600px] border border-[#33353F]"
+                    className="flex flex-col gap-4 rounded-lg p-5 md:p-10 w-auto md:w-[600px] border border-[#33353F]"
                 >
                     <label
                         htmlFor="email"
