@@ -33,7 +33,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp }) => {
             <p className="">{exp.description}</p>
             <p className="flex gap-2">
                 <Rocket className="w-4 h-4 mt-1" />
-                Skills:
+                Key Responsibilities:
             </p>
             <div className="text-sm">
                 {exp.skills.map((skill: string, index: number) => (

@@ -18,13 +18,19 @@ const HeroSection = () => {
                                 Full-Stack Developer
                             </h2>
                             <p className="py-6 text-base">
-                                I am a motivated and versatile individual,
-                                always eager to take on new challenges. With a
-                                passion for learning I am dedicated to
-                                delivering high-quality results. With a positive
-                                attitude and a growth mindset, I am ready to
-                                make a meaningful contribution and achieve great
-                                things.
+                                I’m a software engineer with a passion for
+                                developing dynamic and user-friendly web
+                                applications.
+                                <br /> My primary expertise is in JavaScript,
+                                but I also work with Python, PHP, and other
+                                programming languages. I manage deployments and
+                                have solid DevOps experience with tools like
+                                Docker, Jenkins, GitHub Actions, AWS, and Linux.
+                                Additionally, I leverage AI tools to enhance
+                                productivity through prompt engineering. <br />
+                                I’m an adaptable learner, always eager to grow
+                                my skill set, and I thrive in collaborative
+                                environments to build outstanding applications.
                             </p>
                             <a
                                 href="https://docs.google.com/document/d/1x0XMxtWcBSzp0PJl2r6HRH_HvpbB6nAi3CfV-Nztv30/edit?tab=t.0"

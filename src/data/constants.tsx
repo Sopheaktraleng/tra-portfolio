@@ -125,11 +125,13 @@ export const EducationData = [
         date: "March 2019 - June 2024",
         degree: "Computer Science",
         description:
-            "Contributed to government digital transformation initiatives:",
+            "I am studying Computer Science at RUPP, focusing on software development, AI, cybersecurity, and cloud computing.",
         highlights: [
-            "Developed RESTful APIs using Node.js and Express",
-            "Implemented database optimization strategies",
-            "Collaborated with cross-functional teams on microservices architecture",
+            "Programming & Software Development – JavaScript, Python, C++, Web & Mobile Development",
+            "Data & Algorithms – Data Structures, Algorithms, Database Management (SQL, NoSQL)",
+            "Networking & Security – Computer Networks, Cybersecurity, Ethical Hacking",
+            "AI & Cloud Computing – Machine Learning, Cloud Services (AWS, Docker, Kubernetes)",
+            "Project Development – Agile methodologies, IT Project Management, Final Year Capstone",
         ],
     },
     {
@@ -139,11 +141,12 @@ export const EducationData = [
         date: "April 2024 - September 2024",
         degree: "Nest Js API Development",
         description:
-            "Contributed to government digital transformation initiatives:",
+            "I studied backend development with NestJS, focusing on building scalable and high-performance APIs using TypeScript.",
         highlights: [
-            "Developed RESTful APIs using Node.js and Express",
-            "Implemented database optimization strategies",
-            "Collaborated with cross-functional teams on microservices architecture",
+            "NestJS & TypeScript – Modular architecture, Dependency Injection, and best practices.",
+            "Database & APIs – PostgreSQL, MongoDB, Prisma ORM, RESTful & GraphQL APIs.",
+            "Microservices & Scalability – Event-driven architecture and message queues.",
+            "DevOps & Deployment – Docker, CI/CD pipelines, and cloud hosting.",
         ],
     },
     {
@@ -153,11 +156,12 @@ export const EducationData = [
         date: "February 2024 - June 2024",
         degree: "Full Stack Web Development",
         description:
-            "Contributed to government digital transformation initiatives:",
+            "I completed an intensive Full-Stack Bootcamp, gaining hands-on experience in modern web development and deployment.",
         highlights: [
-            "Developed RESTful APIs using Node.js and Express",
-            "Implemented database optimization strategies",
-            "Collaborated with cross-functional teams on microservices architecture",
+            "Frontend Development – HTML, CSS, JavaScript, Vue.js, TailwindCSS for responsive and dynamic UI/UX.",
+            "Backend Development – Express.js, Node.js, and MongoDB for building scalable and efficient APIs.",
+            "Database & API Management – Designing databases, handling CRUD operations, and integrating RESTful APIs.",
+            "DevOps & Deployment – Docker for containerization, CI/CD pipelines, and cloud deployment strategies.",
         ],
     },
     {
@@ -167,11 +171,12 @@ export const EducationData = [
         date: "Augest 2007 - December 2019",
         degree: "General Knowledge",
         description:
-            "Contributed to government digital transformation initiatives:",
+            "I completed my high school education, gaining a strong foundation in mathematics, science, languages, and technology.",
         highlights: [
-            "Developed RESTful APIs using Node.js and Express",
-            "Implemented database optimization strategies",
-            "Collaborated with cross-functional teams on microservices architecture",
+            "Math & Science – Algebra, Physics, Chemistry, and Biology.",
+            "Languages & Communication – Khmer, English, and writing skills.",
+            "Technology & Computing – IT fundamentals and problem-solving.",
+            "Social Studies – History, Geography, and Economics.",
         ],
     },
 ];
@@ -183,17 +188,12 @@ export const ExperienceData = [
         company: "TODAY Internet",
         date: "Aug 2024 - Now",
         description:
-            "Working on Flipr Platforms, managing DevOps, and streamlining the process with automation.",
+            "I worked as a Web Developer, designing and deploying custom internal systems to automate workflows and enhance efficiency. My role involved optimizing system performance, ensuring scalability, and adapting solutions to business needs.",
         skills: [
-            "Docker",
-            "React Js",
-            "Express Js",
-            "Supabase",
-            "Nginx",
-            "JavaScript",
-            "TypeScript",
-            "Node Js",
-            " Next Js",
+            "System Development – Designed, built, and deployed internal applications to improve business operations.",
+            "Performance Optimization – Enhanced system efficiency to improve user experience and business processes.",
+            "Technology Stack – Worked with React, Node.js, Express, Laravel, MySQL, and MongoDB for full-stack development.",
+            "DevOps & Deployment – Utilized Docker, GitHub Actions, and Linux to streamline deployments and improve system reliability.",
         ],
     },
     {
@@ -203,17 +203,11 @@ export const ExperienceData = [
         company: "",
         date: "May 2024 - Aug 2024",
         description:
-            "Working on Flipr Platforms, managing DevOps, and streamlining the process with automation.",
+            "As a Freelance Full Stack Developer, I built and deployed scalable web applications, including Job Listing and E-Commerce platforms. My work focused on frontend and backend development, database management, and cloud deployment.",
         skills: [
-            "Docker",
-            "React Js",
-            "Express Js",
-            "Supabase",
-            "Nginx",
-            "JavaScript",
-            "TypeScript",
-            "Node Js",
-            " Next Js",
+            "Full-Stack Development – Built applications using React, TailwindCSS, Node.js, Laravel, PostgreSQL, and MySQL.",
+            "Feature Implementation – Designed data models and developed features such as search, filtering, user profiles, reviews, order management, and payment integration.",
+            "Cloud Deployment & Optimization – Deployed applications on AWS (EC2, S3, RDS) with optimized Linux environments using Apache and Nginx.",
         ],
     },
 ];
