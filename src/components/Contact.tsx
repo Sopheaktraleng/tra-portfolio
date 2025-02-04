@@ -12,8 +12,13 @@ const Contact = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Corrected payload
-        const payload = { email, subject, message };
+        interface EmailPayload {
+            email: string;
+            subject: string;
+            message: string;
+        }
+
+        const payload: EmailPayload = { email, subject, message };
 
         try {
             const res = await fetch("/api/send-email", {
@@ -32,8 +37,12 @@ const Contact = () => {
             } else {
                 setStatus(`❌ Failed to send email: ${result.error}`);
             }
-        } catch (error: any) {
-            setStatus(`⚠️ Error: ${error.message}`);
+        } catch (error) {
+            if (error instanceof Error) {
+                setStatus(`⚠️ Error: ${error.message}`);
+            } else {
+                setStatus("⚠️ Unknown error occurred");
+            }
         }
     };
 
