@@ -1,6 +1,8 @@
+"use client";
 import Image from "next/image";
 import trapic from "./assets/traaqq.jpg";
 import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
     return (
@@ -32,14 +34,21 @@ const HeroSection = () => {
                                 my skill set, and I thrive in collaborative
                                 environments to build outstanding applications.
                             </p>
-                            <a
+                            <motion.a
+                                animate={{ y: [-10, 10, -10] }} // Moves up & down
+                                transition={{
+                                    duration: 2, // Duration for full cycle
+                                    repeat: Infinity, // Infinite loop
+                                    repeatType: "loop", // Keeps looping smoothly
+                                    ease: "easeInOut", // Smooth transition
+                                }}
                                 href="https://docs.google.com/document/d/1x0XMxtWcBSzp0PJl2r6HRH_HvpbB6nAi3CfV-Nztv30/edit?tab=t.0"
                                 className="px-6 py-3  rounded-xl   duration-300 flex items-center justify-center gap-2 border border-[#33353F] bg-purple-500 hover:bg-purple-600 md:w-[300px]"
                             >
                                 <p className="text-lg font-bold">
                                     Check Resume
                                 </p>
-                            </a>
+                            </motion.a>
                         </div>
                     </div>
 
@@ -55,26 +64,53 @@ const HeroSection = () => {
                                     className="w-[350px] h-[350px] md:w-full md:h-full object-cover rounded-3xl" // Add rounded-3xl here as well
                                 />
                             </div>
-                            <div className="absolute -right-5 top-[-20px] md:-right-10 md:-top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
-                                <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                            <motion.div
+                                animate={{ y: [-5, 5, -5] }} // Moves up & down
+                                transition={{
+                                    duration: 2, // Duration for full cycle
+                                    repeat: Infinity, // Infinite loop
+                                    repeatType: "loop", // Keeps looping smoothly
+                                    ease: "easeInOut", // Smooth transition
+                                }}
+                                className="absolute -right-5 top-[-20px] md:-right-10 md:-top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border"
+                            >
+                                <span className="text-sm font-medium text-white">
                                     🚀 Open to Work
                                 </span>
-                            </div>
-                            <div className="absolute -left-5 md:-left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border">
+                            </motion.div>
+                            <motion.div
+                                animate={{ y: [-5, 5, -5] }} // Moves up & down
+                                transition={{
+                                    duration: 2, // Duration for full cycle
+                                    repeat: Infinity, // Infinite loop
+                                    repeatType: "loop", // Keeps looping smoothly
+                                    ease: "easeInOut", // Smooth transition
+                                }}
+                                className="absolute -left-5 md:-left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border"
+                            >
                                 <span className="text-sm font-medium text-foreground whitespace-nowrap">
                                     💻 Full Stack Developer
                                 </span>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
                 {/* Scoll*/}
-                <div className="absolute -bottom-0 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
+                <motion.div
+                    animate={{ y: [-10, 10, -10] }} // Moves up & down
+                    transition={{
+                        duration: 2, // Duration for full cycle
+                        repeat: Infinity, // Infinite loop
+                        repeatType: "loop", // Keeps looping smoothly
+                        ease: "easeInOut", // Smooth transition
+                    }}
+                    className="absolute -bottom-0 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+                >
                     <span className="text-sm text-muted-foreground">
                         Scoll to Explore
                     </span>
                     <ChevronDown className="w-6 h-6 text-muted-foreground" />
-                </div>
+                </motion.div>
             </div>
         </section>
     );
