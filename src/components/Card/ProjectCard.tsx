@@ -35,6 +35,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                             <p className="text-xs">{pro.image}</p>
                         )}
                     </span>
+                    <div className="flex flex-wrap gap-2">
+                        <span className="bg-purple-500 hover:bg-purple-600 text-white font-medium p-1 rounded-lg w-fit">
+                            Vue Js
+                        </span>
+                        <span className="bg-purple-500 hover:bg-purple-600 text-white font-medium p-1 rounded-lg w-fit">
+                            React Js
+                        </span>
+                        <span className="bg-purple-500 hover:bg-purple-600 text-white font-medium p-1 rounded-lg w-fit">
+                            Docker
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
