@@ -6,6 +6,7 @@ interface ProjectCardProps {
         description: string;
         image: string | { twitterpic: StaticImageData };
         links: string;
+        technologies: string[];
     };
 }
 
@@ -47,15 +48,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                         )}
                     </span>
                     <div className="flex flex-wrap gap-2 font-bold">
-                        <span className="bg-purple-500 hover:bg-purple-600 text-white font-medium p-2 rounded-lg w-fit">
-                            Vue Js
-                        </span>
-                        <span className="bg-purple-500 hover:bg-purple-600 text-white font-medium p-2 rounded-lg w-fit">
-                            Express Js
-                        </span>
-                        <span className="bg-purple-500 hover:bg-purple-600 text-white font-medium p-2 rounded-lg w-fit">
-                            Docker
-                        </span>
+                        {pro.technologies.map((tech, index) => (
+                            <span
+                                key={index}
+                                className="bg-purple-500 hover:bg-purple-600 text-white font-medium text-xs px-2 py-1 rounded-full"
+                            >
+                                {tech}
+                            </span>
+                        ))}
                     </div>
                 </div>
             </div>
