@@ -218,5 +218,6 @@ export const projectsData = [
         description:
             "A Twitter Clone project featuring user authentication, tweet posting, profile management, and follow/unfollow functionality, built with Vue.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
         image: { twitterpic },
+        links: "https://github.com/Sopheaktraleng/twitter-clone",
     },
 ];

@@ -5,6 +5,7 @@ interface ProjectCardProps {
         title: string;
         description: string;
         image: string | { twitterpic: StaticImageData };
+        links: string;
     };
 }
 
@@ -30,6 +31,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                         <p className="text-xl font-bold">{pro.title}</p>
                         <p className="text-sm sm:w-[300px] md:w-[400px]">
                             {pro.description}
+                        </p>
+                        <p>
+                            <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-500 underline"
+                                href={pro.links}
+                            >
+                                {pro.links}
+                            </a>
                         </p>
                         {typeof pro.image === "string" && (
                             <p className="text-xs">{pro.image}</p>
