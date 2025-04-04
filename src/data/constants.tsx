@@ -227,4 +227,31 @@ export const projectsData = [
             "Docker Compose",
         ],
     },
+    {
+        id: 2,
+        title: "Money Tracking Bot",
+        description:
+            "A Telegram bot for tracking money transactions, built with Node.js, MongoDB, and Telegraf. It allows users to manage their finances by adding, deleting, and viewing transactions.",
+        image: { twitterpic },
+        links: "https://github.com/Sopheaktraleng/money-tracking-bot",
+        technologies: ["Node.js", "MongoDB", "Telegraf", "Telegram Bot API"],
+    },
+    {
+        id: 3,
+        title: "Movie Website",
+        description:
+            "A movie website project featuring a responsive design, movie search functionality, and user authentication, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
+        image: { twitterpic },
+        links: "https://github.com/Sopheaktraleng/movie-app",
+        technologies: ["React Js", "Tailwind"],
+    },
+    {
+        id: 4,
+        title: "Stock Management System",
+        description:
+            "A stock management system project featuring product management, order tracking, and inventory control, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
+        image: { twitterpic },
+        links: "https://github.com/Sopheaktraleng/money-tracking-bot",
+        technologies: ["Laravel", "MySQL", "Filament", "Bootstrap5"],
+    },
 ];
