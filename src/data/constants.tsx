@@ -1,4 +1,7 @@
 import twitterpic from "../components/assets/twitter.jpeg";
+import telegrambot from "../components/assets/telegrambot.png";
+import stocksytem from "../components/assets/stocksystem.png";
+import movie from "../components/assets/movie.png";
 export const SkillsData = [
     {
         title: "Frontend",
@@ -217,7 +220,7 @@ export const projectsData = [
         title: "Twitter Clone",
         description:
             "A Twitter Clone project featuring user authentication, tweet posting, profile management, and follow/unfollow functionality, built with Vue.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: { twitterpic },
+        image: twitterpic,
         links: "https://github.com/Sopheaktraleng/twitter-clone",
         technologies: [
             "Vue.js",
@@ -232,7 +235,7 @@ export const projectsData = [
         title: "Money Tracking Bot",
         description:
             "A Telegram bot for tracking money transactions, built with Node.js, MongoDB, and Telegraf. It allows users to manage their finances by adding, deleting, and viewing transactions.",
-        image: { twitterpic },
+        image: telegrambot,
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Node.js", "MongoDB", "Telegraf", "Telegram Bot API"],
     },
@@ -241,7 +244,7 @@ export const projectsData = [
         title: "Movie Website",
         description:
             "A movie website project featuring a responsive design, movie search functionality, and user authentication, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: { twitterpic },
+        image: movie,
         links: "https://github.com/Sopheaktraleng/movie-app",
         technologies: ["React Js", "Tailwind"],
     },
@@ -250,7 +253,7 @@ export const projectsData = [
         title: "Stock Management System",
         description:
             "A stock management system project featuring product management, order tracking, and inventory control, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: { twitterpic },
+        image: stocksytem,
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Laravel", "MySQL", "Filament", "Bootstrap5"],
     },

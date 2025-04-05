@@ -4,7 +4,7 @@ interface ProjectCardProps {
     pro: {
         title: string;
         description: string;
-        image: string | { twitterpic: StaticImageData };
+        image: string | StaticImageData;
         links: string;
         technologies: string[];
     };
@@ -13,45 +13,47 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
     return (
         <div className="flex justify-center items-center">
-            <div className="w-[380px] md:w-[100%] p-3 md:p-5 border border-[#33353F] rounded-lg h-auto">
+            <div className="w-[330px] md:w-full max-w-[450px] h-[450px] flex flex-col p-4 border border-[#33353F] rounded-lg shadow-md bg-white dark:bg-[#1a1a1a]">
+                {" "}
                 <Image
-                    src={
-                        typeof pro.image === "string"
-                            ? pro.image
-                            : pro.image.twitterpic
-                    }
-                    alt="Project"
-                    width={500}
-                    height={500}
-                    className="w-auto h-auto rounded-xl" // Ensure the image scales appropriately
+                    src={pro.image}
+                    alt={pro.title}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="w-full h-[200px] rounded-xl object-cover"
                 />
-
-                <div className="flex flex-col gap-4 mb-4 text-start">
-                    <span className="flex-shrink-0 mt-2"></span>
-                    <span>
-                        <p className="text-xl font-bold">{pro.title}</p>
-                        <p className="text-sm sm:w-[300px] md:w-[400px]">
+                {/* Content Section */}
+                <div className="flex flex-col justify-between flex-grow mt-4 gap-y-4">
+                    {" "}
+                    {/* change code: add gap, fix spacing */}
+                    <div className="flex flex-col gap-y-2">
+                        <h3 className="text-xl font-bold">{pro.title}</h3>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3">
                             {pro.description}
                         </p>
-                        <p>
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-500 underline"
-                                href={pro.links}
-                            >
-                                {pro.links}
-                            </a>
-                        </p>
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 underline text-sm"
+                            href={pro.links}
+                        >
+                            View on GitHub
+                        </a>
                         {typeof pro.image === "string" && (
-                            <p className="text-xs">{pro.image}</p>
+                            <p className="text-xs text-gray-400 break-all">
+                                {pro.image}
+                            </p>
                         )}
-                    </span>
-                    <div className="flex flex-wrap gap-2 font-bold">
+                    </div>
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2 font-bold mt-auto">
+                        {" "}
+                        {/* change code: added mt-auto to push tech to bottom if space */}
                         {pro.technologies.map((tech, index) => (
                             <span
                                 key={index}
-                                className="bg-purple-500 hover:bg-purple-600 text-white font-medium text-xs px-2 py-1 rounded-full"
+                                className="bg-purple-500 hover:bg-purple-600 text-white text-xs px-2 py-1 rounded-full"
                             >
                                 {tech}
                             </span>

@@ -13,7 +13,7 @@ const Projects = () => {
                 practical experience and academic excellence.
             </p>
             <div className="flex justify-center items-center pt-5">
-                <ul className="flex flex-wrap gap-3 text-center md:p-4 items-center justify-center">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center">
                     {projectsData.map((pro, index) => (
                         <li
                             key={index}
