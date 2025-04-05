@@ -229,6 +229,7 @@ export const projectsData = [
             "MongoDB",
             "Docker Compose",
         ],
+        demo: "https://twitter.com/",
     },
     {
         id: 2,
@@ -238,6 +239,7 @@ export const projectsData = [
         image: telegrambot,
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Node.js", "MongoDB", "Telegraf", "Telegram Bot API"],
+        demo: "https://t.me/broke_bill_bot",
     },
     {
         id: 3,
@@ -246,7 +248,8 @@ export const projectsData = [
             "A movie website project featuring a responsive design, movie search functionality, and user authentication, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
         image: movie,
         links: "https://github.com/Sopheaktraleng/movie-app",
-        technologies: ["React Js", "Tailwind"],
+        technologies: ["React Js", "Tailwind", "React Hook"],
+        demo: "https://Sopheaktraleng.github.io/movie-app",
     },
     {
         id: 4,
@@ -256,5 +259,6 @@ export const projectsData = [
         image: stocksytem,
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Laravel", "MySQL", "Filament", "Bootstrap5"],
+        demo: "https://nss.today.com.kh/",
     },
 ];

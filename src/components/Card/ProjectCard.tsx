@@ -1,5 +1,6 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+import { Github, MonitorPlay } from "lucide-react";
 interface ProjectCardProps {
     pro: {
         title: string;
@@ -7,6 +8,7 @@ interface ProjectCardProps {
         image: string | StaticImageData;
         links: string;
         technologies: string[];
+        demo: string;
     };
 }
 
@@ -32,14 +34,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                         <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3">
                             {pro.description}
                         </p>
-                        <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-500 underline text-sm"
-                            href={pro.links}
-                        >
-                            View on GitHub
-                        </a>
                         {typeof pro.image === "string" && (
                             <p className="text-xs text-gray-400 break-all">
                                 {pro.image}
@@ -58,6 +52,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                                 {tech}
                             </span>
                         ))}
+                    </div>
+                    <div className="flex flex-row items-center space-x-4">
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 "
+                            href={pro.links}
+                        >
+                            <Github className="w-6 h-6 inline-block" />
+                            <span className="p-2 font-semibold">Code</span>
+                        </a>
+
+                        <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 "
+                            href={pro.demo}
+                        >
+                            <MonitorPlay className="w-6 h-6 inline-block" />
+                            <span className="p-2 font-semibold">Live Demo</span>
+                        </a>
                     </div>
                 </div>
             </div>
