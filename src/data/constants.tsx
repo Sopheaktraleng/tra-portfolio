@@ -255,7 +255,7 @@ export const projectsData = [
         id: 4,
         title: "Stock Management System",
         description:
-            "A stock management system project featuring product management, order tracking, and inventory control, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
+            "A stock management system project featuring product management, order tracking, and inventory control, built with Laravel, Bootstrap, Filament, MySQL.",
         image: stocksytem,
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Laravel", "MySQL", "Filament", "Bootstrap5"],

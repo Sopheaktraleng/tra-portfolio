@@ -15,7 +15,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
     return (
         <div className="flex justify-center items-center">
-            <div className="w-[330px] md:w-full max-w-[450px] h-[450px] flex flex-col p-4 border border-[#33353F] rounded-lg shadow-md bg-white dark:bg-[#1a1a1a]">
+            <div className="w-[350px] md:w-full max-w-[450px] h-[450px] flex flex-col p-4 border border-[#33353F] rounded-lg shadow-md bg-white dark:bg-[#1a1a1a]">
                 {" "}
                 <Image
                     src={pro.image}
@@ -57,21 +57,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-500 "
+                            className="text-purple-500 "
                             href={pro.links}
                         >
-                            <Github className="w-6 h-6 inline-block" />
-                            <span className="p-2 font-semibold">Code</span>
+                            <Github className="w-5 h-5 inline-block" />
+                            <span className="p-1 font-semibold">Code</span>
                         </a>
 
                         <a
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-500 "
+                            className="text-purple-500 "
                             href={pro.demo}
                         >
-                            <MonitorPlay className="w-6 h-6 inline-block" />
-                            <span className="p-2 font-semibold">Live Demo</span>
+                            <MonitorPlay className="w-5 h-5 inline-block" />
+                            <span className="p-1 font-semibold">Live Demo</span>
                         </a>
                     </div>
                 </div>
