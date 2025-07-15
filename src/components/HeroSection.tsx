@@ -42,7 +42,8 @@ const HeroSection = () => {
                                     repeatType: "loop", // Keeps looping smoothly
                                     ease: "easeInOut", // Smooth transition
                                 }}
-                                href="https://docs.google.com/document/d/1x0XMxtWcBSzp0PJl2r6HRH_HvpbB6nAi3CfV-Nztv30/edit?tab=t.0"
+                                href="https://flowcv.com/resume/su0w02va2ho5"
+                                target="_blank"
                                 className="px-6 py-3  rounded-xl   duration-300 flex items-center justify-center gap-2 border border-[#33353F] bg-purple-500 hover:bg-purple-600 md:w-[300px]"
                             >
                                 <p className="text-lg font-bold">
@@ -59,18 +60,20 @@ const HeroSection = () => {
                                 <Image
                                     width={500}
                                     height={500}
-                                    src={trapic} // Using the imported image
+                                    src={trapic}
                                     alt="Profile"
-                                    className="w-[350px] h-[350px] md:w-full md:h-full object-cover rounded-3xl" // Add rounded-3xl here as well
+                                    placeholder="blur"
+                                    blurDataURL="/path/to/small-image.jpg"
+                                    className="w-[350px] h-[350px] md:w-full md:h-full object-cover rounded-3xl"
                                 />
                             </div>
                             <motion.div
-                                animate={{ y: [-5, 5, -5] }} // Moves up & down
+                                animate={{ y: [-5, 5, -5] }}
                                 transition={{
-                                    duration: 2, // Duration for full cycle
-                                    repeat: Infinity, // Infinite loop
-                                    repeatType: "loop", // Keeps looping smoothly
-                                    ease: "easeInOut", // Smooth transition
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    repeatType: "loop",
+                                    ease: "easeInOut",
                                 }}
                                 className="absolute -right-5 top-[-20px] md:-right-10 md:-top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border"
                             >

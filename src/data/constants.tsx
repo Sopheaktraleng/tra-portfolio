@@ -129,13 +129,12 @@ export const EducationData = [
         date: "May 2025 - July 2024",
         degree: "Devops Foundation",
         description:
-            "I am studying Computer Science at RUPP, focusing on software development, AI, cybersecurity, and cloud computing.",
+            "I am studying Devops Academy at Sunrise Institute, specializing in cloud technologies, CI/CD pipelines, AWS, and Docker, with a strong focus on practical implementation and industry-relevant skills.",
         highlights: [
-            "Programming & Software Development – JavaScript, Python, C++, Web & Mobile Development",
-            "Data & Algorithms – Data Structures, Algorithms, Database Management (SQL, NoSQL)",
-            "Networking & Security – Computer Networks, Cybersecurity, Ethical Hacking",
-            "AI & Cloud Computing – Machine Learning, Cloud Services (AWS, Docker, Kubernetes)",
-            "Project Development – Agile methodologies, IT Project Management, Final Year Capstone",
+            "Proficient in Git, Bash scripting, and CI/CD practices.",
+            "Expertise in Docker, Cluster management, Kubernetes, and container orchestration.",
+            "AWS & Networking – Computer Networks, Cloud Computing, and DevOps practices.",
+            "CI/CD Jenkins – Continuous Integration and Deployment using Jenkins.",
         ],
     },
     {
