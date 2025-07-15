@@ -1,9 +1,9 @@
 import { Flame } from "lucide-react";
 import React from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 interface EducationCardProps {
     edu: {
-        img: string;
+        img: string | StaticImageData;
         degree: string;
         school: string;
         date: string;

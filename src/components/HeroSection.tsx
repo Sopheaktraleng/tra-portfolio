@@ -79,12 +79,12 @@ const HeroSection = () => {
                                 </span>
                             </motion.div>
                             <motion.div
-                                animate={{ y: [-5, 5, -5] }} // Moves up & down
+                                animate={{ y: [-5, 5, -5] }}
                                 transition={{
-                                    duration: 2, // Duration for full cycle
-                                    repeat: Infinity, // Infinite loop
-                                    repeatType: "loop", // Keeps looping smoothly
-                                    ease: "easeInOut", // Smooth transition
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    repeatType: "loop",
+                                    ease: "easeInOut",
                                 }}
                                 className="absolute -left-5 md:-left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border"
                             >
@@ -97,12 +97,12 @@ const HeroSection = () => {
                 </div>
                 {/* Scoll*/}
                 <motion.div
-                    animate={{ y: [-10, 10, -10] }} // Moves up & down
+                    animate={{ y: [-10, 10, -10] }}
                     transition={{
-                        duration: 2, // Duration for full cycle
-                        repeat: Infinity, // Infinite loop
-                        repeatType: "loop", // Keeps looping smoothly
-                        ease: "easeInOut", // Smooth transition
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut",
                     }}
                     className="absolute -bottom-0 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
                 >

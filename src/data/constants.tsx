@@ -2,6 +2,7 @@ import twitterpic from "../components/assets/twitter.jpeg";
 import telegrambot from "../components/assets/telegrambot.png";
 import stocksytem from "../components/assets/stocksystem.png";
 import movie from "../components/assets/movie.png";
+import sunrise from "../components/assets/sunrise.jpg";
 export const SkillsData = [
     {
         title: "Frontend",
@@ -123,6 +124,22 @@ export const SkillsData = [
 export const EducationData = [
     {
         id: 1,
+        img: sunrise.src,
+        school: "Sunrise Insitute",
+        date: "May 2025 - July 2024",
+        degree: "Devops Foundation",
+        description:
+            "I am studying Computer Science at RUPP, focusing on software development, AI, cybersecurity, and cloud computing.",
+        highlights: [
+            "Programming & Software Development – JavaScript, Python, C++, Web & Mobile Development",
+            "Data & Algorithms – Data Structures, Algorithms, Database Management (SQL, NoSQL)",
+            "Networking & Security – Computer Networks, Cybersecurity, Ethical Hacking",
+            "AI & Cloud Computing – Machine Learning, Cloud Services (AWS, Docker, Kubernetes)",
+            "Project Development – Agile methodologies, IT Project Management, Final Year Capstone",
+        ],
+    },
+    {
+        id: 2,
         img: "https://upload.wikimedia.org/wikipedia/en/a/a2/RUPP_logo.PNG",
         school: "Royal University of Pnom Penh",
         date: "March 2019 - June 2024",
@@ -138,7 +155,7 @@ export const EducationData = [
         ],
     },
     {
-        id: 2,
+        id: 3,
         img: "https://tfdevs.com/tfd_logo.jpeg",
         school: "TFDev",
         date: "April 2024 - September 2024",
@@ -153,7 +170,7 @@ export const EducationData = [
         ],
     },
     {
-        id: 3,
+        id: 4,
         img: "https://tfdevs.com/tfd_logo.jpeg",
         school: "TFDev",
         date: "February 2024 - June 2024",
@@ -165,21 +182,6 @@ export const EducationData = [
             "Backend Development – Express.js, Node.js, and MongoDB for building scalable and efficient APIs.",
             "Database & API Management – Designing databases, handling CRUD operations, and integrating RESTful APIs.",
             "DevOps & Deployment – Docker for containerization, CI/CD pipelines, and cloud deployment strategies.",
-        ],
-    },
-    {
-        id: 4,
-        img: "https://png.pngtree.com/png-vector/20230823/ourmid/pngtree-school-building-illustration-vector-png-image_6866875.png",
-        school: "Demrus High School",
-        date: "Augest 2007 - December 2019",
-        degree: "General Knowledge",
-        description:
-            "I completed my high school education, gaining a strong foundation in mathematics, science, languages, and technology.",
-        highlights: [
-            "Math & Science – Algebra, Physics, Chemistry, and Biology.",
-            "Languages & Communication – Khmer, English, and writing skills.",
-            "Technology & Computing – IT fundamentals and problem-solving.",
-            "Social Studies – History, Geography, and Economics.",
         ],
     },
 ];
