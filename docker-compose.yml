@@ -1,0 +1,10 @@
+services:
+    web:
+        build: .
+        ports:
+            - "4000:3000"
+        environment:
+            NODE_ENV: production
+            RESEND_API_KEY: ${RESEND_API_KEY}
+        env_file:
+            - .env
