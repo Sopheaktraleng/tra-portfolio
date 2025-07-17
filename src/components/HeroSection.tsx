@@ -35,12 +35,12 @@ const HeroSection = () => {
                                 environments to build outstanding applications.
                             </p>
                             <motion.a
-                                animate={{ y: [-10, 10, -10] }} // Moves up & down
+                                animate={{ y: [-10, 10, -10] }}
                                 transition={{
-                                    duration: 2, // Duration for full cycle
-                                    repeat: Infinity, // Infinite loop
-                                    repeatType: "loop", // Keeps looping smoothly
-                                    ease: "easeInOut", // Smooth transition
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    repeatType: "loop",
+                                    ease: "easeInOut",
                                 }}
                                 href="https://flowcv.com/resume/su0w02va2ho5"
                                 target="_blank"
@@ -77,7 +77,7 @@ const HeroSection = () => {
                                 }}
                                 className="absolute -right-5 top-[-20px] md:-right-10 md:-top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border"
                             >
-                                <span className="text-sm font-medium text-white">
+                                <span className="text-sm font-medium">
                                     🚀 Open to Work
                                 </span>
                             </motion.div>

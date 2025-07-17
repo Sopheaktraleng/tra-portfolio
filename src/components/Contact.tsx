@@ -8,7 +8,6 @@ const Contact = () => {
     const [message, setMessage] = useState("");
     const [status, setStatus] = useState("");
 
-    // Handle form submission
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -68,7 +67,7 @@ const Contact = () => {
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                        className="border text-sm rounded-lg block w-full p-2.5"
                     />
                     <input
                         name="subject"
@@ -77,7 +76,7 @@ const Contact = () => {
                         placeholder="Subject"
                         value={subject}
                         onChange={(e) => setSubject(e.target.value)}
-                        className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                        className="border text-sm rounded-lg block w-full p-2.5"
                     />
                     <textarea
                         name="message"
@@ -85,7 +84,7 @@ const Contact = () => {
                         placeholder="Message"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                        className="border text-sm rounded-lg block w-full p-2.5"
                     />
                     <button
                         type="submit"

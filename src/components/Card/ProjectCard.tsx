@@ -15,7 +15,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
     return (
         <div className="flex justify-center items-center">
-            <div className="w-[350px] md:w-full max-w-[450px] h-[450px] flex flex-col p-4 border border-[#33353F] rounded-lg shadow-md bg-white dark:bg-[#1a1a1a]">
+            <div className="w-[350px] md:w-full max-w-[450px] h-[450px] flex flex-col p-4 border border-[#33353F] rounded-lg shadow-md">
                 {" "}
                 <Image
                     src={pro.image}
@@ -25,13 +25,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                     sizes="100vw"
                     className="w-full h-[200px] rounded-xl object-cover"
                 />
-                {/* Content Section */}
                 <div className="flex flex-col justify-between flex-grow mt-4 gap-y-4">
-                    {" "}
-                    {/* change code: add gap, fix spacing */}
                     <div className="flex flex-col gap-y-2">
                         <h3 className="text-xl font-bold">{pro.title}</h3>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3">
+                        <p className="text-sm line-clamp-3">
                             {pro.description}
                         </p>
                         {typeof pro.image === "string" && (
@@ -40,10 +37,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                             </p>
                         )}
                     </div>
-                    {/* Technologies */}
                     <div className="flex flex-wrap gap-2 font-bold mt-auto">
-                        {" "}
-                        {/* change code: added mt-auto to push tech to bottom if space */}
                         {pro.technologies.map((tech, index) => (
                             <span
                                 key={index}
