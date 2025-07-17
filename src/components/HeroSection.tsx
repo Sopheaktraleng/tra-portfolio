@@ -13,10 +13,10 @@ const HeroSection = () => {
                     <div className="inline-block px-4 py-2 backdrop-blur-sm  rounded-full text-sm font-medium">
                         <span>👋 Welcome to my portfolio</span>
                         <div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground py-4">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold py-4">
                                 Hi, Leng Sopheaktra
                             </h1>
-                            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-muted-foreground">
+                            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold">
                                 Full-Stack Developer
                             </h2>
                             <p className="py-6 text-base">
