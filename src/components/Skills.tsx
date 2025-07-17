@@ -3,10 +3,8 @@ import Image from "next/image";
 const Skills = () => {
     return (
         <section className="md:py-16 flex flex-col items-center justify-center">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-                Technique Skills
-            </h2>
-            <p className="text-lg text-muted-foreground w-auto mx-auto text-center ">
+            <h2 className="text-4xl font-bold mb-4">Technique Skills</h2>
+            <p className="text-lg w-auto mx-auto text-center ">
                 A comprehensive overview of my technical expertise and
                 proficiency across different areas of software development.
             </p>

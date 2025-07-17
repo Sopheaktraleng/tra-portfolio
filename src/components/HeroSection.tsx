@@ -91,7 +91,7 @@ const HeroSection = () => {
                                 }}
                                 className="absolute -left-5 md:-left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border"
                             >
-                                <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                                <span className="text-sm font-medium whitespace-nowrap">
                                     💻 Full Stack Developer
                                 </span>
                             </motion.div>
