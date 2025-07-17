@@ -29,7 +29,7 @@ export default function RootLayout({
             <body>
                 <ThemeProvider>
                     <div className="min-h-screen flex flex-col bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
-                        <header className="w-full flex justify-end px-4 py-2 shadow-sm">
+                        <header className="w-full flex justify-end px-4 py-4 shadow-sm">
                             <DarkModeSelector />
                         </header>
 
