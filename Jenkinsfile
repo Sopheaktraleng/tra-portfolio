@@ -7,13 +7,6 @@ pipeline {
                 cleanWs()
             }
         }
-        stage('Checkout') {
-            steps {
-                // 
-                echo "Checking out the code from the repository"
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 // script {
