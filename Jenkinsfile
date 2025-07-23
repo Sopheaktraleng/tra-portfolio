@@ -24,10 +24,7 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script {
-                    // Build Docker image
                     dockerImage = docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")
-
-                    // Login & Push to Docker Hub securely
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS}", usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
                         sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
@@ -41,7 +38,7 @@ pipeline {
                 script {
                     sshPublisher(publishers: [
                         sshPublisherDesc(
-                            configName: "swarm",   // Pre-configured in Jenkins
+                            configName: "swarm",
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: "docker-compose.yml",
