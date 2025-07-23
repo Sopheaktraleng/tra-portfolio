@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "Checking out the code from the repository"
-                git branch: 'main', url: 'https://github.com/Sopheaktraleng/tra-portfolio.git'
+                git branch: 'master', url: 'https://github.com/Sopheaktraleng/tra-portfolio.git'
             }
         }
 
