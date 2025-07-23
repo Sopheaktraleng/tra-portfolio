@@ -13,7 +13,7 @@ const Education = () => {
     return (
         <section className="md:py-16 ">
             <div className="max-w-6xl mx-auto px-6"></div>
-            <h2 className="text-4xl font-bold mb-4">Education</h2>
+            <h2 className="text-4xl font-bold mb-4">Education1111</h2>
             <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
