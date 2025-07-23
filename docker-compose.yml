@@ -1,6 +1,7 @@
 services:
     web:
-        image: web-app-image
+        build:
+            dockerfile: Dockerfile
         ports:
             - "3000:3000"
         environment:
