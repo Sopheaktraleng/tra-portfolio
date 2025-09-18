@@ -5,7 +5,11 @@ const Projects = () => {
     return (
         <section className="py-16">
             <div className="max-w-6xl mx-auto px-6"></div>
-            <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
+            <h2 className="text-4xl font-bold mb-3 tracking-tight">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                    Featured Projects
+                </span>
+            </h2>
             <p className="text-lg w-96 md:w-auto mx-auto text-center">
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.

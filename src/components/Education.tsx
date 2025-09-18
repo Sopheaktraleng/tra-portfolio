@@ -13,7 +13,11 @@ const Education = () => {
     return (
         <section className="md:py-16 ">
             <div className="max-w-6xl mx-auto px-6"></div>
-            <h2 className="text-4xl font-bold mb-4">Education111122</h2>
+            <h2 className="text-4xl font-bold mb-3 tracking-tight">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                    Education
+                </span>
+            </h2>
             <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
                 Building digital solutions and continuously learning through
                 practical experience and academic excellence.
@@ -28,8 +32,8 @@ const Education = () => {
                             {/* Left Side Content for Even Index */}
                             <TimelineContent
                                 sx={{
-                                    width: index % 2 === 0 ? "50%" : "auto", // Apply '50%' width if index is even, otherwise 'auto' (hidden can be controlled with conditional rendering)
-                                    display: index % 2 === 0 ? "block" : "none", // Conditionally show or hide based on index
+                                    width: index % 2 === 0 ? "50%" : "auto",
+                                    display: index % 2 === 0 ? "block" : "none",
                                 }}
                             >
                                 {index % 2 === 0 && <EducationCard edu={edu} />}
@@ -59,7 +63,7 @@ const Education = () => {
                                         paddingLeft: "25rem",
                                         marginLeft: "3rem",
                                     },
-                                    display: index % 2 !== 0 ? "block" : "none", // Show content when index is odd, hide it when even
+                                    display: index % 2 !== 0 ? "block" : "none",
                                 }}
                             >
                                 {index % 2 !== 0 && <EducationCard edu={edu} />}

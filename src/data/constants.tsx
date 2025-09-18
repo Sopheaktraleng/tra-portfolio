@@ -3,6 +3,7 @@ import telegrambot from "../components/assets/telegrambot.png";
 import stocksytem from "../components/assets/stocksystem.png";
 import movie from "../components/assets/movie.png";
 import sunrise from "../components/assets/sunrise.jpg";
+import today from "../components/assets/today-logo.png";
 export const SkillsData = [
     {
         title: "Frontend",
@@ -123,10 +124,27 @@ export const SkillsData = [
 ];
 export const EducationData = [
     {
+        id: 0,
+        img: sunrise.src,
+        school: "Sunrise Insitute",
+        date: "September 2025 - October 2025",
+        degree: "Devops Level 2",
+        description:
+            "I am studying DevOps Advance at Sunrise Institute, specializing in cloud technologies, CI/CD pipelines, AWS, container orchestration, GitOps, and Infrastructure as Code (IaC), with a strong focus on practical implementation and industry-relevant skills.",
+        highlights: [
+            "Hands-on experience with Portainer for container management.",
+            "Configuration Management and automation with Jenkins.",
+            "Container Orchestration using Kubernetes.",
+            "GitOps practices with Argo CD and Helm Chart.",
+            "Log Management and monitoring for reliable systems.",
+            "Infrastructure as Code (IaC) for scalable deployments.",
+        ],
+    },
+    {
         id: 1,
         img: sunrise.src,
         school: "Sunrise Insitute",
-        date: "May 2025 - July 2024",
+        date: "May 2025 - July 2025",
         degree: "Devops Foundation",
         description:
             "I am studying Devops Academy at Sunrise Institute, specializing in cloud technologies, CI/CD pipelines, AWS, and Docker, with a strong focus on practical implementation and industry-relevant skills.",
@@ -187,7 +205,7 @@ export const EducationData = [
 export const ExperienceData = [
     {
         id: 0,
-        image: "https://www.today.com.kh/wp-content/uploads/2021/12/TODAY-LOGO1.png",
+        image: today.src,
         role: "Full Stack Developer",
         company: "TODAY Internet",
         date: "Aug 2024 - Now",
@@ -228,7 +246,7 @@ export const projectsData = [
             "TailwindCSS",
             "Express.js",
             "MongoDB",
-            "Docker Compose",
+            "Docker",
         ],
         demo: "https://twitter.com/",
     },

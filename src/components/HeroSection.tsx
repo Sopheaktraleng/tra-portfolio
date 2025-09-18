@@ -6,57 +6,68 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
     return (
-        <section className="min-h-screen flex items-center justify-center text-start overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             <div className="w-full md:max-w-7xl mx-auto px-6 py-12 md:py-24">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    {/*Left Coloum*/}
-                    <div className="inline-block px-4 py-2 backdrop-blur-sm  rounded-full text-sm font-medium">
-                        <span>👋 Welcome to my portfolio</span>
-                        <div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold py-4">
-                                Hi, Leng Sopheaktra
-                            </h1>
-                            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold">
-                                Full-Stack Developer
-                            </h2>
-                            <p className="py-6 text-base">
-                                I’m a software engineer with a passion for
-                                developing dynamic and user-friendly web
-                                applications.
-                                <br /> My primary expertise is in JavaScript,
-                                but I also work with Python, PHP, and other
-                                programming languages. I manage deployments and
-                                have solid DevOps experience with tools like
-                                Docker, Jenkins, GitHub Actions, AWS, and Linux.
-                                Additionally, I leverage AI tools to enhance
-                                productivity through prompt engineering. <br />
-                                I’m an adaptable learner, always eager to grow
-                                my skill set, and I thrive in collaborative
-                                environments to build outstanding applications.
-                            </p>
-                            <motion.a
-                                animate={{ y: [-10, 10, -10] }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    repeatType: "loop",
-                                    ease: "easeInOut",
-                                }}
-                                href="https://flowcv.com/resume/su0w02va2ho5"
-                                target="_blank"
-                                className="px-6 py-3  rounded-xl   duration-300 flex items-center justify-center gap-2 border border-[#33353F] bg-purple-500 hover:bg-purple-600 md:w-[300px]"
-                            >
-                                <p className="text-lg font-bold">
-                                    Check Resume
-                                </p>
-                            </motion.a>
+                    {/* Left Column (Text) */}
+                    <div className="flex flex-col items-start text-start">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-md text-xs font-medium text-slate-700 dark:text-white/80">
+                            <span>👋</span>
+                            <span>Welcome to my portfolio</span>
                         </div>
+
+                        <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
+                            Hi, Leng Sopheaktra
+                        </h1>
+
+                        <h2 className="mt-2 text-xl md:text-2xl lg:text-3xl font-semibold text-slate-800 dark:text-white/90">
+                            Full-Stack Developer
+                        </h2>
+
+                        <p className="mt-6 text-base leading-relaxed text-slate-700 dark:text-white/80 max-w-2xl">
+                            I’m a software engineer with a passion for building
+                            dynamic, user-friendly web applications. My primary
+                            expertise is in JavaScript, and I also work with
+                            Python and PHP. I manage deployments and have solid
+                            DevOps experience with Docker, Jenkins, GitHub
+                            Actions, AWS, and Linux. I also leverage AI tools to
+                            boost productivity through prompt engineering. I’m
+                            an adaptable learner and thrive in collaborative
+                            environments to build outstanding apps.
+                        </p>
+
+                        <motion.a
+                            animate={{ y: [-10, 10, -10] }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatType: "loop",
+                                ease: "easeInOut",
+                            }}
+                            href="https://flowcv.com/resume/su0w02va2ho5"
+                            target="_blank"
+                            className="
+    mt-8 inline-flex items-center justify-center gap-2
+    px-6 py-3 rounded-xl
+    font-semibold text-white
+    bg-gradient-to-r from-violet-500 to-fuchsia-500
+    hover:from-violet-600 hover:to-fuchsia-600
+    shadow-md hover:shadow-lg
+    transition
+    focus:outline-none focus:ring-2 focus:ring-violet-300 dark:focus:ring-fuchsia-400/40
+    md:w-[300px]
+  "
+                        >
+                            <span className="text-lg font-bold">
+                                Check Resume
+                            </span>
+                        </motion.a>
                     </div>
 
-                    <div className=" relative order-first lg:order-last flex justify-center items-center ">
-                        {/*Right Coloum*/}
+                    {/* Right Column (Image) */}
+                    <div className="relative order-first lg:order-last flex justify-center items-center">
                         <div className="relative max-w-md mx-auto">
-                            <div className="relative aspect-square rounded-3xl overflow-hidden from-primary/10 to-purple-500/10 backdrop-blur-sm shadow-2xl">
+                            <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
                                 <Image
                                     width={500}
                                     height={500}
@@ -64,9 +75,12 @@ const HeroSection = () => {
                                     alt="Profile"
                                     placeholder="blur"
                                     blurDataURL="/path/to/small-image.jpg"
-                                    className="w-[350px] h-[350px] md:w-full md:h-full object-cover rounded-3xl"
+                                    className="w-[320px] h-[320px] md:w-full md:h-full object-cover rounded-3xl"
                                 />
+                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                             </div>
+
+                            {/* glass badges */}
                             <motion.div
                                 animate={{ y: [-5, 5, -5] }}
                                 transition={{
@@ -75,12 +89,18 @@ const HeroSection = () => {
                                     repeatType: "loop",
                                     ease: "easeInOut",
                                 }}
-                                className="absolute -right-5 top-[-20px] md:-right-10 md:-top-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border"
+                                className="
+                  absolute -right-4 -top-4 md:-right-8 md:-top-6
+                  p-3 rounded-xl shadow-lg
+                  border border-slate-200 dark:border-white/10
+                  bg-white/60 dark:bg-white/5 backdrop-blur-md
+                "
                             >
-                                <span className="text-sm font-medium">
+                                <span className="text-sm font-medium text-slate-800 dark:text-white">
                                     🚀 Open to Work
                                 </span>
                             </motion.div>
+
                             <motion.div
                                 animate={{ y: [-5, 5, -5] }}
                                 transition={{
@@ -89,16 +109,22 @@ const HeroSection = () => {
                                     repeatType: "loop",
                                     ease: "easeInOut",
                                 }}
-                                className="absolute -left-5 md:-left-12 b -bottom-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border"
+                                className="
+                  absolute -left-4 -bottom-4 md:-left-10 md:-bottom-6
+                  p-3 rounded-xl shadow-lg
+                  border border-slate-200 dark:border-white/10
+                  bg-white/60 dark:bg-white/5 backdrop-blur-md
+                "
                             >
-                                <span className="text-sm font-medium whitespace-nowrap">
-                                    💻 Full Stack Developer
+                                <span className="text-sm font-medium text-slate-800 dark:text-white whitespace-nowrap">
+                                    💻 Full-Stack Developer
                                 </span>
                             </motion.div>
                         </div>
                     </div>
                 </div>
-                {/* Scoll*/}
+
+                {/* Scroll hint */}
                 <motion.div
                     animate={{ y: [-10, 10, -10] }}
                     transition={{
@@ -107,15 +133,16 @@ const HeroSection = () => {
                         repeatType: "loop",
                         ease: "easeInOut",
                     }}
-                    className="absolute -bottom-0 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+                    className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
                 >
-                    <span className="text-sm text-muted-foreground">
-                        Scoll to Explore
+                    <span className="text-sm text-slate-500 dark:text-white/60">
+                        Scroll to Explore
                     </span>
-                    <ChevronDown className="w-6 h-6 text-muted-foreground" />
+                    <ChevronDown className="w-6 h-6 text-slate-500 dark:text-white/60" />
                 </motion.div>
             </div>
         </section>
     );
 };
+
 export default HeroSection;
