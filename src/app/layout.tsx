@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
-import DarkModeSelector from "@/components/DarkModeSelector";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -29,11 +28,7 @@ export default function RootLayout({
             <body>
                 <ThemeProvider>
                     <div className="min-h-screen flex flex-col bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
-                        <header className="w-full flex justify-end px-4 py-4 shadow-sm">
-                            <DarkModeSelector />
-                        </header>
-
-                        <main className="flex-1">{children}</main>
+                        <main className="flex-1 px-4 py-6">{children}</main>
                     </div>
                 </ThemeProvider>
             </body>

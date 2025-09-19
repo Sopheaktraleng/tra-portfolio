@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
             <div
                 className="
     group relative
-    w-[350px] md:w-full max-w-[520px] h-[520px]
+    w-[350px] md:w-full max-w-[520px] h-[460px]
     rounded-2xl
     border border-black/10 dark:border-white/10
     bg-white/70 dark:bg-white/5 backdrop-blur-md
@@ -92,10 +92,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="
-                    inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5
-                    bg-violet-600/90 hover:bg-violet-600
-                    text-white text-xs font-semibold shadow-sm
-                  "
+  inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5
+  text-white text-xs font-semibold
+  bg-gradient-to-r from-violet-500 to-fuchsia-500
+  hover:from-violet-600 hover:to-fuchsia-600
+  shadow-md hover:shadow-lg
+  transition
+  focus:outline-none focus:ring-2 focus:ring-violet-300 dark:focus:ring-fuchsia-400/40
+"
                                 >
                                     <MonitorPlay className="w-4 h-4" />
                                     Live
@@ -166,10 +170,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="
-                  inline-flex items-center gap-2 rounded-lg px-3 py-2
-                  text-white bg-violet-600 hover:bg-violet-500
-                  text-sm font-medium shadow-sm transition
-                "
+  inline-flex items-center gap-2 rounded-lg px-3 py-2
+  text-white
+  bg-gradient-to-r from-violet-500 to-fuchsia-500
+  hover:from-violet-600 hover:to-fuchsia-600
+  shadow-md hover:shadow-lg
+  transition
+  focus:outline-none focus:ring-2 focus:ring-violet-300 dark:focus:ring-fuchsia-400/40
+  text-sm font-medium
+"
                             >
                                 <MonitorPlay className="w-4 h-4" />
                                 Live Demo

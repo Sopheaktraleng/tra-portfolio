@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState, Fragment, JSX } from "react";
 import {
     SunIcon,
     MoonIcon,
     ComputerDesktopIcon,
+    CheckIcon,
+    ChevronDownIcon,
 } from "@heroicons/react/20/solid";
 import { Listbox, Transition } from "@headlessui/react";
 import { useTheme } from "next-themes";
@@ -13,23 +15,16 @@ function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
 }
 
-type ThemeOption = {
-    id: string;
-    name: string;
-    icon: React.ReactNode;
-};
+type ThemeId = "light" | "dark" | "system";
 
-const themeOptions: ThemeOption[] = [
-    {
-        id: "light",
-        name: "Light",
-        icon: <SunIcon className="size-5" />,
-    },
-    {
-        id: "dark",
-        name: "Dark",
-        icon: <MoonIcon className="size-5" />,
-    },
+const OPTIONS: {
+    id: ThemeId;
+    name: string;
+    icon: JSX.Element;
+    hint?: string;
+}[] = [
+    { id: "light", name: "Light", icon: <SunIcon className="size-5" /> },
+    { id: "dark", name: "Dark", icon: <MoonIcon className="size-5" /> },
     {
         id: "system",
         name: "System",
@@ -38,96 +33,141 @@ const themeOptions: ThemeOption[] = [
 ];
 
 export default function DarkModeSelector() {
-    const [selected, setSelected] = useState<ThemeOption | null>(null);
-    const { setTheme } = useTheme();
+    const { theme, resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
+    const [value, setValue] = useState<ThemeId>("system");
 
+    // avoid hydration mismatch
+    useEffect(() => setMounted(true), []);
+
+    // initialize from next-themes once mounted
     useEffect(() => {
-        if (selected?.id === "system") {
-            setTheme("system");
-            setSelected(themeOptions[2]);
-        } else if (selected?.id === "dark") {
-            setTheme("dark");
-            setSelected(themeOptions[1]);
-        } else if (selected?.id === "light") {
-            setTheme("light");
-            setSelected(themeOptions[0]);
-        }
-    }, [selected, setTheme]);
+        if (!mounted) return;
+        // theme is the user setting; resolvedTheme is the actual active theme
+        const initial = (theme as ThemeId) ?? "system";
+        setValue(initial);
+    }, [mounted, theme]);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    if (!mounted) return null;
 
-    if (!mounted) {
-        return null;
-    } else {
-        return (
-            <Listbox value={selected} onChange={setSelected}>
-                {({ open }) => (
-                    <div className="relative">
-                        <Listbox.Button className="flex items-center">
-                            <MoonIcon
-                                className="size-5 text-gray-900 dark:text-gray-50 hidden dark:inline"
-                                aria-hidden="true"
-                            />
+    const current =
+        OPTIONS.find((o) => o.id === value) ??
+        OPTIONS.find((o) => o.id === "system")!;
 
-                            <SunIcon
-                                className="size-5 text-gray-900 dark:text-gray-50 dark:hidden"
-                                aria-hidden="true"
-                            />
-                        </Listbox.Button>
-
-                        <Transition
-                            show={open}
-                            enter="transition ease-out duration-100"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition ease-in duration-100"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0"
-                        >
-                            <Listbox.Options className="absolute z-50 top-full list-none right-0 bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-36 py-1 text-sm dark:bg-slate-800 dark:ring-0 mt-8">
-                                {themeOptions.map((themeOption) => (
-                                    <Listbox.Option
-                                        key={themeOption.id}
-                                        className={({ active, selected }) =>
-                                            classNames(
-                                                active
-                                                    ? "bg-gray-600/10 dark:bg-gray-600/30 text-purple-600 dark:text-purple-300"
-                                                    : "text-gray-900 dark:text-gray-50",
-                                                selected
-                                                    ? "text-purple-600 dark:text-purple-300"
-                                                    : "text-gray-900 dark:text-gray-50",
-                                                "relative cursor-default py-2 pl-3 pr-9 ml-0"
-                                            )
-                                        }
-                                        value={themeOption}
-                                    >
-                                        {({ selected }) => (
-                                            <div className="py-1 px-2 flex items-center cursor-pointer">
-                                                <span className="flex-shrink-0 mr-4 font-semibold">
-                                                    {themeOption.icon}
-                                                </span>
-                                                <span
-                                                    className={classNames(
-                                                        selected
-                                                            ? "font-semibold"
-                                                            : "font-normal",
-                                                        "ml-3 block"
-                                                    )}
-                                                >
-                                                    {themeOption.name}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </Listbox.Option>
-                                ))}
-                            </Listbox.Options>
-                        </Transition>
-                    </div>
-                )}
-            </Listbox>
+    // Icon that reflects the *resolved* theme for the button
+    const ActiveIcon =
+        resolvedTheme === "dark" ? (
+            <MoonIcon className="size-5" />
+        ) : (
+            <SunIcon className="size-5" />
         );
-    }
+
+    return (
+        <Listbox
+            value={value}
+            onChange={(v: ThemeId) => {
+                setValue(v);
+                setTheme(v);
+            }}
+        >
+            {({ open }) => (
+                <div className="relative">
+                    <Listbox.Button
+                        className={classNames(
+                            "inline-flex items-center gap-2 rounded-full",
+                            "px-3 py-1.5 text-sm font-medium",
+                            "border border-black/10 dark:border-white/15",
+                            "bg-white/60 dark:bg-white/10 backdrop-blur-md",
+                            "text-slate-900 dark:text-white",
+                            "shadow-sm hover:shadow transition",
+                            "focus:outline-none focus:ring-2 focus:ring-violet-300/60 dark:focus:ring-fuchsia-400/40"
+                        )}
+                        aria-label={`Theme: ${current.name}`}
+                    >
+                        <span className="grid place-items-center">
+                            {ActiveIcon}
+                        </span>
+                        <span className="hidden sm:inline">{current.name}</span>
+                        <ChevronDownIcon
+                            className="size-4 opacity-70"
+                            aria-hidden="true"
+                        />
+                    </Listbox.Button>
+
+                    <Transition
+                        as={Fragment}
+                        show={open}
+                        enter="transition ease-out duration-100"
+                        enterFrom="opacity-0 translate-y-1"
+                        enterTo="opacity-100 translate-y-0"
+                        leave="transition ease-in duration-100"
+                        leaveFrom="opacity-100 translate-y-0"
+                        leaveTo="opacity-0 translate-y-1"
+                    >
+                        <Listbox.Options
+                            className={classNames(
+                                "absolute right-0 z-50 mt-2 w-44 overflow-hidden",
+                                "rounded-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur",
+                                "ring-1 ring-slate-900/10 dark:ring-white/10 shadow-lg p-1"
+                            )}
+                        >
+                            {OPTIONS.map((opt) => (
+                                <Listbox.Option
+                                    key={opt.id}
+                                    value={opt.id}
+                                    className={({ active }) =>
+                                        classNames(
+                                            "flex items-center justify-between gap-2 cursor-pointer select-none",
+                                            "rounded-lg px-3 py-2",
+                                            active
+                                                ? "bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10"
+                                                : ""
+                                        )
+                                    }
+                                >
+                                    {({ selected }) => (
+                                        <>
+                                            <div className="flex items-center gap-3">
+                                                <span className="text-slate-700 dark:text-slate-200">
+                                                    {opt.icon}
+                                                </span>
+                                                <div className="flex flex-col">
+                                                    <span
+                                                        className={classNames(
+                                                            "text-sm",
+                                                            selected
+                                                                ? "text-violet-700 dark:text-violet-300 font-semibold"
+                                                                : "text-slate-900 dark:text-slate-100"
+                                                        )}
+                                                    >
+                                                        {opt.name}
+                                                    </span>
+                                                    {opt.hint && (
+                                                        <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                                                            {opt.hint}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
+
+                                            <span
+                                                className={classNames(
+                                                    "ml-3",
+                                                    selected
+                                                        ? "opacity-100"
+                                                        : "opacity-0"
+                                                )}
+                                            >
+                                                <CheckIcon className="size-4 text-violet-600 dark:text-violet-300" />
+                                            </span>
+                                        </>
+                                    )}
+                                </Listbox.Option>
+                            ))}
+                        </Listbox.Options>
+                    </Transition>
+                </div>
+            )}
+        </Listbox>
+    );
 }

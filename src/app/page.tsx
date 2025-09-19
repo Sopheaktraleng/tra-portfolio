@@ -6,6 +6,7 @@ import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import { Footer } from "@/components/Footer";
 import Head from "next/head";
+import DarkModeSelector from "@/components/DarkModeSelector";
 export default function Home() {
     return (
         <div className="flex flex-col text-center justify-center overflow-x-hidden">
@@ -16,6 +17,10 @@ export default function Home() {
                     content="Professional portfolio of Leng Sopheaktra - Software Engineer"
                 />
             </Head>
+            <div className="flex justify-end px-4 py-2">
+                <DarkModeSelector />
+            </div>
+
             <div>
                 <HeroSection />
             </div>
