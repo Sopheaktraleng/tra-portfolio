@@ -8,77 +8,118 @@ import InstagramIcon from "./../../public/instagram-icon.svg";
 
 export const Footer = () => {
     return (
-        <footer className="w-full">
-            <div className="h-px w-full bg-gradient-to-r from-transparent via-violet-500/30 to-transparent dark:via-fuchsia-500/40" />
-            <div className="max-w-6xl mx-auto px-4 md:px-6 py-3">
-                <div className="text-center">
-                    <span className="text-sm font-semibold tracking-tight text-slate-900 dark:text-white">
-                        Leng Sopheaktra
-                    </span>
-                    <p className="mt-0.5 text-[11px] text-slate-500 dark:text-white/60">
-                        Full-Stack Developer
+        <footer role="contentinfo" aria-label="Site footer" className="w-full">
+            {/* Top hairline */}
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-violet-500/40 to-transparent dark:via-fuchsia-500/40" />
+
+            <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 md:py-5">
+                {/* Row 1: brand + socials */}
+                <div className="flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-between">
+                    {/* Brand badge + name */}
+                    <div className="flex items-center gap-3">
+                        {/* Brand badge (no extra asset) */}
+                        <div
+                            aria-hidden
+                            className="size-8 md:size-9 rounded-2xl bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 dark:from-violet-400/15 dark:to-fuchsia-400/15 border border-black/5 dark:border-white/10 backdrop-blur flex items-center justify-center"
+                        >
+                            <span className="text-[10px] md:text-xs font-semibold tracking-wide text-violet-700 dark:text-fuchsia-200">
+                                LS
+                            </span>
+                        </div>
+                        <div className="leading-tight">
+                            <span className="block text-sm md:text-base font-semibold tracking-tight text-slate-900 dark:text-white">
+                                Leng Sopheaktra
+                            </span>
+                            <span className="block text-[11px] text-slate-500 dark:text-white/60">
+                                Full-Stack Developer
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Socials */}
+                    <div className="flex items-center justify-center gap-2">
+                        <Social
+                            href="https://www.facebook.com/leng.sopheaktra.71/"
+                            label="Facebook"
+                        >
+                            <Image
+                                src={FacebookIcon}
+                                alt=""
+                                aria-hidden
+                                className="size-4"
+                            />
+                        </Social>
+                        <Social
+                            href="https://github.com/Sopheaktraleng"
+                            label="GitHub"
+                        >
+                            <Image
+                                src={GithubIcon}
+                                alt=""
+                                aria-hidden
+                                className="size-4"
+                            />
+                        </Social>
+                        <Social
+                            href="https://instagram.com/traa__a"
+                            label="Instagram"
+                        >
+                            <Image
+                                src={InstagramIcon}
+                                alt=""
+                                aria-hidden
+                                className="size-4"
+                            />
+                        </Social>
+                        <Social
+                            href="https://www.linkedin.com/in/leng-sopheaktra-828009321/"
+                            label="LinkedIn"
+                        >
+                            <Image
+                                src={LinkedinIcon}
+                                alt=""
+                                aria-hidden
+                                className="size-4"
+                            />
+                        </Social>
+                    </div>
+                </div>
+
+                {/* Soft divider */}
+                <div className="mt-4 h-px w-full bg-black/[0.06] dark:bg-white/[0.10]" />
+
+                {/* Row 2: nav + legal */}
+                <div className="mt-3 flex flex-col items-center gap-2 md:flex-row md:items-center md:justify-between">
+                    {/* Nav pills */}
+                    <nav
+                        aria-label="Footer navigation"
+                        className="flex items-center gap-2 text-[12px] text-slate-600 dark:text-white/70"
+                    >
+                        <FooterLink href="#projects">
+                            <span className="px-2 py-1 rounded-md hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors">
+                                Projects
+                            </span>
+                        </FooterLink>
+                        <Dot />
+                        <FooterLink href="#experience">
+                            <span className="px-2 py-1 rounded-md hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors">
+                                Experience
+                            </span>
+                        </FooterLink>
+                        <Dot />
+                        <FooterLink href="#contact">
+                            <span className="px-2 py-1 rounded-md hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors">
+                                Contact
+                            </span>
+                        </FooterLink>
+                    </nav>
+
+                    {/* Legal */}
+                    <p className="text-[11px] leading-tight text-slate-500 dark:text-white/60">
+                        © {new Date().getFullYear()} Leng Sopheaktra. All rights
+                        reserved.
                     </p>
                 </div>
-
-                <div className="mt-2 flex items-center justify-center gap-2">
-                    <Social
-                        href="https://www.facebook.com/leng.sopheaktra.71/"
-                        label="Facebook"
-                    >
-                        <Image
-                            src={FacebookIcon}
-                            alt=""
-                            aria-hidden
-                            className="size-4"
-                        />
-                    </Social>
-                    <Social
-                        href="https://github.com/Sopheaktraleng"
-                        label="GitHub"
-                    >
-                        <Image
-                            src={GithubIcon}
-                            alt=""
-                            aria-hidden
-                            className="size-4"
-                        />
-                    </Social>
-                    <Social
-                        href="https://instagram.com/traa__a"
-                        label="Instagram"
-                    >
-                        <Image
-                            src={InstagramIcon}
-                            alt=""
-                            aria-hidden
-                            className="size-4"
-                        />
-                    </Social>
-                    <Social
-                        href="https://www.linkedin.com/in/leng-sopheaktra-828009321/"
-                        label="LinkedIn"
-                    >
-                        <Image
-                            src={LinkedinIcon}
-                            alt=""
-                            aria-hidden
-                            className="size-4"
-                        />
-                    </Social>
-                </div>
-
-                <nav className="mt-2 flex items-center justify-center gap-3 text-[11px] text-slate-600 dark:text-white/70">
-                    <FooterLink href="#projects">Projects</FooterLink>
-                    <span className="text-slate-400 dark:text-white/40">•</span>
-                    <FooterLink href="#experience">Experience</FooterLink>
-                    <span className="text-slate-400 dark:text-white/40">•</span>
-                    <FooterLink href="#contact">Contact</FooterLink>
-                </nav>
-
-                <p className="mt-2 text-center text-[11px] text-slate-500 dark:text-white/50 leading-tight">
-                    © {new Date().getFullYear()} Leng Sopheaktra. All rights
-                    reserved.
-                </p>
             </div>
         </footer>
     );
@@ -95,11 +136,13 @@ function Social({
 }) {
     const external = /^https?:\/\//i.test(href);
     const cls =
-        "inline-flex items-center justify-center size-7 rounded-full " +
+        "inline-flex items-center justify-center size-8 rounded-xl " +
         "border border-black/10 dark:border-white/15 " +
         "bg-white/70 dark:bg-white/10 backdrop-blur " +
-        "shadow-sm hover:shadow-md transition hover:-translate-y-0.5 " +
-        "focus:outline-none focus:ring-2 focus:ring-violet-300/70 dark:focus:ring-fuchsia-400/40";
+        "shadow-sm hover:shadow-md " +
+        "transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 " +
+        "focus:outline-none focus:ring-2 focus:ring-violet-300/70 dark:focus:ring-fuchsia-400/40 " +
+        "motion-reduce:transition-none motion-reduce:hover:transform-none";
 
     return external ? (
         <a
@@ -129,7 +172,8 @@ function FooterLink({
 }) {
     const external = /^https?:\/\//i.test(href);
     const cls =
-        "underline-offset-4 hover:underline hover:text-slate-900 dark:hover:text-white transition-colors";
+        "underline-offset-4 hover:underline hover:text-slate-900 dark:hover:text-white " +
+        "focus:outline-none focus:ring-2 focus:ring-violet-300/70 dark:focus:ring-fuchsia-400/40 rounded";
     return external ? (
         <a href={href} className={cls}>
             {children}
@@ -138,5 +182,13 @@ function FooterLink({
         <Link href={href} className={cls}>
             {children}
         </Link>
+    );
+}
+
+function Dot() {
+    return (
+        <span aria-hidden className="text-slate-400 dark:text-white/40">
+            •
+        </span>
     );
 }
