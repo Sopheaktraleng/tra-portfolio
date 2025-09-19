@@ -36,6 +36,14 @@ export const SkillsData = [
                 name: "JavaScript",
                 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
             },
+            {
+                name: "Vue Js",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1920px-Vue.js_Logo_2.svg.png",
+            },
+            {
+                name: "Laravel",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1920px-Laravel.svg.png",
+            },
         ],
     },
     {
@@ -73,6 +81,10 @@ export const SkillsData = [
                 name: "Supabase",
                 image: "https://cdn.prod.website-files.com/655b60964be1a1b36c746790/655b60964be1a1b36c746d41_646dfce3b9c4849f6e401bff_supabase-logo-icon_1.png",
             },
+            {
+                name: "Laravel",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1920px-Laravel.svg.png",
+            },
         ],
     },
     {
@@ -93,6 +105,18 @@ export const SkillsData = [
             {
                 name: "Nginx",
                 image: "https://www.myqnap.org/wp-content/uploads/nginx-3628948-3030173-1.png",
+            },
+            {
+                name: "Ansible",
+                image: "https://www.sorint.com/wp-content/uploads/2021/11/AnsibleLogo_workshop.jpg",
+            },
+            {
+                name: "Jenkins",
+                image: "https://www.jenkins.io/images/logos/jenkins/jenkins.png",
+            },
+            {
+                name: "kubernetes",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/2109px-Kubernetes_logo_without_workmark.svg.png",
             },
         ],
     },

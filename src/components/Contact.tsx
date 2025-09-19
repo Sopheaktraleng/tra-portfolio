@@ -101,8 +101,10 @@ const Contact = () => {
             <div className="w-full max-w-2xl px-4">
                 {/* Header */}
                 <div className="text-center mb-6">
-                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                        Contact
+                    <h2 className="text-4xl font-bold mb-3 tracking-tight">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                            Contact
+                        </span>
                     </h2>
                     <p className="text-sm md:text-base mt-1 text-slate-700 dark:text-white/80">
                         Have a question or opportunity? Let’s connect.

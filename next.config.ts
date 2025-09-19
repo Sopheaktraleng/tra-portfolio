@@ -78,6 +78,16 @@ const nextConfig: NextConfig = {
                 hostname: "www.svgrepo.com",
                 pathname: "/show/**",
             },
+            {
+                protocol: "https",
+                hostname: "www.sorint.com",
+                pathname: "/wp-content/uploads/**",
+            },
+            {
+                protocol: "https",
+                hostname: "www.jenkins.io",
+                pathname: "/images/logos/jenkins/**",
+            },
         ],
     },
 };
