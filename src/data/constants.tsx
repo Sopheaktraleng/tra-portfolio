@@ -4,6 +4,7 @@ import stocksytem from "../components/assets/stocksystem.png";
 import movie from "../components/assets/movie.png";
 import sunrise from "../components/assets/sunrise.jpg";
 import today from "../components/assets/today-logo.png";
+import gdde from "../components/assets/gdde.jpeg";
 export const SkillsData = [
     {
         title: "Frontend",
@@ -85,6 +86,10 @@ export const SkillsData = [
                 name: "Laravel",
                 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1920px-Laravel.svg.png",
             },
+            {
+                name: "MySQL",
+                image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/1920px-MySQL_logo.svg.png",
+            },
         ],
     },
     {
@@ -152,7 +157,7 @@ export const EducationData = [
         img: sunrise.src,
         school: "Sunrise Insitute",
         date: "September 2025 - October 2025",
-        degree: "Devops Level 2",
+        degree: "Devops Advance",
         description:
             "I am studying DevOps Advance at Sunrise Institute, specializing in cloud technologies, CI/CD pipelines, AWS, container orchestration, GitOps, and Infrastructure as Code (IaC), with a strong focus on practical implementation and industry-relevant skills.",
         highlights: [
@@ -229,10 +234,25 @@ export const EducationData = [
 export const ExperienceData = [
     {
         id: 0,
-        image: today.src,
+        image: gdde.src,
         role: "Full Stack Developer",
+        company: "Ministry of Economy and Finance",
+        date: "Oct 2025 - Now",
+        description:
+            "I worked as a Full-stack Developer in GDDE department, developing, designing database, and deploying custom internal systems to automate workflows and enhance efficiency.",
+        skills: [
+            "System Development – Designed, built, and deployed internal applications to improve business operations.",
+            "Performance Optimization – Enhanced system efficiency to improve user experience and business processes.",
+            "Technology Stack – Worked with Vue.js, Spring boot, Express, PostgreSQL, and MongoDB for full-stack development.",
+            "DevOps & Deployment – Utilized Docker, GitHub Actions, and Linux to streamline deployments and improve system reliability.",
+        ],
+    },
+    {
+        id: 1,
+        image: today.src,
+        role: "Web Developer",
         company: "TODAY Internet",
-        date: "Aug 2024 - Now",
+        date: "Dec 2024 - Oct 2025",
         description:
             "I worked as a Web Developer, designing and deploying custom internal systems to automate workflows and enhance efficiency. My role involved optimizing system performance, ensuring scalability, and adapting solutions to business needs.",
         skills: [
@@ -243,7 +263,7 @@ export const ExperienceData = [
         ],
     },
     {
-        id: 1,
+        id: 2,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIRB-oQUDFAXMNu_dAXADYdFw7xXj5-EQtJw&shttps://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-azuid&psig=AOvVaw2hQ_kTLywfcNQZNR5vimJi&ust=1736051108190000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLj5yL-c24oDFQAAAAAdAAAAABAI",
         role: "Freelancer",
         company: "",
