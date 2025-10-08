@@ -27,10 +27,10 @@ export const Footer = () => {
                             </span>
                         </div>
                         <div className="leading-tight">
-                            <span className="block text-sm md:text-base font-semibold tracking-tight text-slate-900 dark:text-white">
+                            <span className="block text-sm md:text-base font-semibold tracking-tight text-white/60">
                                 Leng Sopheaktra
                             </span>
-                            <span className="block text-[11px] text-slate-500 dark:text-white/60">
+                            <span className="block text-[11px] text-white/60">
                                 Full-Stack Developer
                             </span>
                         </div>
