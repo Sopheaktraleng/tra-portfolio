@@ -1,7 +1,6 @@
 "use client";
 import { useRef } from "react";
 import Image from "next/image";
-import trapic from "./assets/traaqq.jpg";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -91,7 +90,7 @@ const HeroSection = () => {
                         <div className="relative w-full max-w-md mx-auto">
                             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
                                 <Image
-                                    src={trapic}
+                                    src="/images/traaqq.jpg"
                                     alt="Profile"
                                     width={500}
                                     height={500}

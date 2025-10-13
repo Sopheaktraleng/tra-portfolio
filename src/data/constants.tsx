@@ -1,10 +1,3 @@
-import twitterpic from "../components/assets/twitter.jpeg";
-import telegrambot from "../components/assets/telegrambot.png";
-import stocksytem from "../components/assets/stocksystem.png";
-import movie from "../components/assets/movie.png";
-import sunrise from "../components/assets/sunrise.jpg";
-import today from "../components/assets/today-logo.png";
-import gdde from "../components/assets/gdde.jpeg";
 export const SkillsData = [
     {
         title: "Frontend",
@@ -154,7 +147,7 @@ export const SkillsData = [
 export const EducationData = [
     {
         id: 0,
-        img: sunrise.src,
+        img: "/images/sunrise.jpg",
         school: "Sunrise Insitute",
         date: "September 2025 - October 2025",
         degree: "Devops Advance",
@@ -171,7 +164,7 @@ export const EducationData = [
     },
     {
         id: 1,
-        img: sunrise.src,
+        img: "/images/sunrise.jpg",
         school: "Sunrise Insitute",
         date: "May 2025 - July 2025",
         degree: "Devops Foundation",
@@ -234,7 +227,7 @@ export const EducationData = [
 export const ExperienceData = [
     {
         id: 0,
-        image: gdde.src,
+        image: "/images/gdde.jpeg",
         role: "Full Stack Developer",
         company: "Ministry of Economy and Finance",
         date: "Oct 2025 - Now",
@@ -249,7 +242,7 @@ export const ExperienceData = [
     },
     {
         id: 1,
-        image: today.src,
+        image: "/images/today-logo.png",
         role: "Web Developer",
         company: "TODAY Internet",
         date: "Dec 2024 - Oct 2025",
@@ -283,7 +276,7 @@ export const projectsData = [
         title: "Twitter Clone",
         description:
             "A Twitter Clone project featuring user authentication, tweet posting, profile management, and follow/unfollow functionality, built with Vue.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: twitterpic,
+        image: "/images/twitter.jpeg",
         links: "https://github.com/Sopheaktraleng/twitter-clone",
         technologies: [
             "Vue.js",
@@ -299,7 +292,7 @@ export const projectsData = [
         title: "Money Tracking Bot",
         description:
             "A Telegram bot for tracking money transactions, built with Node.js, MongoDB, and Telegraf. It allows users to manage their finances by adding, deleting, and viewing transactions.",
-        image: telegrambot,
+        image: "/images/telegrambot.png",
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Node.js", "MongoDB", "Telegraf", "Telegram Bot API"],
         demo: "https://t.me/broke_bill_bot",
@@ -309,7 +302,7 @@ export const projectsData = [
         title: "Movie Website",
         description:
             "A movie website project featuring a responsive design, movie search functionality, and user authentication, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: movie,
+        image: "/images/movie.png",
         links: "https://github.com/Sopheaktraleng/movie-app",
         technologies: ["React Js", "Tailwind", "React Hook"],
         demo: "https://Sopheaktraleng.github.io/movie-app",
@@ -319,7 +312,7 @@ export const projectsData = [
         title: "Stock Management System",
         description:
             "A stock management system project featuring product management, order tracking, and inventory control, built with Laravel, Bootstrap, Filament, MySQL.",
-        image: stocksytem,
+        image: "/images/stocksystem.png",
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Laravel", "MySQL", "Filament", "Bootstrap5"],
         demo: "https://nss.today.com.kh/",

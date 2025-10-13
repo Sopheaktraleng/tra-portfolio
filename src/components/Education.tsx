@@ -1,5 +1,4 @@
 import { EducationData } from "@/data/constants";
-import EducationCard from "./Card/EducationCard";
 import {
     Timeline,
     TimelineConnector,
@@ -8,6 +7,7 @@ import {
     TimelineItem,
     TimelineSeparator,
 } from "@mui/lab";
+import EducationCard from "./card/EducationCard";
 
 const Education = () => {
     return (

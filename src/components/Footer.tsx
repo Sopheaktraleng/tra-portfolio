@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import GithubIcon from "./../../public/github-icon.svg";
-import LinkedinIcon from "./../../public/linkedin-icon.svg";
-import FacebookIcon from "./../../public/facebook-icon.svg";
-import InstagramIcon from "./../../public/instagram-icon.svg";
+import GithubIcon from "./../../public/icons/github-icon.svg";
+import LinkedinIcon from "./../../public/icons/linkedin-icon.svg";
+import FacebookIcon from "./../../public/icons/facebook-icon.svg";
+import InstagramIcon from "./../../public/icons/instagram-icon.svg";
 
 export const Footer = () => {
     return (
