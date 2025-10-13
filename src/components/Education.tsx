@@ -7,7 +7,7 @@ import {
     TimelineItem,
     TimelineSeparator,
 } from "@mui/lab";
-import EducationCard from "./card/EducationCard";
+import EducationCard from "./Card/EducationCard";
 
 const Education = () => {
     return (
