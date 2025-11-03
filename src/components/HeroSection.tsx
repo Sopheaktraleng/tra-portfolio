@@ -40,7 +40,7 @@ const HeroSection = () => {
                         </div>
 
                         <h1 className="mt-3 md:mt-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
-                            Hi, Leng Sopheaktra
+                            Leng Sopheaktra
                         </h1>
 
                         <h2 className="mt-2 text-xl md:text-2xl lg:text-3xl font-semibold text-slate-800 dark:text-white/90">
