@@ -90,7 +90,7 @@ const HeroSection = () => {
                         <div className="relative w-full max-w-md mx-auto">
                             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
                                 <Image
-                                    src="/images/traaqq.jpg"
+                                    src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/traaqq.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHJhYXFxLmpwZyIsImlhdCI6MTc2MjE1Mzg0NywiZXhwIjoxNzkzNjg5ODQ3fQ.l735glU8a020rkqK6dQeU7jBynCL9nIYJQpw7MnnxDo"
                                     alt="Profile"
                                     width={500}
                                     height={500}

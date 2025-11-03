@@ -35,6 +35,11 @@ export const SkillsData = [
                 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1920px-Vue.js_Logo_2.svg.png",
             },
             {
+                name: "Nuxt Js",
+                image: "https://nuxt.com/assets/design-kit/icon-green.svg",
+            },
+
+            {
                 name: "Laravel",
                 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1920px-Laravel.svg.png",
             },
@@ -43,10 +48,6 @@ export const SkillsData = [
     {
         title: "Backend",
         skills: [
-            {
-                name: "Node Js",
-                image: "https://nodejs.org/static/images/logo.svg",
-            },
             {
                 name: "Nest Js",
                 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/NestJS.svg/1200px-NestJS.svg.png",
@@ -58,10 +59,6 @@ export const SkillsData = [
             {
                 name: "GraphQL",
                 image: "https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg",
-            },
-            {
-                name: "REST API",
-                image: "https://keenethics.com/wp-content/uploads/2022/01/rest-api-1.svg",
             },
             {
                 name: "MongoDB",
@@ -82,6 +79,10 @@ export const SkillsData = [
             {
                 name: "MySQL",
                 image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/1920px-MySQL_logo.svg.png",
+            },
+            {
+                name: "FastAPI",
+                image: "https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/3/fastapi-icon-72blnc5ihz9c30ltfruvm.png/fastapi-icon-sv7hsd0o3donlq26es2lr.png?_a=DATAg1AAZAA0",
             },
         ],
     },
@@ -116,6 +117,18 @@ export const SkillsData = [
                 name: "kubernetes",
                 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/2109px-Kubernetes_logo_without_workmark.svg.png",
             },
+            {
+                name: "Argo CD",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf5e0nHTSWCOVVCjzixLUAuQHevtLNLSEzYg&s",
+            },
+            {
+                name: "Prometheus",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnPyUcx9Rqcv7aKhASbNcFHRARX3wsJU0xtg&s",
+            },
+            {
+                name: "Grafana",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwod0EgYh6ixNJuzJAZt413WNM0SX8RrUJsg&s",
+            },
         ],
     },
     {
@@ -147,7 +160,7 @@ export const SkillsData = [
 export const EducationData = [
     {
         id: 0,
-        img: "/images/sunrise.jpg",
+        img: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/sunrise.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvc3VucmlzZS5qcGciLCJpYXQiOjE3NjIxNTI5NzUsImV4cCI6MTc5MzY4ODk3NX0.8Zq_CKYPa-rqrOcfxx22V362i8o7H0UDv02Jd7a-9C4",
         school: "Sunrise Insitute",
         date: "September 2025 - October 2025",
         degree: "Devops Advance",
@@ -164,7 +177,7 @@ export const EducationData = [
     },
     {
         id: 1,
-        img: "/images/sunrise.jpg",
+        img: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/sunrise.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvc3VucmlzZS5qcGciLCJpYXQiOjE3NjIxNTM4OTMsImV4cCI6MTc5MzY4OTg5M30.K8aFiiOt5LjGZp45IDGQfpmYVr4ixq61gz_yImZO-0A",
         school: "Sunrise Insitute",
         date: "May 2025 - July 2025",
         degree: "Devops Foundation",
@@ -227,7 +240,7 @@ export const EducationData = [
 export const ExperienceData = [
     {
         id: 0,
-        image: "/images/gdde.jpeg",
+        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/gdde.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvZ2RkZS5qcGVnIiwiaWF0IjoxNzYyMTUzMjg0LCJleHAiOjE3OTM2ODkyODR9.zu_tBXo8AmDkp8vXhjHtWF50qePVLdLa8ULTPyMfC8k",
         role: "Full Stack Developer",
         company: "Ministry of Economy and Finance",
         date: "Oct 2025 - Now",
@@ -242,7 +255,7 @@ export const ExperienceData = [
     },
     {
         id: 1,
-        image: "/images/today-logo.png",
+        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/today-logo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdG9kYXktbG9nby5wbmciLCJpYXQiOjE3NjIxNTMzNTksImV4cCI6MTc5MzY4OTM1OX0.Dq1uRRt39ikWgMxWyT-RgNJoLs6lc-8y80nb8kzTFng",
         role: "Web Developer",
         company: "TODAY Internet",
         date: "Dec 2024 - Oct 2025",
@@ -276,7 +289,7 @@ export const projectsData = [
         title: "Twitter Clone",
         description:
             "A Twitter Clone project featuring user authentication, tweet posting, profile management, and follow/unfollow functionality, built with Vue.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: "/images/twitter.jpeg",
+        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/twitter.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHdpdHRlci5qcGVnIiwiaWF0IjoxNzYyMTU0MDYzLCJleHAiOjE3OTM2OTAwNjN9.Fo96iGPTCPP4N_iFWQp86QtLE01uxRK31dyfylTE_Do",
         links: "https://github.com/Sopheaktraleng/twitter-clone",
         technologies: [
             "Vue.js",
@@ -292,7 +305,7 @@ export const projectsData = [
         title: "Money Tracking Bot",
         description:
             "A Telegram bot for tracking money transactions, built with Node.js, MongoDB, and Telegraf. It allows users to manage their finances by adding, deleting, and viewing transactions.",
-        image: "/images/telegrambot.png",
+        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/telegrambot.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdGVsZWdyYW1ib3QucG5nIiwiaWF0IjoxNzYyMTUzMzQyLCJleHAiOjE3OTM2ODkzNDJ9.46_RidlS0hFSZGEahZTagG3vqXFUPq0hqCSpOs2aVGk",
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Node.js", "MongoDB", "Telegraf", "Telegram Bot API"],
         demo: "https://t.me/broke_bill_bot",
@@ -302,7 +315,7 @@ export const projectsData = [
         title: "Movie Website",
         description:
             "A movie website project featuring a responsive design, movie search functionality, and user authentication, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: "/images/movie.png",
+        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/movie.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvbW92aWUucG5nIiwiaWF0IjoxNzYyMTUzMzE1LCJleHAiOjE3OTM2ODkzMTV9.LOvGHf-uMgJK5Oa1x_hZZRiL8ZIG14I4E5NHFULXdi8",
         links: "https://github.com/Sopheaktraleng/movie-app",
         technologies: ["React Js", "Tailwind", "React Hook"],
         demo: "https://Sopheaktraleng.github.io/movie-app",
@@ -312,7 +325,7 @@ export const projectsData = [
         title: "Stock Management System",
         description:
             "A stock management system project featuring product management, order tracking, and inventory control, built with Laravel, Bootstrap, Filament, MySQL.",
-        image: "/images/stocksystem.png",
+        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/stocksystem.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvc3RvY2tzeXN0ZW0ucG5nIiwiaWF0IjoxNzYyMTU0MTA3LCJleHAiOjE3OTM2OTAxMDd9.cmBoZptgHy5csuIE14jSu0xHAdqOgpPM3DU3bV6M6ic",
         links: "https://github.com/Sopheaktraleng/money-tracking-bot",
         technologies: ["Laravel", "MySQL", "Filament", "Bootstrap5"],
         demo: "https://nss.today.com.kh/",

@@ -3,69 +3,41 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
+            { protocol: "https", hostname: "upload.wikimedia.org" },
             {
                 protocol: "https",
-                hostname: "upload.wikimedia.org", // For RUPP logo
+                hostname: "mgdkganjyiweabxtetiv.supabase.co",
+                pathname: "/storage/v1/object/**",
+            },
+            { protocol: "https", hostname: "tfdevs.com" },
+            { protocol: "https", hostname: "png.pngtree.com" },
+            { protocol: "https", hostname: "www.today.com.kh" },
+            { protocol: "https", hostname: "encrypted-tbn0.gstatic.com" },
+            { protocol: "https", hostname: "www.w3.org" },
+            { protocol: "https", hostname: "scontent.fpnh11-2.fna.fbcdn.net" },
+            { protocol: "https", hostname: "nodejs.org" },
+            { protocol: "https", hostname: "www.postgresql.org" },
+            { protocol: "https", hostname: "pipedream.com" },
+            { protocol: "https", hostname: "pbs.twimg.com" },
+            {
+                protocol: "https",
+                hostname: "cdn.prod.website-files.com",
+                pathname: "/655b60964be1a1b36c746790/**",
             },
             {
                 protocol: "https",
-                hostname: "tfdevs.com", // For TFDev logos
+                hostname: "www.manektech.com",
+                pathname: "/storage/developer/**",
             },
             {
                 protocol: "https",
-                hostname: "png.pngtree.com", // For school building illustration
+                hostname: "www.myqnap.org",
+                pathname: "/wp-content/uploads/**",
             },
             {
                 protocol: "https",
-                hostname: "www.today.com.kh", // For TODAY Internet logo
-            },
-            {
-                protocol: "https",
-                hostname: "encrypted-tbn0.gstatic.com", // For Freelancer image
-            },
-            {
-                protocol: "https",
-                hostname: "www.w3.org",
-            },
-            {
-                protocol: "https",
-                hostname: "scontent.fpnh11-2.fna.fbcdn.net",
-            },
-            {
-                protocol: "https",
-                hostname: "nodejs.org",
-            },
-            {
-                protocol: "https",
-                hostname: "www.postgresql.org", // Added this hostname
-            },
-            {
-                protocol: "https",
-                hostname: "pipedream.com", // Added this hostname
-            },
-            {
-                protocol: "https",
-                hostname: "pbs.twimg.com", // Added this hostname
-            },
-            {
-                protocol: "https",
-                hostname: "cdn.prod.website-files.com", // Hostname for the Supabase logo
-                pathname: "/655b60964be1a1b36c746790/**", // Match the specific path
-            },
-            {
-                protocol: "https",
-                hostname: "www.manektech.com", // ManekTech image hostname
-                pathname: "/storage/developer/**", // Match the specific path for ManekTech
-            },
-            {
-                protocol: "https",
-                hostname: "www.myqnap.org", // MyQNAP image hostname
-                pathname: "/wp-content/uploads/**", // Match the specific path for MyQNAP
-            },
-            {
-                protocol: "https",
-                hostname: "avatars.githubusercontent.com", // GitHub avatars hostname
-                pathname: "/u/**", // Match the specific path for GitHub avatars
+                hostname: "avatars.githubusercontent.com",
+                pathname: "/u/**",
             },
             {
                 protocol: "https",
@@ -88,6 +60,18 @@ const nextConfig: NextConfig = {
                 hostname: "www.jenkins.io",
                 pathname: "/images/logos/jenkins/**",
             },
+            {
+                protocol: "https",
+                hostname: "nuxt.com",
+                pathname: "/assets/design-kit/icon-green.svg",
+            },
+            {
+                protocol: "https",
+                hostname: "assets.streamlinehq.com",
+                pathname:
+                    "/image/private/w_300,h_300,ar_1/f_auto/v1/icons/3/fastapi-icon-72blnc5ihz9c30ltfruvm.png/fastapi-icon-sv7hsd0o3donlq26es2lr.png",
+            },
+            { protocol: "https", hostname: "miro.medium.com" },
         ],
     },
 };
