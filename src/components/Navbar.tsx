@@ -159,6 +159,16 @@ export default function Navbar() {
     // Close mobile when route/hash changes
     useEffect(() => setOpen(false), [pathname, urlHash]);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (!open) return;
+        const { overflow } = document.body.style;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = overflow;
+        };
+    }, [open]);
+
     // Tiny shadow when scrolled
     const [scrolled, setScrolled] = useState(false);
     useEffect(() => {
@@ -178,11 +188,11 @@ export default function Navbar() {
             )}
         >
             <div className="mx-auto max-w-7xl px-3 sm:px-6">
-                <div className="flex h-14 items-center justify-between px-3 sm:px-4">
+                <div className="flex h-14 items-center justify-between px-2 sm:px-4">
                     {/* Brand */}
                     <Link
                         href="/"
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-2 min-w-0"
                         aria-label="Go to home"
                     >
                         <Image
@@ -193,7 +203,7 @@ export default function Navbar() {
                             className="rounded"
                             priority
                         />
-                        <span className="text-sm sm:text-base font-semibold tracking-tight hidden xs:inline">
+                        <span className="hidden sm:inline text-sm sm:text-base font-semibold tracking-tight truncate max-w-[50vw]">
                             Leng Sopheaktra
                         </span>
                     </Link>
@@ -219,13 +229,13 @@ export default function Navbar() {
                         <DarkModeSelector />
                         <button
                             onClick={toggle}
-                            className="md:hidden inline-flex items-center justify-center rounded-xl p-2
+                            className="md:hidden inline-flex items-center justify-center rounded-xl p-2.5
               bg-white/60 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10
               focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
               focus-visible:ring-violet-300 dark:focus-visible:ring-fuchsia-400/40"
                             aria-label={open ? "Close menu" : "Open menu"}
                             aria-expanded={open}
-                            aria-controls="mobile-menu"
+                            aria-controls="nav-mobile-menu"
                         >
                             {open ? (
                                 <X className="h-5 w-5" />
@@ -239,7 +249,7 @@ export default function Navbar() {
 
             {/* Mobile sheet */}
             <div
-                id="mobile-menu"
+                id="nav-mobile-menu"
                 className={cx(
                     "md:hidden px-3 sm:px-6 transition-all duration-200",
                     open
@@ -257,7 +267,9 @@ export default function Navbar() {
                                 key={l.href}
                                 href={l.href}
                                 onClick={close}
-                                className="block px-4 py-3 text-base font-medium text-slate-800 hover:text-white hover:bg-gradient-to-r hover:from-violet-500 hover:to-fuchsia-500 hover:rounded-full transition-all duration-200 dark:text-slate-200 dark:hover:bg-gradient-to-r dark:hover:from-violet-500 dark:hover:to-fuchsia-500"
+                                className="block px-4 py-3 text-base font-medium
+                           text-slate-800 dark:text-slate-200
+                           hover:bg-white/70 dark:hover:bg-white/10 transition-colors duration-150"
                             >
                                 {l.label}
                             </Link>
