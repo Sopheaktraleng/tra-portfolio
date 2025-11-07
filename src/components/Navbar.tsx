@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Cat as CatIcon, Menu, X } from "lucide-react";
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import DarkModeSelector from "@/components/DarkModeSelector";
 
@@ -20,9 +20,22 @@ const navLinks = [
 /* --------------------------------- Utils ---------------------------------- */
 const cx = (...c: Array<string | false | null | undefined>) =>
     c.filter(Boolean).join(" ");
-
 const isHashLink = (href: string) => href.startsWith("/#");
 const getId = (href: string) => href.slice(2);
+
+const onMobileLinkClick =
+    (href: string, close: () => void) =>
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+        if (!isHashLink(href)) return;
+        e.preventDefault();
+        const id = getId(href);
+        const el = document.getElementById(id);
+        close();
+        requestAnimationFrame(() => {
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            if (window.location.hash !== `#${id}`) window.location.hash = id; // fires hashchange
+        });
+    };
 
 function useHash(): string {
     const [hash, setHash] = useState<string>(
@@ -56,12 +69,9 @@ function useScrollSpy(ids: string[], rootMargin = "-45% 0px -45% 0px") {
                             (b.intersectionRatio ?? 0) -
                             (a.intersectionRatio ?? 0)
                     );
-
-                if (visible[0]?.target?.id) {
+                if (visible[0]?.target?.id)
                     setActive(`#${visible[0].target.id}`);
-                } else if (window.scrollY < 20) {
-                    setActive("#home");
-                }
+                else if (window.scrollY < 20) setActive("#home");
             },
             { root: null, rootMargin, threshold: [0.2, 0.5, 0.8] }
         );
@@ -77,8 +87,8 @@ function useScrollSpy(ids: string[], rootMargin = "-45% 0px -45% 0px") {
 function NavLink({
     href,
     label,
-    currentHash, // from scroll spy
-    urlHash, // from useHash
+    currentHash,
+    urlHash,
 }: {
     href: string;
     label: string;
@@ -87,20 +97,17 @@ function NavLink({
 }) {
     const pathname = usePathname();
 
-    // Home is active only when we're on "/" and no section is active
     const isActive = useMemo(() => {
         if (href === "/") {
             const spyActive = currentHash && currentHash !== "#home";
             const hasUrlSection = urlHash && urlHash !== "#home";
             return pathname === "/" && !spyActive && !hasUrlSection;
         }
-
         if (isHashLink(href)) {
             const target = `#${getId(href)}`;
             const h = pathname === "/" && currentHash ? currentHash : urlHash;
             return pathname === "/" && h === target;
         }
-
         return pathname === href || (href !== "/" && pathname.startsWith(href));
     }, [pathname, urlHash, href, currentHash]);
 
@@ -112,9 +119,8 @@ function NavLink({
             const el = document.getElementById(id);
             if (el) {
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
-                if (window.location.hash !== `#${id}`) {
-                    history.pushState(null, "", href);
-                }
+                if (window.location.hash !== `#${id}`)
+                    window.location.hash = id; // ensures hashchange
             }
         },
         [href]
@@ -162,12 +168,29 @@ export default function Navbar() {
     // Lock body scroll when mobile menu is open
     useEffect(() => {
         if (!open) return;
-        const { overflow } = document.body.style;
+        const original = document.body.style.overflow;
         document.body.style.overflow = "hidden";
         return () => {
-            document.body.style.overflow = overflow;
+            document.body.style.overflow = original;
         };
     }, [open]);
+
+    // Close on Esc when open
+    useEffect(() => {
+        if (!open) return;
+        const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [open, close]);
+
+    // Auto-close if viewport becomes desktop (md and up)
+    useEffect(() => {
+        const onResize = () => {
+            if (window.matchMedia("(min-width: 768px)").matches) close();
+        };
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+    }, [close]);
 
     // Tiny shadow when scrolled
     const [scrolled, setScrolled] = useState(false);
@@ -182,9 +205,12 @@ export default function Navbar() {
         <header
             role="banner"
             className={cx(
-                "sticky top-0 z-50 w-full",
-                "bg-white/50 dark:bg-black/40 backdrop-blur-xl ring-1 ring-white/30 dark:ring-white/10",
-                scrolled && "shadow-sm"
+                "sticky top-0 z-50 w-full transition-all duration-300",
+                // Keep consistent blur but no overflow color
+                open
+                    ? "bg-transparent backdrop-blur-xl ring-0 shadow-none"
+                    : "bg-white/50 dark:bg-black/40 backdrop-blur-xl ring-1 ring-white/30 dark:ring-white/10",
+                scrolled && !open && "shadow-sm"
             )}
         >
             <div className="mx-auto max-w-7xl px-3 sm:px-6">
@@ -212,7 +238,7 @@ export default function Navbar() {
                     <nav
                         aria-label="Primary"
                         className="hidden md:flex items-center gap-2 rounded-full px-2 py-1 
-            bg-white/30 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10 backdrop-blur-md"
+            bg-white/30 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10 "
                     >
                         {navLinks.map((l) => (
                             <NavLink
@@ -247,36 +273,126 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile sheet */}
-            <div
-                id="nav-mobile-menu"
-                className={cx(
-                    "md:hidden px-3 sm:px-6 transition-all duration-200",
-                    open
-                        ? "opacity-100 translate-y-0 pointer-events-auto"
-                        : "opacity-0 -translate-y-2 pointer-events-none"
-                )}
-            >
-                <div className="mb-3 rounded-2xl bg-white/90 dark:bg-black/70 backdrop-blur-lg shadow-xl overflow-hidden ring-1 ring-white/30 dark:ring-white/10">
-                    <nav
-                        aria-label="Mobile Primary"
-                        className="divide-y divide-white/30 dark:divide-white/10"
+            {/* ---- Mobile overlay (mounted only when open) ---- */}
+            {open && (
+                <>
+                    {/* Backdrop (neutral on light, violet-tinted on dark) */}
+                    <div
+                        className="md:hidden fixed inset-0 z-40 pointer-events-auto transition-opacity duration-200"
+                        aria-hidden
+                        onClick={close}
                     >
-                        {navLinks.map((l) => (
-                            <Link
-                                key={l.href}
-                                href={l.href}
-                                onClick={close}
-                                className="block px-4 py-3 text-base font-medium
-                           text-slate-800 dark:text-slate-200
-                           hover:bg-white/70 dark:hover:bg-white/10 transition-colors duration-150"
+                        <div className="absolute inset-0 bg-black/30 dark:bg-violet-900/35" />
+                    </div>
+
+                    {/* Compact floating panel */}
+                    <div
+                        id="nav-mobile-menu"
+                        role="dialog"
+                        aria-modal="true"
+                        className="md:hidden fixed inset-x-0 top-16 z-50 flex justify-center transition-transform duration-200"
+                    >
+                        <div
+                            className="
+                w-[90%] max-w-sm rounded-2xl
+                bg-white/95 text-slate-900 ring-1 ring-black/10 shadow-2xl backdrop-blur-xl
+                dark:bg-slate-900/85 dark:text-slate-100 dark:ring-white/10
+                p-2
+              "
+                        >
+                            <nav
+                                aria-label="Mobile Primary"
+                                className="space-y-1"
                             >
-                                {l.label}
-                            </Link>
-                        ))}
-                    </nav>
-                </div>
-            </div>
+                                {navLinks.map((l) => {
+                                    const isActive = (() => {
+                                        if (l.href === "/#home") {
+                                            const spyActive =
+                                                spy && spy !== "#home";
+                                            const hasUrlSection =
+                                                urlHash && urlHash !== "#home";
+                                            return (
+                                                pathname === "/" &&
+                                                !spyActive &&
+                                                !hasUrlSection
+                                            );
+                                        }
+                                        if (l.href.startsWith("/#")) {
+                                            const target = `#${l.href.slice(
+                                                2
+                                            )}`;
+                                            const h =
+                                                pathname === "/" && spy
+                                                    ? spy
+                                                    : urlHash;
+                                            return (
+                                                pathname === "/" && h === target
+                                            );
+                                        }
+                                        return (
+                                            pathname === l.href ||
+                                            pathname.startsWith(l.href)
+                                        );
+                                    })();
+
+                                    return (
+                                        <Link
+                                            key={l.href}
+                                            href={l.href}
+                                            onClick={onMobileLinkClick(
+                                                l.href,
+                                                close
+                                            )}
+                                            className={cx(
+                                                "group flex items-center justify-between w-full",
+                                                "rounded-xl px-3 py-2.5 text-[15px]",
+                                                "transition-all duration-150",
+                                                isActive
+                                                    ? // selected pill (soft violet on light, strong violet on dark)
+                                                      "bg-violet-100 text-violet-300 ring-1 ring-violet-200 shadow-inner dark:bg-violet-500/85 dark:text-white dark:ring-white/10"
+                                                    : // hover
+                                                      "hover:bg-slate-100 dark:hover:bg-white/5"
+                                            )}
+                                        >
+                                            <div className="flex items-center gap-2.5">
+                                                <span
+                                                    className={cx(
+                                                        "shrink-0 size-4",
+                                                        isActive
+                                                            ? "text-violet-300 dark:text-white/90"
+                                                            : "text-slate-400/90"
+                                                    )}
+                                                />
+                                                <span
+                                                    className={cx(
+                                                        "text-sm",
+                                                        isActive
+                                                            ? "font-semibold text-violet-300 dark:text-white"
+                                                            : "text-slate-900 dark:text-slate-100"
+                                                    )}
+                                                >
+                                                    {l.label}
+                                                </span>
+                                            </div>
+
+                                            <span
+                                                className={cx(
+                                                    "ml-2 transition-opacity duration-150",
+                                                    isActive
+                                                        ? "opacity-100"
+                                                        : "opacity-0"
+                                                )}
+                                            >
+                                                <CatIcon className="size-4 text-violet-700 dark:text-white/90" />
+                                            </span>
+                                        </Link>
+                                    );
+                                })}
+                            </nav>
+                        </div>
+                    </div>
+                </>
+            )}
         </header>
     );
 }
