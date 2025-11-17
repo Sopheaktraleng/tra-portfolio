@@ -29,7 +29,6 @@ const Education = () => {
                             key={index}
                             className="flex flex-col scale-90 md:scale-110 mb-[-30px] md:mb-4 ml-4 md:ml-0 "
                         >
-                            {/* Left Side Content for Even Index */}
                             <TimelineContent
                                 sx={{
                                     width: index % 2 === 0 ? "50%" : "auto",
@@ -39,7 +38,6 @@ const Education = () => {
                                 {index % 2 === 0 && <EducationCard edu={edu} />}
                             </TimelineContent>
 
-                            {/* Center Separator */}
                             <TimelineSeparator className="absolute md:left-1/2 transform -translate-x-1/2 h-full">
                                 <TimelineDot
                                     variant="outlined"
@@ -53,7 +51,6 @@ const Education = () => {
                                 )}
                             </TimelineSeparator>
 
-                            {/* Right Side Content for Odd Index */}
                             <TimelineContent
                                 sx={{
                                     width: "50%",

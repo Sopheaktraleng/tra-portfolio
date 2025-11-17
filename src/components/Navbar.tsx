@@ -7,7 +7,6 @@ import { Cat as CatIcon, Menu, X } from "lucide-react";
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import DarkModeSelector from "@/components/DarkModeSelector";
 
-/* ---------------------------- Configurable links --------------------------- */
 const navLinks = [
     { href: "/#home", label: "Home" },
     { href: "/#skills", label: "Skills" },
@@ -17,7 +16,6 @@ const navLinks = [
     { href: "/#contact", label: "Contact" },
 ] as const;
 
-/* --------------------------------- Utils ---------------------------------- */
 const cx = (...c: Array<string | false | null | undefined>) =>
     c.filter(Boolean).join(" ");
 const isHashLink = (href: string) => href.startsWith("/#");
@@ -33,7 +31,7 @@ const onMobileLinkClick =
         close();
         requestAnimationFrame(() => {
             if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-            if (window.location.hash !== `#${id}`) window.location.hash = id; // fires hashchange
+            if (window.location.hash !== `#${id}`) window.location.hash = id;
         });
     };
 
@@ -49,7 +47,6 @@ function useHash(): string {
     return hash;
 }
 
-/* ----------------------------- Scroll spy --------------------------------- */
 function useScrollSpy(ids: string[], rootMargin = "-45% 0px -45% 0px") {
     const [active, setActive] = useState<string>("#home");
 
@@ -83,7 +80,6 @@ function useScrollSpy(ids: string[], rootMargin = "-45% 0px -45% 0px") {
     return active;
 }
 
-/* --------------------------------- Link ----------------------------------- */
 function NavLink({
     href,
     label,
@@ -120,7 +116,7 @@ function NavLink({
             if (el) {
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
                 if (window.location.hash !== `#${id}`)
-                    window.location.hash = id; // ensures hashchange
+                    window.location.hash = id;
             }
         },
         [href]
@@ -145,7 +141,6 @@ function NavLink({
     );
 }
 
-/* -------------------------------- Navbar ---------------------------------- */
 export default function Navbar() {
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
@@ -162,10 +157,8 @@ export default function Navbar() {
         "contact",
     ]);
 
-    // Close mobile when route/hash changes
     useEffect(() => setOpen(false), [pathname, urlHash]);
 
-    // Lock body scroll when mobile menu is open
     useEffect(() => {
         if (!open) return;
         const original = document.body.style.overflow;
@@ -175,7 +168,6 @@ export default function Navbar() {
         };
     }, [open]);
 
-    // Close on Esc when open
     useEffect(() => {
         if (!open) return;
         const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
@@ -183,7 +175,6 @@ export default function Navbar() {
         return () => window.removeEventListener("keydown", onKey);
     }, [open, close]);
 
-    // Auto-close if viewport becomes desktop (md and up)
     useEffect(() => {
         const onResize = () => {
             if (window.matchMedia("(min-width: 768px)").matches) close();
@@ -192,7 +183,6 @@ export default function Navbar() {
         return () => window.removeEventListener("resize", onResize);
     }, [close]);
 
-    // Tiny shadow when scrolled
     const [scrolled, setScrolled] = useState(false);
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 2);
@@ -206,7 +196,6 @@ export default function Navbar() {
             role="banner"
             className={cx(
                 "sticky top-0 z-50 w-full transition-all duration-300",
-                // Keep consistent blur but no overflow color
                 open
                     ? "bg-transparent backdrop-blur-xl ring-0 shadow-none"
                     : "bg-white/50 dark:bg-black/40 backdrop-blur-xl ring-1 ring-white/30 dark:ring-white/10",
@@ -215,7 +204,6 @@ export default function Navbar() {
         >
             <div className="mx-auto max-w-7xl px-3 sm:px-6">
                 <div className="flex h-14 items-center justify-between px-2 sm:px-4">
-                    {/* Brand */}
                     <Link
                         href="/"
                         className="flex items-center gap-2 min-w-0"
@@ -234,7 +222,6 @@ export default function Navbar() {
                         </span>
                     </Link>
 
-                    {/* Desktop nav */}
                     <nav
                         aria-label="Primary"
                         className="hidden md:flex items-center gap-2 rounded-full px-2 py-1 
@@ -250,7 +237,6 @@ export default function Navbar() {
                         ))}
                     </nav>
 
-                    {/* Actions */}
                     <div className="flex items-center gap-2">
                         <DarkModeSelector />
                         <button
@@ -273,10 +259,8 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* ---- Mobile overlay (mounted only when open) ---- */}
             {open && (
                 <>
-                    {/* Backdrop (neutral on light, violet-tinted on dark) */}
                     <div
                         className="md:hidden fixed inset-0 z-40 pointer-events-auto transition-opacity duration-200"
                         aria-hidden
@@ -285,7 +269,6 @@ export default function Navbar() {
                         <div className="absolute inset-0 bg-black/30 dark:bg-violet-900/35" />
                     </div>
 
-                    {/* Compact floating panel */}
                     <div
                         id="nav-mobile-menu"
                         role="dialog"
@@ -348,10 +331,8 @@ export default function Navbar() {
                                                 "rounded-xl px-3 py-2.5 text-[15px]",
                                                 "transition-all duration-150",
                                                 isActive
-                                                    ? // selected pill (soft violet on light, strong violet on dark)
-                                                      "bg-violet-100 text-violet-300 ring-1 ring-violet-200 shadow-inner dark:bg-violet-500/85 dark:text-white dark:ring-white/10"
-                                                    : // hover
-                                                      "hover:bg-slate-100 dark:hover:bg-white/5"
+                                                    ? "bg-violet-100 text-violet-300 ring-1 ring-violet-200 shadow-inner dark:bg-violet-500/85 dark:text-white dark:ring-white/10"
+                                                    : "hover:bg-slate-100 dark:hover:bg-white/5"
                                             )}
                                         >
                                             <div className="flex items-center gap-2.5">

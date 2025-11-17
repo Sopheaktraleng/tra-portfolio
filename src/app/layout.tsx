@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { Geist, Geist_Mono } from "next/font/google";

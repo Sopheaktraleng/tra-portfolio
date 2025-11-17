@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    // Produce a minimal server output for smaller Docker images
     output: "standalone",
     images: {
         remotePatterns: [

@@ -8,20 +8,17 @@ const HeroSection = () => {
     const sectionRef = useRef<HTMLElement>(null);
 
     const handleScrollHintClick = () => {
-        // Prefer a #skills section if it exists
         const skills = document.getElementById("skills");
         if (skills) {
             skills.scrollIntoView({ behavior: "smooth", block: "start" });
             return;
         }
-        // Otherwise go to the next section after this one
         const next = sectionRef.current
             ?.nextElementSibling as HTMLElement | null;
         if (next) {
             next.scrollIntoView({ behavior: "smooth", block: "start" });
             return;
         }
-        // Fallback scroll
         window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
     };
 
@@ -32,7 +29,6 @@ const HeroSection = () => {
         >
             <div className="w-full md:max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                    {/* Left Column (Text) */}
                     <div className="flex flex-col items-start text-start">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-md text-xs font-medium text-slate-700 dark:text-white/80">
                             <span>👋</span>
@@ -85,7 +81,6 @@ const HeroSection = () => {
                         </motion.a>
                     </div>
 
-                    {/* Right Column (Image) */}
                     <div className="relative order-first lg:order-last flex justify-center items-center">
                         <div className="relative w-full max-w-md mx-auto">
                             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
@@ -101,7 +96,6 @@ const HeroSection = () => {
                                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                             </div>
 
-                            {/* glass badges */}
                             <motion.div
                                 animate={{ y: [-5, 5, -5] }}
                                 transition={{
@@ -145,7 +139,6 @@ const HeroSection = () => {
                     </div>
                 </div>
 
-                {/* Scroll hint */}
                 <motion.button
                     type="button"
                     onClick={handleScrollHintClick}

@@ -37,13 +37,10 @@ export default function DarkModeSelector() {
     const [mounted, setMounted] = useState(false);
     const [value, setValue] = useState<ThemeId>("system");
 
-    // avoid hydration mismatch
     useEffect(() => setMounted(true), []);
 
-    // initialize from next-themes once mounted
     useEffect(() => {
         if (!mounted) return;
-        // theme is the user setting; resolvedTheme is the actual active theme
         const initial = (theme as ThemeId) ?? "system";
         setValue(initial);
     }, [mounted, theme]);
@@ -54,7 +51,6 @@ export default function DarkModeSelector() {
         OPTIONS.find((o) => o.id === value) ??
         OPTIONS.find((o) => o.id === "system")!;
 
-    // Icon that reflects the *resolved* theme for the button
     const ActiveIcon =
         resolvedTheme === "dark" ? (
             <MoonIcon className="size-5" />

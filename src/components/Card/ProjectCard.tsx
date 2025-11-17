@@ -18,7 +18,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
         <div className="flex justify-center items-center">
             <div className="group relative w-[350px] md:w-full max-w-[520px] h-[460px] rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md shadow-md dark:shadow-xl transition hover:shadow-lg dark:hover:shadow-2xl">
                 <div className="h-full w-full rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md shadow-md dark:shadow-xl flex flex-col overflow-hidden">
-                    {/* Image section */}
                     <div className="relative h-[240px] w-full overflow-hidden">
                         {pro.image ? (
                             <Image
@@ -35,14 +34,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                             </div>
                         )}
 
-                        {/* Title overlay */}
                         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                         <h3 className="absolute bottom-3 left-4 text-lg md:text-xl font-semibold tracking-tight text-white drop-shadow">
                             {pro.title}
                         </h3>
                     </div>
 
-                    {/* Content section */}
                     <div className="flex flex-col gap-4 p-5 grow">
                         <p className="text-sm leading-relaxed text-slate-700 dark:text-white/85 line-clamp-3">
                             {pro.description}
@@ -62,7 +59,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                             ))}
                         </div>
 
-                        {/* Action buttons */}
                         <div className="flex items-center gap-3">
                             <a
                                 href={pro.links}
@@ -87,7 +83,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                     </div>
                 </div>
 
-                {/* Hover glow effect */}
                 <div className="pointer-events-none absolute -inset-2 rounded-3xl bg-gradient-to-br from-violet-500/0 via-fuchsia-500/0 to-cyan-500/0 blur-2xl opacity-0 group-hover:opacity-30 transition" />
             </div>
         </div>

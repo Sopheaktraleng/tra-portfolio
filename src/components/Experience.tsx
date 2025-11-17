@@ -29,11 +29,10 @@ const Experience = () => {
                             key={index}
                             className="flex flex-col scale-90 md:scale-110 mb-[-30px] md:mb-8 ml-4 md:ml-0"
                         >
-                            {/* Left Side Content for Even Index */}
                             <TimelineContent
                                 sx={{
-                                    width: index % 2 === 0 ? "50%" : "auto", // Apply '50%' width if index is even, otherwise 'auto' (you can use display: 'none' if you want to hide it completely)
-                                    display: index % 2 === 0 ? "block" : "none", // Conditionally show or hide based on index
+                                    width: index % 2 === 0 ? "50%" : "auto",
+                                    display: index % 2 === 0 ? "block" : "none",
                                 }}
                             >
                                 {index % 2 === 0 && (
@@ -41,7 +40,6 @@ const Experience = () => {
                                 )}
                             </TimelineContent>
 
-                            {/* Center Separator */}
                             <TimelineSeparator className="absolute md:left-1/2 transform -translate-x-1/2 h-full md:p-1">
                                 <TimelineDot
                                     variant="outlined"
@@ -55,7 +53,6 @@ const Experience = () => {
                                 )}
                             </TimelineSeparator>
 
-                            {/* Right Side Content for Odd Index */}
                             <TimelineContent
                                 sx={{
                                     width: "50%",
@@ -65,7 +62,7 @@ const Experience = () => {
                                         paddingLeft: "25rem",
                                         marginLeft: "3rem",
                                     },
-                                    display: index % 2 !== 0 ? "block" : "none", // Show when index is odd, hide when even
+                                    display: index % 2 !== 0 ? "block" : "none",
                                 }}
                             >
                                 {index % 2 !== 0 && (

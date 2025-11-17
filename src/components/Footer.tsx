@@ -9,15 +9,11 @@ import InstagramIcon from "./../../public/icons/instagram-icon.svg";
 export const Footer = () => {
     return (
         <footer role="contentinfo" aria-label="Site footer" className="w-full">
-            {/* Top hairline */}
             <div className="h-px w-full bg-gradient-to-r from-transparent via-violet-500/40 to-transparent dark:via-fuchsia-500/40" />
 
             <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 md:py-5">
-                {/* Row 1: brand + socials */}
                 <div className="flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-between">
-                    {/* Brand badge + name */}
                     <div className="flex items-center gap-3">
-                        {/* Brand badge (no extra asset) */}
                         <div
                             aria-hidden
                             className="size-8 md:size-9 rounded-2xl bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 dark:from-violet-400/15 dark:to-fuchsia-400/15 border border-black/5 dark:border-white/10 backdrop-blur flex items-center justify-center"
@@ -36,7 +32,6 @@ export const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Socials */}
                     <div className="flex items-center justify-center gap-2">
                         <Social
                             href="https://www.facebook.com/leng.sopheaktra.71/"
@@ -85,12 +80,9 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                {/* Soft divider */}
                 <div className="mt-4 h-px w-full bg-black/[0.06] dark:bg-white/[0.10]" />
 
-                {/* Row 2: nav + legal */}
                 <div className="mt-3 flex flex-col items-center gap-2 md:flex-row md:items-center md:justify-between">
-                    {/* Nav pills */}
                     <nav
                         aria-label="Footer navigation"
                         className="flex items-center gap-2 text-[12px] text-slate-600 dark:text-white/70"
@@ -114,7 +106,6 @@ export const Footer = () => {
                         </FooterLink>
                     </nav>
 
-                    {/* Legal */}
                     <p className="text-[11px] leading-tight text-slate-500 dark:text-white/60">
                         © {new Date().getFullYear()} Leng Sopheaktra. All rights
                         reserved.

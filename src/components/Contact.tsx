@@ -19,20 +19,17 @@ const Contact = () => {
     const [status, setStatus] = useState("");
     const [loading, setLoading] = useState(false);
 
-    // Honeypot (bots will fill this)
     const [company, setCompany] = useState("");
 
     const [touched, setTouched] = useState<{ [k: string]: boolean }>({});
     const topErrorRef = useRef<HTMLDivElement | null>(null);
 
-    // restore drafts
     useEffect(() => {
         const d = JSON.parse(localStorage.getItem("contact-draft") || "{}");
         if (d.email) setEmail(d.email);
         if (d.subject) setSubject(d.subject);
         if (d.message) setMessage(d.message);
     }, []);
-    // save drafts
     useEffect(() => {
         const draft = { email, subject, message };
         localStorage.setItem("contact-draft", JSON.stringify(draft));
@@ -57,7 +54,6 @@ const Contact = () => {
         e.preventDefault();
         setStatus("");
 
-        // If honeypot is filled, or invalid fields
         if (!isValid || company) {
             setStatus("⚠️ Please fix errors and try again.");
             topErrorRef.current?.focus();
@@ -99,7 +95,6 @@ const Contact = () => {
     return (
         <section className="py-10 flex justify-center items-center">
             <div className="w-full max-w-2xl px-4">
-                {/* Header */}
                 <div className="text-center mb-6">
                     <h2 className="text-4xl font-bold mb-3 tracking-tight">
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
@@ -111,13 +106,11 @@ const Contact = () => {
                     </p>
                 </div>
 
-                {/* Form Card */}
                 <form
                     onSubmit={handleSubmit}
                     noValidate
                     className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur p-5 md:p-6 shadow-sm"
                 >
-                    {/* Error summary */}
                     {status.startsWith("⚠️") && !isValid && (
                         <div
                             ref={topErrorRef}
@@ -139,18 +132,16 @@ const Contact = () => {
                         </div>
                     )}
 
-                    {/* Honeypot (hidden but writable) */}
                     <input
                         type="text"
                         name="company"
                         className="hidden"
                         value={company}
-                        onChange={(e) => setCompany(e.target.value)} // <-- uses setter, fixes unused warning
+                        onChange={(e) => setCompany(e.target.value)}
                         aria-hidden="true"
                         tabIndex={-1}
                     />
 
-                    {/* Email */}
                     <Field
                         id="email"
                         label={
@@ -171,7 +162,6 @@ const Contact = () => {
                         />
                     </Field>
 
-                    {/* Subject */}
                     <div className="mt-4">
                         <Field
                             id="subject"
@@ -199,7 +189,6 @@ const Contact = () => {
                         </Field>
                     </div>
 
-                    {/* Message */}
                     <div className="mt-4">
                         <Field
                             id="message"
@@ -235,7 +224,6 @@ const Contact = () => {
                         </Field>
                     </div>
 
-                    {/* Submit */}
                     <button
                         id="contact-submit"
                         type="submit"
@@ -251,7 +239,6 @@ const Contact = () => {
                     </button>
                 </form>
 
-                {/* Status */}
                 {status && (
                     <p
                         className={`
@@ -278,9 +265,6 @@ const Contact = () => {
 };
 
 export default Contact;
-
-/* ---------- Helpers (typed) ---------- */
-
 interface FieldProps {
     id: string;
     label: ReactNode;
