@@ -263,10 +263,7 @@ export default function Navbar() {
                         className="md:hidden fixed inset-0 z-40 pointer-events-auto transition-opacity duration-200"
                         aria-hidden
                         onClick={close}
-                    >
-                        <div className="absolute inset-0 bg-black/30 dark:bg-violet-900/35" />
-                    </div>
-
+                    ></div>
                     <div
                         id="nav-mobile-menu"
                         role="dialog"
