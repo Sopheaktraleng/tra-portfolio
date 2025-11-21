@@ -36,10 +36,9 @@ const onMobileLinkClick =
     };
 
 function useHash(): string {
-    const [hash, setHash] = useState<string>(
-        typeof window !== "undefined" ? window.location.hash : ""
-    );
+    const [hash, setHash] = useState<string>("");
     useEffect(() => {
+        setHash(window.location.hash);
         const onHash = () => setHash(window.location.hash);
         window.addEventListener("hashchange", onHash);
         return () => window.removeEventListener("hashchange", onHash);
@@ -101,7 +100,7 @@ function NavLink({
         }
         if (isHashLink(href)) {
             const target = `#${getId(href)}`;
-            const h = pathname === "/" && currentHash ? currentHash : urlHash;
+            const h = pathname === "/" ? urlHash || currentHash : undefined;
             return pathname === "/" && h === target;
         }
         return pathname === href || (href !== "/" && pathname.startsWith(href));
@@ -224,8 +223,7 @@ export default function Navbar() {
 
                     <nav
                         aria-label="Primary"
-                        className="hidden md:flex items-center gap-2 rounded-full px-2 py-1 
-            bg-white/30 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10 "
+                        className="hidden md:flex items-center gap-2 rounded-full px-2 py-1 bg-white/30 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10"
                     >
                         {navLinks.map((l) => (
                             <NavLink
@@ -305,9 +303,9 @@ export default function Navbar() {
                                                 2
                                             )}`;
                                             const h =
-                                                pathname === "/" && spy
-                                                    ? spy
-                                                    : urlHash;
+                                                pathname === "/"
+                                                    ? urlHash || spy
+                                                    : undefined;
                                             return (
                                                 pathname === "/" && h === target
                                             );
