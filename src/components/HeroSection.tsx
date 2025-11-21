@@ -145,12 +145,12 @@ const HeroSection = () => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: [0, -8, 0] }}
                     transition={{
-                        duration: 2,
+                        duration: 3,
                         repeat: Infinity,
-                        repeatType: "loop",
+                        repeatType: "mirror",
                         ease: "easeInOut",
                     }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center space-y-3 focus:outline-none"
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center focus:outline-none"
                     aria-label="Scroll to next section"
                 >
                     <span className="text-sm tracking-wide uppercase text-slate-500 dark:text-white/50">
