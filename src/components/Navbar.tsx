@@ -216,9 +216,6 @@ export default function Navbar() {
                             className="rounded"
                             priority
                         />
-                        <span className="hidden sm:inline text-sm sm:text-base font-semibold tracking-tight truncate max-w-[50vw]">
-                            Leng Sopheaktra
-                        </span>
                     </Link>
 
                     <nav
