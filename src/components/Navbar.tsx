@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Cat as CatIcon, Menu, X } from "lucide-react";
+import { Check, Menu, X } from "lucide-react";
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import DarkModeSelector from "@/components/DarkModeSelector";
 
@@ -268,11 +268,11 @@ export default function Navbar() {
                         id="nav-mobile-menu"
                         role="dialog"
                         aria-modal="true"
-                        className="md:hidden fixed inset-x-0 top-16 z-50 flex justify-center transition-transform duration-200"
+                        className="md:hidden fixed inset-x-5 top-16 z-100 flex justify-end transition-transform duration-200"
                     >
                         <div
                             className="
-                w-[90%] max-w-sm rounded-2xl
+                w-[60%] max-w-sm rounded-2xl
                 bg-white/95 text-slate-900 ring-1 ring-black/10 shadow-2xl backdrop-blur-xl
                 dark:bg-slate-900/85 dark:text-slate-100 dark:ring-white/10
                 p-2
@@ -359,7 +359,7 @@ export default function Navbar() {
                                                         : "opacity-0"
                                                 )}
                                             >
-                                                <CatIcon className="size-4 text-violet-700 dark:text-white/90" />
+                                                <Check className="size-4 text-violet-700 dark:text-white/90" />
                                             </span>
                                         </Link>
                                     );
