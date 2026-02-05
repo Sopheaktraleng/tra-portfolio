@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
+import Script from "next/script";
 
 const Navbar = dynamic(() => import("@/components/Navbar"), {
     ssr: true,
@@ -90,6 +91,28 @@ export default function RootLayout({
             suppressHydrationWarning
             className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
         >
+            <Script
+                id="umami"
+                src="http://localhost:3000/script.js"
+                data-website-id="6aa41a4d-10e9-466e-9bcf-a27e1c622377"
+                strategy="afterInteractive"
+            />
+            <Script id="matomo" strategy="afterInteractive">
+                {`
+            var _paq = window._paq = window._paq || [];
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+              var u="//localhost:8080/";
+              _paq.push(['setTrackerUrl', u+'matomo.php']);
+              _paq.push(['setSiteId', '1']);
+              var d=document, g=d.createElement('script'), 
+                  s=d.getElementsByTagName('script')[0];
+              g.async=true; g.src=u+'matomo.js'; 
+              s.parentNode.insertBefore(g,s);
+            })();
+          `}
+            </Script>
             <body className="min-h-screen flex flex-col bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
                 <ThemeProvider>
                     <a
