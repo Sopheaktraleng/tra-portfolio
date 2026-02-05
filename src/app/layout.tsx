@@ -93,8 +93,8 @@ export default function RootLayout({
         >
             <Script
                 id="umami"
-                src="http://localhost:3000/script.js"
-                data-website-id="6aa41a4d-10e9-466e-9bcf-a27e1c622377"
+                src="https://8e1a919935ba.ngrok-free.app/script.js"
+                data-website-id="d9ec3cba-3f7c-4309-8d2e-1e3e3ebed4a7"
                 strategy="afterInteractive"
             />
             <Script id="matomo" strategy="afterInteractive">
