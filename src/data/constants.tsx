@@ -286,42 +286,6 @@ export const ExperienceData = [
 export const projectsData = [
     {
         id: 1,
-        title: "Twitter Clone",
-        description:
-            "A Twitter Clone project featuring user authentication, tweet posting, profile management, and follow/unfollow functionality, built with Vue.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/twitter.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHdpdHRlci5qcGVnIiwiaWF0IjoxNzYyMTU0MDYzLCJleHAiOjE3OTM2OTAwNjN9.Fo96iGPTCPP4N_iFWQp86QtLE01uxRK31dyfylTE_Do",
-        links: "https://github.com/Sopheaktraleng/twitter-clone",
-        technologies: [
-            "Vue.js",
-            "TailwindCSS",
-            "Express.js",
-            "MongoDB",
-            "Docker",
-        ],
-        demo: "https://twitter.com/",
-    },
-    {
-        id: 2,
-        title: "Money Tracking Bot",
-        description:
-            "A Telegram bot for tracking money transactions, built with Node.js, MongoDB, and Telegraf. It allows users to manage their finances by adding, deleting, and viewing transactions.",
-        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/telegrambot.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdGVsZWdyYW1ib3QucG5nIiwiaWF0IjoxNzYyMTUzMzQyLCJleHAiOjE3OTM2ODkzNDJ9.46_RidlS0hFSZGEahZTagG3vqXFUPq0hqCSpOs2aVGk",
-        links: "https://github.com/Sopheaktraleng/money-tracking-bot",
-        technologies: ["Node.js", "MongoDB", "Telegraf", "Telegram Bot API"],
-        demo: "https://t.me/broke_bill_bot",
-    },
-    {
-        id: 3,
-        title: "Movie Website",
-        description:
-            "A movie website project featuring a responsive design, movie search functionality, and user authentication, built with React.js, TailwindCSS, Express.js, MongoDB, and Docker Compose.",
-        image: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/movie.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvbW92aWUucG5nIiwiaWF0IjoxNzYyMTUzMzE1LCJleHAiOjE3OTM2ODkzMTV9.LOvGHf-uMgJK5Oa1x_hZZRiL8ZIG14I4E5NHFULXdi8",
-        links: "https://github.com/Sopheaktraleng/movie-app",
-        technologies: ["React Js", "Tailwind", "React Hook"],
-        demo: "https://Sopheaktraleng.github.io/movie-app",
-    },
-    {
-        id: 4,
         title: "Stock Management System",
         description:
             "A stock management system project featuring product management, order tracking, and inventory control, built with Laravel, Bootstrap, Filament, MySQL.",
