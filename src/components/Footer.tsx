@@ -87,19 +87,19 @@ export const Footer = () => {
                         aria-label="Footer navigation"
                         className="flex items-center gap-2 text-[12px] text-slate-600 dark:text-white/70"
                     >
-                        <FooterLink href="#projects">
+                        <FooterLink href="/projects">
                             <span className="px-2 py-1 rounded-md hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors">
                                 Projects
                             </span>
                         </FooterLink>
                         <Dot />
-                        <FooterLink href="#experience">
+                        <FooterLink href="/experience">
                             <span className="px-2 py-1 rounded-md hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors">
                                 Experience
                             </span>
                         </FooterLink>
                         <Dot />
-                        <FooterLink href="#contact">
+                        <FooterLink href="/contact">
                             <span className="px-2 py-1 rounded-md hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors">
                                 Contact
                             </span>

@@ -8,18 +8,19 @@ import React, { useState, useCallback, useEffect, useMemo } from "react";
 import DarkModeSelector from "@/components/DarkModeSelector";
 
 const navLinks = [
-    { href: "/#home", label: "Home" },
-    { href: "/#skills", label: "Skills" },
-    { href: "/#education", label: "Education" },
-    { href: "/#experience", label: "Experience" },
-    { href: "/#projects", label: "Projects" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/home", label: "Home" },
+    { href: "/skills", label: "Skills" },
+    { href: "/education", label: "Education" },
+    { href: "/experience", label: "Experience" },
+    { href: "/projects", label: "Projects" },
+    { href: "/contact", label: "Contact" },
 ] as const;
 
 const cx = (...c: Array<string | false | null | undefined>) =>
     c.filter(Boolean).join(" ");
 const isHashLink = (href: string) => href.startsWith("/#");
 const getId = (href: string) => href.slice(2);
+const isHomePath = (pathname: string) => pathname === "/" || pathname === "/home";
 
 const onMobileLinkClick =
     (href: string, close: () => void) =>
@@ -93,15 +94,11 @@ function NavLink({
     const pathname = usePathname();
 
     const isActive = useMemo(() => {
-        if (href === "/") {
-            const spyActive = currentHash && currentHash !== "#home";
-            const hasUrlSection = urlHash && urlHash !== "#home";
-            return pathname === "/" && !spyActive && !hasUrlSection;
-        }
+        if (href === "/" || href === "/home") return isHomePath(pathname);
         if (isHashLink(href)) {
             const target = `#${getId(href)}`;
-            const h = pathname === "/" ? urlHash || currentHash : undefined;
-            return pathname === "/" && h === target;
+            const h = isHomePath(pathname) ? urlHash || currentHash : undefined;
+            return isHomePath(pathname) && h === target;
         }
         return pathname === href || (href !== "/" && pathname.startsWith(href));
     }, [pathname, urlHash, href, currentHash]);
@@ -281,27 +278,18 @@ export default function Navbar() {
                             >
                                 {navLinks.map((l) => {
                                     const isActive = (() => {
-                                        if (l.href === "/#home") {
-                                            const spyActive =
-                                                spy && spy !== "#home";
-                                            const hasUrlSection =
-                                                urlHash && urlHash !== "#home";
-                                            return (
-                                                pathname === "/" &&
-                                                !spyActive &&
-                                                !hasUrlSection
-                                            );
-                                        }
+                                        if (l.href === "/home")
+                                            return isHomePath(pathname);
                                         if (l.href.startsWith("/#")) {
                                             const target = `#${l.href.slice(
                                                 2
                                             )}`;
-                                            const h =
-                                                pathname === "/"
-                                                    ? urlHash || spy
-                                                    : undefined;
+                                            const h = isHomePath(pathname)
+                                                ? urlHash || spy
+                                                : undefined;
                                             return (
-                                                pathname === "/" && h === target
+                                                isHomePath(pathname) &&
+                                                h === target
                                             );
                                         }
                                         return (

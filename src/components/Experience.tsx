@@ -12,17 +12,19 @@ import ExperienceCard from "./Card/ExperienceCard";
 const Experience = () => {
     return (
         <section className="py-16">
-            <div className="max-w-6xl mx-auto px-6"></div>
-            <h2 className="text-4xl font-bold mb-3 tracking-tight">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                    Experience
-                </span>
-            </h2>
-            <p className="text-lg text-muted-foreground w-96 md:w-auto mx-auto text-center">
-                Building digital solutions and continuously learning through
-                practical experience and academic excellence.
-            </p>
-            <div className="w-full md:mt-8 flex flex-col items-center justify-center gap-3">
+            <div className="mx-auto max-w-6xl px-6 text-center">
+                <h2 className="text-4xl font-bold mb-3 tracking-tight">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                        Experience
+                    </span>
+                </h2>
+                <p className="text-lg text-muted-foreground mx-auto max-w-3xl">
+                    Building digital solutions and continuously learning through
+                    practical experience and academic excellence.
+                </p>
+            </div>
+
+            <div className="mt-8 w-full flex flex-col items-center justify-center gap-3">
                 <Timeline>
                     {ExperienceData.map((exp, index) => (
                         <TimelineItem
