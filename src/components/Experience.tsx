@@ -1,27 +1,31 @@
 import { ExperienceData } from "@/data/constants";
 import {
     Timeline,
-    TimelineConnector,
     TimelineContent,
-    TimelineDot,
     TimelineItem,
     TimelineSeparator,
 } from "@mui/lab";
 import ExperienceCard from "./Card/ExperienceCard";
+import Reveal from "@/components/Reveal";
+import AnimatedMarker from "@/components/AnimatedMarker";
 
 const Experience = () => {
     return (
         <section className="py-16">
             <div className="mx-auto max-w-6xl px-6 text-center">
-                <h2 className="text-4xl font-bold mb-3 tracking-tight">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                        Experience
-                    </span>
-                </h2>
-                <p className="text-lg text-muted-foreground mx-auto max-w-3xl">
-                    Building digital solutions and continuously learning through
-                    practical experience and academic excellence.
-                </p>
+                <Reveal>
+                    <h2 className="text-4xl font-bold mb-3 tracking-tight">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                            Experience
+                        </span>
+                    </h2>
+                </Reveal>
+                <Reveal delay={0.08}>
+                    <p className="text-lg text-muted-foreground mx-auto max-w-3xl">
+                        Building digital solutions and continuously learning
+                        through practical experience and academic excellence.
+                    </p>
+                </Reveal>
             </div>
 
             <div className="mt-8 w-full flex flex-col items-center justify-center gap-3">
@@ -29,7 +33,7 @@ const Experience = () => {
                     {ExperienceData.map((exp, index) => (
                         <TimelineItem
                             key={index}
-                            className="flex flex-col scale-90 md:scale-110 mb-[-30px] md:mb-8 ml-4 md:ml-0"
+                            className="relative flex flex-col scale-90 md:scale-110 mb-[-30px] md:mb-8 ml-4 md:ml-0"
                         >
                             <TimelineContent
                                 sx={{
@@ -38,21 +42,14 @@ const Experience = () => {
                                 }}
                             >
                                 {index % 2 === 0 && (
-                                    <ExperienceCard exp={exp} />
+                                    <Reveal delay={index * 0.06}>
+                                        <ExperienceCard exp={exp} />
+                                    </Reveal>
                                 )}
                             </TimelineContent>
 
-                            <TimelineSeparator className="absolute md:left-1/2 transform -translate-x-1/2 h-full md:p-1">
-                                <TimelineDot
-                                    variant="outlined"
-                                    color="secondary"
-                                />
-                                {index !== ExperienceData.length && (
-                                    <TimelineConnector
-                                        className="h-full"
-                                        style={{ background: "#854CE6" }}
-                                    />
-                                )}
+                            <TimelineSeparator className="absolute md:left-1/2 md:-translate-x-1/2 h-full md:p-1">
+                                <AnimatedMarker delay={index * 0.06 + 0.1} />
                             </TimelineSeparator>
 
                             <TimelineContent
@@ -68,7 +65,9 @@ const Experience = () => {
                                 }}
                             >
                                 {index % 2 !== 0 && (
-                                    <ExperienceCard exp={exp} />
+                                    <Reveal delay={index * 0.06}>
+                                        <ExperienceCard exp={exp} />
+                                    </Reveal>
                                 )}
                             </TimelineContent>
                         </TimelineItem>

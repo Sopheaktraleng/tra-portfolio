@@ -8,6 +8,7 @@ import {
     MessageSquare,
     Loader2,
 } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const MAX_SUBJECT = 120;
 const MAX_MESSAGE = 2000;
@@ -96,148 +97,164 @@ const Contact = () => {
         <section className="py-10 flex justify-center items-center">
             <div className="w-full max-w-2xl px-4">
                 <div className="text-center mb-6">
-                    <h2 className="text-4xl font-bold mb-3 tracking-tight">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                            Contact
-                        </span>
-                    </h2>
-                    <p className="text-sm md:text-base mt-1 text-slate-700 dark:text-white/80">
-                        Have a question or opportunity? Let’s connect.
-                    </p>
+                    <Reveal>
+                        <h2 className="text-4xl font-bold mb-3 tracking-tight">
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                                Contact
+                            </span>
+                        </h2>
+                    </Reveal>
+                    <Reveal delay={0.08}>
+                        <p className="text-sm md:text-base mt-1 text-slate-700 dark:text-white/80">
+                            Have a question or opportunity? Let’s connect.
+                        </p>
+                    </Reveal>
                 </div>
 
-                <form
-                    onSubmit={handleSubmit}
-                    noValidate
-                    className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur p-5 md:p-6 shadow-sm"
-                >
-                    {status.startsWith("⚠️") && !isValid && (
-                        <div
-                            ref={topErrorRef}
-                            tabIndex={-1}
-                            className="mb-3 rounded-md border border-rose-200/60 dark:border-rose-400/20 bg-rose-50/70 dark:bg-rose-900/20 p-2.5 text-xs text-rose-700 dark:text-rose-300"
-                            aria-live="assertive"
-                        >
-                            <ul className="list-disc ml-4">
-                                {errors.email && (
-                                    <li>Email — {errors.email}</li>
-                                )}
-                                {errors.subject && (
-                                    <li>Subject — {errors.subject}</li>
-                                )}
-                                {errors.message && (
-                                    <li>Message — {errors.message}</li>
-                                )}
-                            </ul>
-                        </div>
-                    )}
-
-                    <input
-                        type="text"
-                        name="company"
-                        className="hidden"
-                        value={company}
-                        onChange={(e) => setCompany(e.target.value)}
-                        aria-hidden="true"
-                        tabIndex={-1}
-                    />
-
-                    <Field
-                        id="email"
-                        label={
-                            <>
-                                Email <span className="text-rose-600">*</span>
-                            </>
-                        }
-                        error={touched.email ? errors.email : undefined}
+                <Reveal delay={0.12}>
+                    <form
+                        onSubmit={handleSubmit}
+                        noValidate
+                        className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur p-5 md:p-6 shadow-sm"
                     >
-                        <IconInput
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(v) => setEmail(v)}
-                            placeholder="you@example.com"
-                            icon={<Mail className="w-4 h-4" aria-hidden />}
-                            onBlur={() => setTouchedField("email")}
-                        />
-                    </Field>
-
-                    <div className="mt-4">
-                        <Field
-                            id="subject"
-                            label="Subject"
-                            error={touched.subject ? errors.subject : undefined}
-                        >
-                            <IconInput
-                                id="subject"
-                                type="text"
-                                value={subject}
-                                onChange={(v) => setSubject(v)}
-                                placeholder="How can I help?"
-                                maxLength={MAX_SUBJECT}
-                                icon={
-                                    <TypeIcon className="w-4 h-4" aria-hidden />
-                                }
-                                onBlur={() => setTouchedField("subject")}
-                            />
-                            <div className="mt-1 flex justify-between text-[11px] text-slate-500 dark:text-white/50">
-                                <span>Keep it short & clear.</span>
-                                <span className="text-slate-400 dark:text-white/40">
-                                    {subject.length}/{MAX_SUBJECT}
-                                </span>
+                        {status.startsWith("⚠️") && !isValid && (
+                            <div
+                                ref={topErrorRef}
+                                tabIndex={-1}
+                                className="mb-3 rounded-md border border-rose-200/60 dark:border-rose-400/20 bg-rose-50/70 dark:bg-rose-900/20 p-2.5 text-xs text-rose-700 dark:text-rose-300"
+                                aria-live="assertive"
+                            >
+                                <ul className="list-disc ml-4">
+                                    {errors.email && (
+                                        <li>Email — {errors.email}</li>
+                                    )}
+                                    {errors.subject && (
+                                        <li>Subject — {errors.subject}</li>
+                                    )}
+                                    {errors.message && (
+                                        <li>Message — {errors.message}</li>
+                                    )}
+                                </ul>
                             </div>
-                        </Field>
-                    </div>
+                        )}
 
-                    <div className="mt-4">
+                        <input
+                            type="text"
+                            name="company"
+                            className="hidden"
+                            value={company}
+                            onChange={(e) => setCompany(e.target.value)}
+                            aria-hidden="true"
+                            tabIndex={-1}
+                        />
+
                         <Field
-                            id="message"
+                            id="email"
                             label={
                                 <>
-                                    Message{" "}
+                                    Email{" "}
                                     <span className="text-rose-600">*</span>
                                 </>
                             }
-                            error={touched.message ? errors.message : undefined}
+                            error={touched.email ? errors.email : undefined}
                         >
-                            <IconTextarea
-                                id="message"
-                                value={message}
-                                onChange={(v) => setMessage(v)}
-                                placeholder="Write your message…"
-                                rows={5}
-                                maxLength={MAX_MESSAGE}
-                                icon={
-                                    <MessageSquare
-                                        className="w-4 h-4"
-                                        aria-hidden
-                                    />
-                                }
-                                onBlur={() => setTouchedField("message")}
+                            <IconInput
+                                id="email"
+                                type="email"
+                                value={email}
+                                onChange={(v) => setEmail(v)}
+                                placeholder="you@example.com"
+                                icon={<Mail className="w-4 h-4" aria-hidden />}
+                                onBlur={() => setTouchedField("email")}
                             />
-                            <div className="mt-1 flex justify-between text-[11px] text-slate-500 dark:text-white/50">
-                                <span>Include links or context if needed.</span>
-                                <span className="text-slate-400 dark:text-white/40">
-                                    {message.length}/{MAX_MESSAGE}
-                                </span>
-                            </div>
                         </Field>
-                    </div>
 
-                    <button
-                        id="contact-submit"
-                        type="submit"
-                        disabled={!isValid || loading}
-                        className="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 shadow-sm transition disabled:opacity-60 disabled:cursor-not-allowed"
-                    >
-                        {loading ? (
-                            <Loader2 className="w-4 h-4 animate-spin" />
-                        ) : (
-                            <Send className="w-4 h-4" />
-                        )}
-                        {loading ? "Sending..." : "Send Message"}
-                    </button>
-                </form>
+                        <div className="mt-4">
+                            <Field
+                                id="subject"
+                                label="Subject"
+                                error={
+                                    touched.subject ? errors.subject : undefined
+                                }
+                            >
+                                <IconInput
+                                    id="subject"
+                                    type="text"
+                                    value={subject}
+                                    onChange={(v) => setSubject(v)}
+                                    placeholder="How can I help?"
+                                    maxLength={MAX_SUBJECT}
+                                    icon={
+                                        <TypeIcon
+                                            className="w-4 h-4"
+                                            aria-hidden
+                                        />
+                                    }
+                                    onBlur={() => setTouchedField("subject")}
+                                />
+                                <div className="mt-1 flex justify-between text-[11px] text-slate-500 dark:text-white/50">
+                                    <span>Keep it short & clear.</span>
+                                    <span className="text-slate-400 dark:text-white/40">
+                                        {subject.length}/{MAX_SUBJECT}
+                                    </span>
+                                </div>
+                            </Field>
+                        </div>
+
+                        <div className="mt-4">
+                            <Field
+                                id="message"
+                                label={
+                                    <>
+                                        Message{" "}
+                                        <span className="text-rose-600">*</span>
+                                    </>
+                                }
+                                error={
+                                    touched.message ? errors.message : undefined
+                                }
+                            >
+                                <IconTextarea
+                                    id="message"
+                                    value={message}
+                                    onChange={(v) => setMessage(v)}
+                                    placeholder="Write your message…"
+                                    rows={5}
+                                    maxLength={MAX_MESSAGE}
+                                    icon={
+                                        <MessageSquare
+                                            className="w-4 h-4"
+                                            aria-hidden
+                                        />
+                                    }
+                                    onBlur={() => setTouchedField("message")}
+                                />
+                                <div className="mt-1 flex justify-between text-[11px] text-slate-500 dark:text-white/50">
+                                    <span>
+                                        Include links or context if needed.
+                                    </span>
+                                    <span className="text-slate-400 dark:text-white/40">
+                                        {message.length}/{MAX_MESSAGE}
+                                    </span>
+                                </div>
+                            </Field>
+                        </div>
+
+                        <button
+                            id="contact-submit"
+                            type="submit"
+                            disabled={!isValid || loading}
+                            className="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 shadow-sm transition disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                            {loading ? (
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                            ) : (
+                                <Send className="w-4 h-4" />
+                            )}
+                            {loading ? "Sending..." : "Send Message"}
+                        </button>
+                    </form>
+                </Reveal>
 
                 {status && (
                     <p

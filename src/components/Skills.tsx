@@ -1,20 +1,26 @@
 import { SkillsData } from "@/data/constants";
 import Image from "next/image";
+import Reveal from "@/components/Reveal";
 
 const Skills = () => {
     return (
         <section className="md:py-16 flex flex-col items-center justify-center">
             {/* Header */}
             <div className="text-center max-w-3xl px-4">
-                <h2 className="text-4xl font-bold mb-3 tracking-tight">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
-                        Technique Skills
-                    </span>
-                </h2>
-                <p className="text-lg text-slate-700 dark:text-white/80">
-                    A comprehensive overview of my technical expertise and
-                    proficiency across different areas of software development.
-                </p>
+                <Reveal>
+                    <h2 className="text-4xl font-bold mb-3 tracking-tight">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                            Technique Skills
+                        </span>
+                    </h2>
+                </Reveal>
+                <Reveal delay={0.08}>
+                    <p className="text-lg text-slate-700 dark:text-white/80">
+                        A comprehensive overview of my technical expertise and
+                        proficiency across different areas of software
+                        development.
+                    </p>
+                </Reveal>
             </div>
 
             {/* Grid */}
@@ -28,10 +34,14 @@ const Skills = () => {
           md:grid-cols-2
         "
             >
-                {SkillsData.map((category) => (
-                    <div
+                {SkillsData.map((category, index) => (
+                    <Reveal
                         key={category.title}
-                        className="
+                        delay={index * 0.06}
+                        className="h-full"
+                    >
+                        <div
+                            className="
               group
               rounded-2xl
               border border-black/10 dark:border-white/10
@@ -43,7 +53,7 @@ const Skills = () => {
               hover:-translate-y-0.5
               p-5
             "
-                    >
+                        >
                         {/* Card header */}
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-xl font-semibold text-slate-900 dark:text-white tracking-tight">
@@ -85,6 +95,10 @@ const Skills = () => {
                                             alt={skill.name}
                                             width={20}
                                             height={20}
+                                            unoptimized={
+                                                typeof skill.image === "string" &&
+                                                /^https?:\/\//i.test(skill.image)
+                                            }
                                             className="h-5 w-5 rounded-sm object-contain"
                                         />
                                     ) : (
@@ -96,7 +110,8 @@ const Skills = () => {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                        </div>
+                    </Reveal>
                 ))}
             </div>
         </section>

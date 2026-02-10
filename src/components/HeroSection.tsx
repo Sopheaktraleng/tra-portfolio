@@ -85,12 +85,10 @@ const HeroSection = () => {
                         <div className="relative w-full max-w-md mx-auto">
                             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
                                 <Image
-                                    src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/traaqq.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHJhYXFxLmpwZyIsImlhdCI6MTc2MjE1Mzg0NywiZXhwIjoxNzkzNjg5ODQ3fQ.l735glU8a020rkqK6dQeU7jBynCL9nIYJQpw7MnnxDo"
+                                    src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/IMG_8678.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvSU1HXzg2NzguanBnIiwiaWF0IjoxNzcwNzExNTY1LCJleHAiOjE4MDIyNDc1NjV9.NrmNpnu6oqnnqD6zw873h3sEvGtiBkmy0f6i-E7lQ88"
                                     alt="Profile"
                                     width={500}
                                     height={500}
-                                    placeholder="blur"
-                                    blurDataURL="/path/to/small-image.jpg"
                                     className="w-[320px] h-[320px] md:w-full md:h-full object-cover rounded-3xl"
                                 />
                                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
