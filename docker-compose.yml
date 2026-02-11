@@ -1,29 +1,8 @@
 services:
     portfolio:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        image: tra-portfolio:latest
+        build: .
         ports:
             - "3000:3000"
-        environment:
-            NODE_ENV: production
-            PORT: 3000
-            RESEND_API_KEY: ${RESEND_API_KEY}
         env_file:
             - .env
         restart: unless-stopped
-        # deploy:
-        #     mode: replicated
-        #     replicas: 3
-        #     resources:
-        #         limits:
-        #             cpus: "0.5"
-        #             memory: "500M"
-        #         reservations:
-        #             cpus: "0.25"
-        #             memory: "200M"
-        #     update_config:
-        #         order: start-first
-        #     rollback_config:
-        #         order: start-first
