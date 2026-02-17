@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Script from "next/script";
@@ -10,13 +10,14 @@ const Navbar = dynamic(() => import("@/components/Navbar"), {
     loading: () => <div aria-hidden className="h-14 w-full" />,
 });
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+    variable: "--font-sans",
     subsets: ["latin"],
     display: "swap",
+    weight: ["400", "500", "600", "700"],
 });
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
+const jetBrainsMono = JetBrains_Mono({
+    variable: "--font-mono",
     subsets: ["latin"],
     display: "swap",
 });
@@ -89,7 +90,7 @@ export default function RootLayout({
             lang="en"
             dir="ltr"
             suppressHydrationWarning
-            className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
+            className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} antialiased h-full`}
         >
             <Script
                 id="umami"

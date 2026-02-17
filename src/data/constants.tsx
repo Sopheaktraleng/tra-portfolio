@@ -162,7 +162,7 @@ export const EducationData = [
         id: 0,
         img: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/sunrise.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvc3VucmlzZS5qcGciLCJpYXQiOjE3NjIxNTI5NzUsImV4cCI6MTc5MzY4ODk3NX0.8Zq_CKYPa-rqrOcfxx22V362i8o7H0UDv02Jd7a-9C4",
         school: "Sunrise Insitute",
-        date: "September 2025 - October 2025",
+        date: "Sep 2025 - Oct 2025",
         degree: "Devops Advance",
         description:
             "I am studying DevOps Advance at Sunrise Institute, specializing in cloud technologies, CI/CD pipelines, AWS, container orchestration, GitOps, and Infrastructure as Code (IaC), with a strong focus on practical implementation and industry-relevant skills.",
@@ -183,7 +183,7 @@ export const EducationData = [
         id: 1,
         img: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/sunrise.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvc3VucmlzZS5qcGciLCJpYXQiOjE3NjIxNTM4OTMsImV4cCI6MTc5MzY4OTg5M30.K8aFiiOt5LjGZp45IDGQfpmYVr4ixq61gz_yImZO-0A",
         school: "Sunrise Insitute",
-        date: "May 2025 - July 2025",
+        date: "May 2025 - Jul 2025",
         degree: "Devops Foundation",
         description:
             "I am studying Devops Academy at Sunrise Institute, specializing in cloud technologies, CI/CD pipelines, AWS, and Docker, with a strong focus on practical implementation and industry-relevant skills.",
@@ -202,7 +202,7 @@ export const EducationData = [
         id: 2,
         img: "https://upload.wikimedia.org/wikipedia/en/a/a2/RUPP_logo.PNG",
         school: "Royal University of Pnom Penh",
-        date: "March 2019 - June 2024",
+        date: "Mar 2019 - Jun 2024",
         degree: "Computer Science",
         description:
             "I am studying Computer Science at RUPP, focusing on software development, AI, cybersecurity, and cloud computing.",
@@ -218,7 +218,7 @@ export const EducationData = [
         id: 3,
         img: "https://tfdevs.com/tfd_logo.jpeg",
         school: "TFDev",
-        date: "April 2024 - September 2024",
+        date: "Apr 2024 - Sep 2024",
         degree: "Nest Js API Development",
         description:
             "I studied backend development with NestJS, focusing on building scalable and high-performance APIs using TypeScript.",
@@ -233,7 +233,7 @@ export const EducationData = [
         id: 4,
         img: "https://tfdevs.com/tfd_logo.jpeg",
         school: "TFDev",
-        date: "February 2024 - June 2024",
+        date: "Feb 2024 - Jun 2024",
         degree: "Full Stack Web Development",
         description:
             "I completed an intensive Full-Stack Bootcamp, gaining hands-on experience in modern web development and deployment.",

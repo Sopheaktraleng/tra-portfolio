@@ -65,10 +65,10 @@ const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
                     <p className="text-sm text-slate-600 dark:text-white/80">
                         {edu.school}
                     </p>
-                    <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-white/60">
-                        <span>{edu.date}</span>
+                    <div className="mt-1 flex min-w-0 items-center gap-2 text-xs text-slate-500 dark:text-white/60">
+                        <span className="min-w-0 truncate">{edu.date}</span>
                         {hasCertificate && (
-                            <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-medium text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200">
+                            <span className="inline-flex flex-shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-medium text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200 whitespace-nowrap">
                                 <BadgeCheck className="h-3.5 w-3.5" />
                                 Certified
                             </span>

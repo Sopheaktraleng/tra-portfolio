@@ -26,8 +26,22 @@
     }
 }
 
+html {
+    font-family: var(--font-sans), "Space Grotesk", "Segoe UI", system-ui,
+        -apple-system, sans-serif;
+}
+
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: inherit;
+}
+
+
+code,
+pre,
+kbd,
+samp {
+    font-family: var(--font-mono), "JetBrains Mono", "SFMono-Regular", Menlo,
+        Monaco, Consolas, "Liberation Mono", monospace;
 }
