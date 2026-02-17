@@ -174,6 +174,10 @@ export const EducationData = [
             "Log Management and monitoring for reliable systems.",
             "Infrastructure as Code (IaC) for scalable deployments.",
         ],
+        certificate: {
+            url: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/devops-adv.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvZGV2b3BzLWFkdi5wZGYiLCJpYXQiOjE3NzEzMTQ1MTksImV4cCI6MTgwMjg1MDUxOX0.NlSAuqu2ylWWHlpwTVFOPV1I2gQazutPWgBcEv-1-Og",
+            label: "View Certificate",
+        },
     },
     {
         id: 1,
@@ -189,6 +193,10 @@ export const EducationData = [
             "AWS & Networking – Computer Networks, Cloud Computing, and DevOps practices.",
             "CI/CD Jenkins – Continuous Integration and Deployment using Jenkins.",
         ],
+        certificate: {
+            url: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/devops-fund.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvZGV2b3BzLWZ1bmQucGRmIiwiaWF0IjoxNzcxMzE0NDE2LCJleHAiOjE4MDI4NTA0MTZ9.-Rbuwj_6mii-wvfnBMgrRCML1Cg4zWL_xnFys65GYUw",
+            label: "View Certificate",
+        },
     },
     {
         id: 2,
