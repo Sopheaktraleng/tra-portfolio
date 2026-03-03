@@ -1,28 +1,54 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, ReactNode } from "react";
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import {
     Send,
     Mail,
     Type as TypeIcon,
     MessageSquare,
     Loader2,
+    CheckCircle2,
+    AlertTriangle,
+    XCircle,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const MAX_SUBJECT = 120;
 const MAX_MESSAGE = 2000;
 
+const STATUS_META = {
+    success: {
+        Icon: CheckCircle2,
+        className:
+            "border-emerald-200/80 dark:border-emerald-400/30 bg-emerald-50/80 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-200",
+        live: "polite",
+    },
+    error: {
+        Icon: XCircle,
+        className:
+            "border-rose-200/80 dark:border-rose-400/30 bg-rose-50/80 dark:bg-rose-900/20 text-rose-700 dark:text-rose-200",
+        live: "assertive",
+    },
+    warning: {
+        Icon: AlertTriangle,
+        className:
+            "border-amber-200/80 dark:border-amber-400/30 bg-amber-50/80 dark:bg-amber-900/20 text-amber-700 dark:text-amber-200",
+        live: "assertive",
+    },
+} as const;
+
+type StatusType = keyof typeof STATUS_META;
+type Status = { type: StatusType; message: string };
+
 const Contact = () => {
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
-    const [status, setStatus] = useState("");
-    const [loading, setLoading] = useState(false);
-
+    const [status, setStatus] = useState<Status | null>(null);
     const [company, setCompany] = useState("");
-
-    const [touched, setTouched] = useState<{ [k: string]: boolean }>({});
+    const [loading, setLoading] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [touched, setTouched] = useState<Record<string, boolean>>({});
     const topErrorRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -36,27 +62,41 @@ const Contact = () => {
         localStorage.setItem("contact-draft", JSON.stringify(draft));
     }, [email, subject, message]);
 
+    const emailTrim = email.trim();
+    const subjectTrim = subject.trim();
+    const messageTrim = message.trim();
+
     const errors = useMemo(() => {
         const e: Record<string, string> = {};
-        if (!email.trim()) e.email = "Email is required.";
-        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        if (!emailTrim) e.email = "Email is required.";
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTrim))
             e.email = "Enter a valid email.";
-        if (!message.trim()) e.message = "Message is required.";
-        if (subject.length > MAX_SUBJECT)
-            e.subject = `Subject ≤ ${MAX_SUBJECT} chars.`;
-        if (message.length > MAX_MESSAGE)
+        if (!messageTrim) e.message = "Message is required.";
+        else if (messageTrim.length > MAX_MESSAGE)
             e.message = `Message ≤ ${MAX_MESSAGE} chars.`;
+        if (subjectTrim.length > MAX_SUBJECT)
+            e.subject = `Subject ≤ ${MAX_SUBJECT} chars.`;
         return e;
-    }, [email, subject, message]);
+    }, [emailTrim, subjectTrim, messageTrim]);
 
     const isValid = Object.keys(errors).length === 0;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setStatus("");
+        setStatus(null);
+        setSubmitted(true);
+        setTouched((t) => ({
+            ...t,
+            email: true,
+            subject: true,
+            message: true,
+        }));
 
         if (!isValid || company) {
-            setStatus("⚠️ Please fix errors and try again.");
+            setStatus({
+                type: "warning",
+                message: "Please fix the highlighted fields and try again.",
+            });
             topErrorRef.current?.focus();
             return;
         }
@@ -66,25 +106,43 @@ const Contact = () => {
             const res = await fetch("/api/send-email", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, subject, message }),
+                body: JSON.stringify({
+                    email: emailTrim,
+                    subject: subjectTrim,
+                    message: messageTrim,
+                }),
             });
             const result = await res.json().catch(() => ({}));
 
             if (res.ok) {
-                setStatus("✅ Email sent successfully!");
+                setStatus({
+                    type: "success",
+                    message: "Thanks! Your message has been sent.",
+                });
                 setEmail("");
                 setSubject("");
                 setMessage("");
+                setTouched({});
+                setSubmitted(false);
                 localStorage.removeItem("contact-draft");
             } else {
-                setStatus(`❌ Failed: ${result?.error ?? res.statusText}`);
+                setStatus({
+                    type: "error",
+                    message:
+                        result?.error ??
+                        (res.statusText
+                            ? `Failed to send: ${res.statusText}`
+                            : "Failed to send. Please try again."),
+                });
             }
         } catch (err) {
-            setStatus(
-                err instanceof Error
-                    ? `⚠️ Error: ${err.message}`
-                    : "⚠️ Unknown error"
-            );
+            setStatus({
+                type: "error",
+                message:
+                    err instanceof Error
+                        ? err.message
+                        : "Something went wrong. Please try again.",
+            });
         } finally {
             setLoading(false);
         }
@@ -93,10 +151,21 @@ const Contact = () => {
     const setTouchedField = (k: string) =>
         setTouched((t) => ({ ...t, [k]: true }));
 
+    const emailError = touched.email || submitted ? errors.email : undefined;
+    const subjectError = touched.subject || submitted ? errors.subject : undefined;
+    const messageError = touched.message || submitted ? errors.message : undefined;
+    const emailErrorId = emailError ? "email-error" : undefined;
+    const subjectErrorId = subjectError ? "subject-error" : undefined;
+    const messageErrorId = messageError ? "message-error" : undefined;
+
+    const statusMeta = status ? STATUS_META[status.type] : null;
+    const StatusIcon = statusMeta?.Icon;
+    const showSubmitErrors = submitted && !isValid;
+
     return (
         <section className="py-10 flex justify-center items-center">
-            <div className="w-full max-w-2xl px-4">
-                <div className="text-center mb-6">
+            <div className="w-full max-w-3xl px-4">
+                <div className="text-center mb-7 md:mb-8">
                     <Reveal>
                         <h2 className="text-4xl font-bold mb-3 tracking-tight">
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
@@ -115,15 +184,29 @@ const Contact = () => {
                     <form
                         onSubmit={handleSubmit}
                         noValidate
-                        className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur p-5 md:p-6 shadow-sm"
+                        className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur p-5 md:p-6 text-left shadow-sm"
                     >
-                        {status.startsWith("⚠️") && !isValid && (
+                        <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-white/50">
+                            <span>Fields marked with * are required.</span>
+                            <span className="inline-flex items-center gap-1">
+                                <MessageSquare
+                                    className="h-3 w-3"
+                                    aria-hidden
+                                />
+                                Share as much context as you can.
+                            </span>
+                        </div>
+
+                        {showSubmitErrors && (
                             <div
                                 ref={topErrorRef}
                                 tabIndex={-1}
-                                className="mb-3 rounded-md border border-rose-200/60 dark:border-rose-400/20 bg-rose-50/70 dark:bg-rose-900/20 p-2.5 text-xs text-rose-700 dark:text-rose-300"
-                                aria-live="assertive"
+                                role="alert"
+                                className="mt-4 rounded-lg border border-rose-200/70 dark:border-rose-400/20 bg-rose-50/80 dark:bg-rose-900/20 p-3 text-xs text-rose-700 dark:text-rose-200"
                             >
+                                <p className="font-semibold mb-1">
+                                    Please fix the following:
+                                </p>
                                 <ul className="list-disc ml-4">
                                     {errors.email && (
                                         <li>Email — {errors.email}</li>
@@ -148,34 +231,36 @@ const Contact = () => {
                             tabIndex={-1}
                         />
 
-                        <Field
-                            id="email"
-                            label={
-                                <>
-                                    Email{" "}
-                                    <span className="text-rose-600">*</span>
-                                </>
-                            }
-                            error={touched.email ? errors.email : undefined}
-                        >
-                            <IconInput
+                        <div className="mt-4 grid gap-4">
+                            <Field
                                 id="email"
-                                type="email"
-                                value={email}
-                                onChange={(v) => setEmail(v)}
-                                placeholder="you@example.com"
-                                icon={<Mail className="w-4 h-4" aria-hidden />}
-                                onBlur={() => setTouchedField("email")}
-                            />
-                        </Field>
+                                label={
+                                    <>
+                                        Email{" "}
+                                        <span className="text-rose-600">*</span>
+                                    </>
+                                }
+                                error={emailError}
+                                errorId={emailErrorId}
+                            >
+                                <IconInput
+                                    id="email"
+                                    type="email"
+                                    value={email}
+                                    onChange={(v) => setEmail(v)}
+                                    placeholder="you@example.com"
+                                    icon={<Mail className="w-4 h-4" aria-hidden />}
+                                    onBlur={() => setTouchedField("email")}
+                                    ariaDescribedBy={emailErrorId}
+                                    invalid={Boolean(emailError)}
+                                />
+                            </Field>
 
-                        <div className="mt-4">
                             <Field
                                 id="subject"
                                 label="Subject"
-                                error={
-                                    touched.subject ? errors.subject : undefined
-                                }
+                                error={subjectError}
+                                errorId={subjectErrorId}
                             >
                                 <IconInput
                                     id="subject"
@@ -191,6 +276,8 @@ const Contact = () => {
                                         />
                                     }
                                     onBlur={() => setTouchedField("subject")}
+                                    ariaDescribedBy={subjectErrorId}
+                                    invalid={Boolean(subjectError)}
                                 />
                                 <div className="mt-1 flex justify-between text-[11px] text-slate-500 dark:text-white/50">
                                     <span>Keep it short & clear.</span>
@@ -210,9 +297,8 @@ const Contact = () => {
                                         <span className="text-rose-600">*</span>
                                     </>
                                 }
-                                error={
-                                    touched.message ? errors.message : undefined
-                                }
+                                error={messageError}
+                                errorId={messageErrorId}
                             >
                                 <IconTextarea
                                     id="message"
@@ -228,6 +314,8 @@ const Contact = () => {
                                         />
                                     }
                                     onBlur={() => setTouchedField("message")}
+                                    ariaDescribedBy={messageErrorId}
+                                    invalid={Boolean(messageError)}
                                 />
                                 <div className="mt-1 flex justify-between text-[11px] text-slate-500 dark:text-white/50">
                                     <span>
@@ -243,7 +331,7 @@ const Contact = () => {
                         <button
                             id="contact-submit"
                             type="submit"
-                            disabled={!isValid || loading}
+                            disabled={loading}
                             className="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 shadow-sm transition disabled:opacity-60 disabled:cursor-not-allowed"
                         >
                             {loading ? (
@@ -253,43 +341,40 @@ const Contact = () => {
                             )}
                             {loading ? "Sending..." : "Send Message"}
                         </button>
+
+                        {status && statusMeta && StatusIcon && (
+                            <div
+                                className={`mt-4 flex items-start gap-2 rounded-lg border px-3 py-2 text-xs ${statusMeta.className}`}
+                                aria-live={statusMeta.live}
+                                role={
+                                    status.type === "success" ? "status" : "alert"
+                                }
+                            >
+                                <StatusIcon
+                                    className="mt-0.5 h-4 w-4"
+                                    aria-hidden
+                                />
+                                <span>{status.message}</span>
+                            </div>
+                        )}
                     </form>
                 </Reveal>
-
-                {status && (
-                    <p
-                        className={`
-              mt-3 text-center text-xs font-medium
-              ${
-                  status.startsWith("✅")
-                      ? "text-emerald-600 dark:text-emerald-400"
-                      : ""
-              }
-              ${
-                  status.startsWith("❌") || status.startsWith("⚠️")
-                      ? "text-rose-600 dark:text-rose-400"
-                      : ""
-              }
-            `}
-                        aria-live="polite"
-                    >
-                        {status}
-                    </p>
-                )}
             </div>
         </section>
     );
 };
 
 export default Contact;
+
 interface FieldProps {
     id: string;
     label: ReactNode;
     error?: string;
+    errorId?: string;
     children: ReactNode;
 }
 
-function Field({ id, label, error, children }: FieldProps) {
+function Field({ id, label, error, errorId, children }: FieldProps) {
     return (
         <div>
             <label htmlFor={id} className="block text-sm font-medium mb-1.5">
@@ -297,7 +382,10 @@ function Field({ id, label, error, children }: FieldProps) {
             </label>
             {children}
             {error && (
-                <p className="mt-1 text-[11px] text-rose-600 dark:text-rose-400">
+                <p
+                    id={errorId}
+                    className="mt-1 text-[11px] text-rose-600 dark:text-rose-400"
+                >
                     {error}
                 </p>
             )}
@@ -314,6 +402,8 @@ interface IconInputProps {
     maxLength?: number;
     icon: ReactNode;
     onBlur?: () => void;
+    ariaDescribedBy?: string;
+    invalid?: boolean;
 }
 
 function IconInput({
@@ -325,6 +415,8 @@ function IconInput({
     maxLength,
     icon,
     onBlur,
+    ariaDescribedBy,
+    invalid,
 }: IconInputProps) {
     return (
         <div className="relative">
@@ -340,7 +432,10 @@ function IconInput({
                 onBlur={onBlur}
                 placeholder={placeholder}
                 maxLength={maxLength}
-                className="w-full rounded-md pl-8 border border-slate-300 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/50 text-sm px-2 py-2 outline-none transition focus:border-slate-400 dark:focus:border-slate-400 focus:ring-1 focus:ring-slate-200 dark:focus:ring-white/10"
+                aria-invalid={invalid}
+                aria-describedby={ariaDescribedBy}
+                data-invalid={invalid ? "true" : "false"}
+                className="w-full rounded-md pl-8 border border-slate-300/70 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/50 text-sm px-2 py-2 outline-none transition focus:border-violet-400/70 dark:focus:border-fuchsia-400/70 focus:ring-2 focus:ring-violet-200/60 dark:focus:ring-fuchsia-400/20 data-[invalid=true]:border-rose-300 data-[invalid=true]:focus:border-rose-400 data-[invalid=true]:focus:ring-rose-200/60"
             />
         </div>
     );
@@ -355,6 +450,8 @@ interface IconTextareaProps {
     maxLength?: number;
     icon: ReactNode;
     onBlur?: () => void;
+    ariaDescribedBy?: string;
+    invalid?: boolean;
 }
 
 function IconTextarea({
@@ -366,6 +463,8 @@ function IconTextarea({
     maxLength,
     icon,
     onBlur,
+    ariaDescribedBy,
+    invalid,
 }: IconTextareaProps) {
     return (
         <div className="relative">
@@ -381,7 +480,10 @@ function IconTextarea({
                 placeholder={placeholder}
                 rows={rows}
                 maxLength={maxLength}
-                className="w-full rounded-md pl-8 border border-slate-300 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/50 text-sm px-2 py-2 outline-none resize-y transition focus:border-slate-400 dark:focus:border-slate-400 focus:ring-1 focus:ring-slate-200 dark:focus:ring-white/10"
+                aria-invalid={invalid}
+                aria-describedby={ariaDescribedBy}
+                data-invalid={invalid ? "true" : "false"}
+                className="w-full rounded-md pl-8 border border-slate-300/70 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/50 text-sm px-2 py-2 outline-none resize-y transition focus:border-violet-400/70 dark:focus:border-fuchsia-400/70 focus:ring-2 focus:ring-violet-200/60 dark:focus:ring-fuchsia-400/20 data-[invalid=true]:border-rose-300 data-[invalid=true]:focus:border-rose-400 data-[invalid=true]:focus:ring-rose-200/60"
             />
         </div>
     );
