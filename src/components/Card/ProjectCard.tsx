@@ -16,8 +16,8 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
     return (
         <div className="flex justify-center items-center">
-            <div className="group relative w-[350px] md:w-full max-w-[520px] h-[460px] rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md shadow-md dark:shadow-xl transition hover:shadow-lg dark:hover:shadow-2xl">
-                <div className="h-full w-full rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md shadow-md dark:shadow-xl flex flex-col overflow-hidden">
+            <div className="group relative w-[350px] md:w-full max-w-[520px] h-[460px] glass-card dark:shadow-xl glass-card-hover-strong">
+                <div className="h-full w-full glass-card dark:shadow-xl flex flex-col overflow-hidden">
                     <div className="relative h-[240px] w-full overflow-hidden">
                         {pro.image ? (
                             <Image
@@ -45,14 +45,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                             {pro.description}
                         </p>
 
-                        <div className="h-px w-full bg-black/10 dark:bg-white/10" />
+                        <div className="divider" />
 
                         {/* Tech badges */}
                         <div className="flex flex-wrap gap-2 mt-auto">
                             {pro.technologies.map((tech, idx) => (
                                 <span
                                     key={idx}
-                                    className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-gradient-to-b from-white/90 to-white/70 dark:from-white/10 dark:to-white/5 text-slate-800 dark:text-white/90 border border-black/10 dark:border-white/10 shadow-sm"
+                                    className="tech-badge"
                                 >
                                     {tech}
                                 </span>
@@ -64,7 +64,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                                 href={pro.links}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-lg px-3 py-2 border border-black/10 dark:border-white/15 text-slate-900 dark:text-white bg-white/70 dark:bg-white/5 hover:bg-white/90 dark:hover:bg-white/10 text-sm font-medium shadow-sm transition"
+                                className="btn-secondary"
                             >
                                 <Github className="w-4 h-4" />
                                 Code
@@ -74,7 +74,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ pro }) => {
                                 href={pro.demo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 shadow-md hover:shadow-lg transition focus:outline-none focus:ring-2 focus:ring-violet-300 dark:focus:ring-fuchsia-400/40 text-sm font-medium"
+                                className="btn-primary rounded-lg px-3 py-2 text-sm font-medium shadow-md hover:shadow-lg"
                             >
                                 <MonitorPlay className="w-4 h-4" />
                                 Live Demo

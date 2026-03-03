@@ -30,7 +30,7 @@ const HeroSection = () => {
             <div className="w-full md:max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-12">
                 <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
                     <div className="flex flex-col items-center text-center md:items-start md:text-start">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-md text-[11px] sm:text-xs font-medium text-slate-700 dark:text-white/80">
+                        <div className="glass-pill">
                             <span>👋</span>
                             <span>Welcome to my portfolio</span>
                         </div>
@@ -65,15 +65,7 @@ const HeroSection = () => {
                             }}
                             href="https://flowcv.com/resume/su0w02va2ho5"
                             target="_blank"
-                            className="
-                mt-7 md:mt-8 inline-flex items-center justify-center gap-2
-                px-6 py-3 rounded-xl font-semibold text-white
-                bg-gradient-to-r from-violet-500 to-fuchsia-500
-                hover:from-violet-600 hover:to-fuchsia-600
-                shadow-md hover:shadow-lg transition
-                focus:outline-none focus:ring-2 focus:ring-violet-300 dark:focus:ring-fuchsia-400/40
-                w-full sm:w-auto md:w-[300px]
-              "
+                            className="btn-primary mt-7 md:mt-8 px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg w-full sm:w-auto md:w-[300px]"
                         >
                             <span className="text-lg font-bold">
                                 Check Resume
@@ -102,12 +94,7 @@ const HeroSection = () => {
                                     repeatType: "loop",
                                     ease: "easeInOut",
                                 }}
-                                className="
-                  hidden sm:flex absolute -right-4 -top-4 md:-right-8 md:-top-6
-                  px-3 py-2 rounded-xl shadow-lg
-                  border border-slate-200 dark:border-white/10
-                  bg-white/60 dark:bg-white/5 backdrop-blur-md
-                "
+                                className="hidden sm:flex absolute -right-4 -top-4 md:-right-8 md:-top-6 glass-float"
                             >
                                 <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white">
                                     🚀 Open to Work
@@ -122,12 +109,7 @@ const HeroSection = () => {
                                     repeatType: "loop",
                                     ease: "easeInOut",
                                 }}
-                                className="
-                  hidden sm:flex absolute -left-4 -bottom-4 md:-left-10 md:-bottom-6
-                  px-3 py-2 rounded-xl shadow-lg
-                  border border-slate-200 dark:border-white/10
-                  bg-white/60 dark:bg-white/5 backdrop-blur-md
-                "
+                                className="hidden sm:flex absolute -left-4 -bottom-4 md:-left-10 md:-bottom-6 glass-float"
                             >
                                 <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white whitespace-nowrap">
                                     💻 Full-Stack Developer
@@ -154,7 +136,7 @@ const HeroSection = () => {
                     <span className="text-sm tracking-wide uppercase text-slate-500 dark:text-white/50">
                         Scroll to Explore
                     </span>
-                    <span className="p-3 rounded-full border border-slate-300/40 dark:border-white/20 bg-white/70 dark:bg-white/10 backdrop-blur-md shadow-md">
+                    <span className="glass-circle">
                         <ChevronDown className="w-6 h-6 text-slate-700 dark:text-white/70" />
                     </span>
                 </motion.button>

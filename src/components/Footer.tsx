@@ -126,14 +126,7 @@ function Social({
     children: React.ReactNode;
 }) {
     const external = /^https?:\/\//i.test(href);
-    const cls =
-        "inline-flex items-center justify-center size-8 rounded-xl " +
-        "border border-black/10 dark:border-white/15 " +
-        "bg-white/70 dark:bg-white/10 backdrop-blur " +
-        "shadow-sm hover:shadow-md " +
-        "transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 " +
-        "focus:outline-none focus:ring-2 focus:ring-violet-300/70 dark:focus:ring-fuchsia-400/40 " +
-        "motion-reduce:transition-none motion-reduce:hover:transform-none";
+    const cls = "social-icon-btn";
 
     return external ? (
         <a

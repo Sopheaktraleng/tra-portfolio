@@ -22,33 +22,10 @@ const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
     const certificateLabel = edu.certificate?.label ?? "View Certificate";
 
     return (
-        <div
-            className="
-        group w-96 rounded-2xl
-        border border-black/10 dark:border-white/10
-        bg-gradient-to-b from-white/90 to-white/70 dark:from-white/10 dark:to-white/5
-        backdrop-blur-md
-        shadow-md dark:shadow-lg
-        p-5
-        transition duration-300
-        hover:shadow-lg dark:hover:shadow-xl
-        hover:-translate-y-0.5
-        focus-within:ring-2
-        focus-within:ring-black/10 dark:focus-within:ring-white/20
-      "
-        >
+        <div className="group w-96 glass-card glass-card-hover bg-gradient-to-b from-white/90 to-white/70 dark:from-white/10 dark:to-white/5 p-5 focus-within:ring-2 focus-within:ring-black/10 dark:focus-within:ring-white/20">
             {/* Header */}
             <div className="flex items-center gap-4 mb-4">
-                <div
-                    className="
-            inline-flex items-center justify-center
-            h-14 w-14 rounded-xl
-            bg-white/70 dark:bg-white/10
-            border border-black/10 dark:border-white/20
-            shadow-inner overflow-hidden
-            flex-shrink-0
-          "
-                >
+                <div className="media-tile">
                     <Image
                         src={edu.img}
                         alt="Education"
@@ -83,7 +60,7 @@ const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
             </p>
 
             {/* Divider */}
-            <div className="h-px w-full mb-3 bg-black/10 dark:bg-white/10" />
+            <div className="divider mb-3" />
 
             {/* Highlights */}
             <div className="space-y-2 text-sm">

@@ -15,34 +15,10 @@ interface ExperienceCardProps {
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp }) => {
     return (
-        <div
-            className="
-        w-96
-        rounded-2xl
-        border border-black/10 dark:border-white/10
-        bg-white/60 dark:bg-white/5
-        backdrop-blur-md
-        shadow-md dark:shadow-lg
-        p-5
-        transition duration-300
-        hover:shadow-lg dark:hover:shadow-xl
-        hover:-translate-y-0.5
-        focus-within:ring-2
-        focus-within:ring-black/10 dark:focus-within:ring-white/20
-      "
-        >
+        <div className="w-96 glass-card glass-card-hover bg-white/60 dark:bg-white/5 p-5 focus-within:ring-2 focus-within:ring-black/10 dark:focus-within:ring-white/20">
             {/* Header */}
             <div className="flex items-center gap-4 mb-4">
-                <div
-                    className="
-            inline-flex items-center justify-center
-            h-14 w-14 rounded-xl
-            bg-white/70 dark:bg-white/10
-            border border-black/10 dark:border-white/20
-            shadow-inner overflow-hidden
-            flex-shrink-0
-          "
-                >
+                <div className="media-tile">
                     {exp.image ? (
                         <Image
                             src={exp.image}
@@ -73,7 +49,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp }) => {
             </p>
 
             {/* Divider */}
-            <div className="h-px w-full mb-3 bg-black/10 dark:bg-white/10" />
+            <div className="divider mb-3" />
 
             {/* Responsibilities */}
             <p className="flex items-center gap-2 text-sm font-medium mb-2 text-slate-900 dark:text-white">

@@ -2,6 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .section-title {
+        @apply text-4xl font-bold mb-3 tracking-tight;
+    }
+
+    .section-title-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500;
+    }
+
+    .section-subtitle {
+        @apply text-sm md:text-base mt-1 text-slate-700 dark:text-white/80;
+    }
+
+    .section-subtitle-lg {
+        @apply text-lg text-slate-700 dark:text-white/80;
+    }
+
+    .glass-panel {
+        @apply rounded-xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur shadow-sm;
+    }
+
+    .glass-card {
+        @apply rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md shadow-md dark:shadow-lg;
+    }
+
+    .glass-card-hover {
+        @apply transition duration-300 hover:shadow-lg dark:hover:shadow-xl hover:-translate-y-0.5;
+    }
+
+    .glass-card-hover-strong {
+        @apply transition hover:shadow-lg dark:hover:shadow-2xl;
+    }
+
+    .glass-pill {
+        @apply inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-md text-[11px] sm:text-xs font-medium text-slate-700 dark:text-white/80;
+    }
+
+    .glass-float {
+        @apply px-3 py-2 rounded-xl shadow-lg border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-md;
+    }
+
+    .glass-circle {
+        @apply p-3 rounded-full border border-slate-300/40 dark:border-white/20 bg-white/70 dark:bg-white/10 backdrop-blur-md shadow-md;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 transition focus:outline-none focus:ring-2 focus:ring-violet-300 dark:focus:ring-fuchsia-400/40;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center gap-2 rounded-lg px-3 py-2 border border-black/10 dark:border-white/15 text-slate-900 dark:text-white bg-white/70 dark:bg-white/5 hover:bg-white/90 dark:hover:bg-white/10 text-sm font-medium shadow-sm transition;
+    }
+
+    .form-input {
+        @apply w-full rounded-md pl-8 border border-slate-300/70 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/50 text-sm px-2 py-2 outline-none transition focus:border-violet-400/70 dark:focus:border-fuchsia-400/70 focus:ring-2 focus:ring-violet-200/60 dark:focus:ring-fuchsia-400/20 data-[invalid=true]:border-rose-300 data-[invalid=true]:focus:border-rose-400 data-[invalid=true]:focus:ring-rose-200/60;
+    }
+
+    .form-textarea {
+        @apply w-full rounded-md pl-8 border border-slate-300/70 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/50 text-sm px-2 py-2 outline-none resize-y transition focus:border-violet-400/70 dark:focus:border-fuchsia-400/70 focus:ring-2 focus:ring-violet-200/60 dark:focus:ring-fuchsia-400/20 data-[invalid=true]:border-rose-300 data-[invalid=true]:focus:border-rose-400 data-[invalid=true]:focus:ring-rose-200/60;
+    }
+
+    .divider {
+        @apply h-px w-full bg-black/10 dark:bg-white/10;
+    }
+
+    .tech-badge {
+        @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-gradient-to-b from-white/90 to-white/70 dark:from-white/10 dark:to-white/5 text-slate-800 dark:text-white/90 border border-black/10 dark:border-white/10 shadow-sm;
+    }
+
+    .skill-chip {
+        @apply inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/5 text-slate-800 dark:text-white/85 shadow-sm hover:border-violet-500/30 dark:hover:border-violet-400/30 hover:shadow-md transition;
+    }
+
+    .media-tile {
+        @apply inline-flex items-center justify-center h-14 w-14 rounded-xl bg-white/70 dark:bg-white/10 border border-black/10 dark:border-white/20 shadow-inner overflow-hidden flex-shrink-0;
+    }
+
+    .social-icon-btn {
+        @apply inline-flex items-center justify-center size-8 rounded-xl border border-black/10 dark:border-white/15 bg-white/70 dark:bg-white/10 backdrop-blur shadow-sm hover:shadow-md transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-violet-300/70 dark:focus:ring-fuchsia-400/40 motion-reduce:transition-none motion-reduce:hover:transform-none;
+    }
+}
+
 .light {
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;

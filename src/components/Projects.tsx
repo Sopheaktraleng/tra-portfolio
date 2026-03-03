@@ -7,8 +7,8 @@ const Projects = () => {
         <section className="py-16">
             <div className="mx-auto max-w-6xl px-6 text-center">
                 <Reveal>
-                    <h2 className="text-4xl font-bold mb-3 tracking-tight">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                    <h2 className="section-title">
+                        <span className="section-title-gradient">
                             Featured Projects
                         </span>
                     </h2>

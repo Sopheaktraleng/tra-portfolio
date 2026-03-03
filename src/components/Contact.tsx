@@ -167,25 +167,25 @@ const Contact = () => {
             <div className="w-full max-w-3xl px-4">
                 <div className="text-center mb-7 md:mb-8">
                     <Reveal>
-                        <h2 className="text-4xl font-bold mb-3 tracking-tight">
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-fuchsia-500">
+                        <h2 className="section-title">
+                            <span className="section-title-gradient">
                                 Contact
                             </span>
                         </h2>
                     </Reveal>
                     <Reveal delay={0.08}>
-                        <p className="text-sm md:text-base mt-1 text-slate-700 dark:text-white/80">
+                        <p className="section-subtitle">
                             Have a question or opportunity? Let’s connect.
                         </p>
                     </Reveal>
                 </div>
 
                 <Reveal delay={0.12}>
-                    <form
-                        onSubmit={handleSubmit}
-                        noValidate
-                        className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur p-5 md:p-6 text-left shadow-sm"
-                    >
+                        <form
+                            onSubmit={handleSubmit}
+                            noValidate
+                            className="glass-panel p-5 md:p-6 text-left"
+                        >
                         <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-white/50">
                             <span>Fields marked with * are required.</span>
                             <span className="inline-flex items-center gap-1">
@@ -332,7 +332,7 @@ const Contact = () => {
                             id="contact-submit"
                             type="submit"
                             disabled={loading}
-                            className="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 shadow-sm transition disabled:opacity-60 disabled:cursor-not-allowed"
+                            className="mt-5 w-full btn-primary rounded-md px-3 py-2 text-sm font-semibold shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
                         >
                             {loading ? (
                                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -435,7 +435,7 @@ function IconInput({
                 aria-invalid={invalid}
                 aria-describedby={ariaDescribedBy}
                 data-invalid={invalid ? "true" : "false"}
-                className="w-full rounded-md pl-8 border border-slate-300/70 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/50 text-sm px-2 py-2 outline-none transition focus:border-violet-400/70 dark:focus:border-fuchsia-400/70 focus:ring-2 focus:ring-violet-200/60 dark:focus:ring-fuchsia-400/20 data-[invalid=true]:border-rose-300 data-[invalid=true]:focus:border-rose-400 data-[invalid=true]:focus:ring-rose-200/60"
+                className="form-input"
             />
         </div>
     );
@@ -483,7 +483,7 @@ function IconTextarea({
                 aria-invalid={invalid}
                 aria-describedby={ariaDescribedBy}
                 data-invalid={invalid ? "true" : "false"}
-                className="w-full rounded-md pl-8 border border-slate-300/70 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/50 text-sm px-2 py-2 outline-none resize-y transition focus:border-violet-400/70 dark:focus:border-fuchsia-400/70 focus:ring-2 focus:ring-violet-200/60 dark:focus:ring-fuchsia-400/20 data-[invalid=true]:border-rose-300 data-[invalid=true]:focus:border-rose-400 data-[invalid=true]:focus:ring-rose-200/60"
+                className="form-textarea"
             />
         </div>
     );
