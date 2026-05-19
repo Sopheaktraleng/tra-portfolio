@@ -216,7 +216,7 @@ export const EducationData = [
     },
     {
         id: 3,
-        img: "https://tfdevs.com/tfd_logo.jpeg",
+        img: "https://tfdevs.com/_nuxt/tfd_logo.Qnfrg85Z.jpeg",
         school: "TFDev",
         date: "Apr 2024 - Sep 2024",
         degree: "Nest Js API Development",
@@ -231,7 +231,7 @@ export const EducationData = [
     },
     {
         id: 4,
-        img: "https://tfdevs.com/tfd_logo.jpeg",
+        img: "https://tfdevs.com/_nuxt/tfd_logo.Qnfrg85Z.jpeg",
         school: "TFDev",
         date: "Feb 2024 - Jun 2024",
         degree: "Full Stack Web Development",
@@ -275,21 +275,7 @@ export const ExperienceData = [
             "Technology Stack – Worked with React, Node.js, Express, Laravel, MySQL, and MongoDB for full-stack development.",
             "DevOps & Deployment – Utilized Docker, GitHub Actions, and Linux to streamline deployments and improve system reliability.",
         ],
-    },
-    {
-        id: 2,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIRB-oQUDFAXMNu_dAXADYdFw7xXj5-EQtJw&shttps://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-azuid&psig=AOvVaw2hQ_kTLywfcNQZNR5vimJi&ust=1736051108190000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLj5yL-c24oDFQAAAAAdAAAAABAI",
-        role: "Freelancer",
-        company: "",
-        date: "May 2024 - Aug 2024",
-        description:
-            "As a Freelance Full Stack Developer, I built and deployed scalable web applications, including Job Listing and E-Commerce platforms. My work focused on frontend and backend development, database management, and cloud deployment.",
-        skills: [
-            "Full-Stack Development – Built applications using React, TailwindCSS, Node.js, Laravel, PostgreSQL, and MySQL.",
-            "Feature Implementation – Designed data models and developed features such as search, filtering, user profiles, reviews, order management, and payment integration.",
-            "Cloud Deployment & Optimization – Deployed applications on AWS (EC2, S3, RDS) with optimized Linux environments using Apache and Nginx.",
-        ],
-    },
+    }
 ];
 export const projectsData = [
     {

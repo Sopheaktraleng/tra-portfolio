@@ -77,7 +77,7 @@ const HeroSection = () => {
                         <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md mx-auto">
                             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
                                 <Image
-                                    src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/IMG_8678.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvSU1HXzg2NzguanBnIiwiaWF0IjoxNzcwNzExNTY1LCJleHAiOjE4MDIyNDc1NjV9.NrmNpnu6oqnnqD6zw873h3sEvGtiBkmy0f6i-E7lQ88"
+                                    src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/traaa.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHJhYWEuanBnIiwiaWF0IjoxNzc5MTgxMzYxLCJleHAiOjE4MTA3MTczNjF9.A9dQaP6roDYvH0mgNnsPtmD6YBqnM_JoIjxLt1WSsbc"
                                     alt="Profile"
                                     width={500}
                                     height={500}
