@@ -14,21 +14,21 @@ const Projects = () => {
                     </h2>
                 </Reveal>
                 <Reveal delay={0.08}>
-                    <p className="text-lg mx-auto max-w-3xl">
-                        Building digital solutions and continuously learning
-                        through practical experience and academic excellence.
+                    <p className="section-subtitle-lg mx-auto max-w-3xl">
+                        A selection of projects I&apos;ve built — from internal
+                        management systems to full-stack web applications.
                     </p>
                 </Reveal>
             </div>
 
             <div className="flex justify-center items-center pt-6">
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center max-w-6xl px-6">
-                    {projectsData.map((pro, index) => (
+                    {projectsData.map((pro) => (
                         <li
-                            key={index}
+                            key={pro.id}
                             className="flex justify-center items-center"
                         >
-                            <Reveal delay={index * 0.06} className="w-full">
+                            <Reveal className="w-full">
                                 <ProjectCard pro={pro} />
                             </Reveal>
                         </li>
@@ -38,4 +38,5 @@ const Projects = () => {
         </section>
     );
 };
+
 export default Projects;

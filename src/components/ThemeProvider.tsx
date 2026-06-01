@@ -1,30 +1,20 @@
 "use client";
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import {
-    ThemeProvider as MuiThemeProvider,
-    createTheme,
-} from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 
-interface ProviderProps {
+interface ThemeProviderProps {
     children: React.ReactNode;
 }
 
-const muiTheme = createTheme({
-    typography: {
-        fontFamily:
-            'var(--font-sans), "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif',
-    },
-});
-
-export default function Provider({ children }: ProviderProps) {
+/**
+ * Wraps the app in next-themes for dark/light/system mode support.
+ * MUI ThemeProvider and CssBaseline were removed — styling is handled
+ * entirely by Tailwind CSS, which is lighter and doesn't require SSR hydration patches.
+ */
+export default function ThemeProvider({ children }: ThemeProviderProps) {
     return (
-        <NextThemesProvider attribute="class">
-            <MuiThemeProvider theme={muiTheme}>
-                <CssBaseline />
-                {children}
-            </MuiThemeProvider>
+        <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
         </NextThemesProvider>
     );
 }

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Check, Menu, X } from "lucide-react";
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import DarkModeSelector from "@/components/DarkModeSelector";
+import { cn } from "@/lib/cn";
 
 const navLinks = [
     { href: "/home", label: "Home" },
@@ -16,11 +17,10 @@ const navLinks = [
     { href: "/contact", label: "Contact" },
 ] as const;
 
-const cx = (...c: Array<string | false | null | undefined>) =>
-    c.filter(Boolean).join(" ");
 const isHashLink = (href: string) => href.startsWith("/#");
 const getId = (href: string) => href.slice(2);
-const isHomePath = (pathname: string) => pathname === "/" || pathname === "/home";
+const isHomePath = (pathname: string) =>
+    pathname === "/" || pathname === "/home";
 
 const onMobileLinkClick =
     (href: string, close: () => void) =>
@@ -122,7 +122,7 @@ function NavLink({
         <Link
             href={href}
             onClick={handleClick}
-            className={cx(
+            className={cn(
                 "relative inline-flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-full",
                 "transition-all duration-200 ease-in-out",
                 "ring-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 dark:focus-visible:ring-fuchsia-400/40",
@@ -190,7 +190,7 @@ export default function Navbar() {
     return (
         <header
             role="banner"
-            className={cx(
+            className={cn(
                 "sticky top-0 z-50 w-full transition-all duration-300",
                 open
                     ? "bg-transparent backdrop-blur-xl ring-0 shadow-none"
@@ -257,33 +257,22 @@ export default function Navbar() {
                         className="md:hidden fixed inset-0 z-40 pointer-events-auto transition-opacity duration-200"
                         aria-hidden
                         onClick={close}
-                    ></div>
+                    />
                     <div
                         id="nav-mobile-menu"
                         role="dialog"
                         aria-modal="true"
-                        className="md:hidden fixed inset-x-5 top-16 z-100 flex justify-end transition-transform duration-200"
+                        aria-label="Navigation menu"
+                        className="md:hidden fixed inset-x-5 top-16 z-[100] flex justify-end transition-transform duration-200"
                     >
-                        <div
-                            className="
-                w-[60%] max-w-sm rounded-2xl
-                bg-white/95 text-slate-900 ring-1 ring-black/10 shadow-2xl backdrop-blur-xl
-                dark:bg-slate-900/85 dark:text-slate-100 dark:ring-white/10
-                p-2
-              "
-                        >
-                            <nav
-                                aria-label="Mobile Primary"
-                                className="space-y-1"
-                            >
+                        <div className="w-[60%] max-w-sm rounded-2xl bg-white/95 text-slate-900 ring-1 ring-black/10 shadow-2xl backdrop-blur-xl dark:bg-slate-900/85 dark:text-slate-100 dark:ring-white/10 p-2">
+                            <nav aria-label="Mobile navigation" className="space-y-1">
                                 {navLinks.map((l) => {
                                     const isActive = (() => {
                                         if (l.href === "/home")
                                             return isHomePath(pathname);
                                         if (l.href.startsWith("/#")) {
-                                            const target = `#${l.href.slice(
-                                                2
-                                            )}`;
+                                            const target = `#${l.href.slice(2)}`;
                                             const h = isHomePath(pathname)
                                                 ? urlHash || spy
                                                 : undefined;
@@ -306,7 +295,7 @@ export default function Navbar() {
                                                 l.href,
                                                 close
                                             )}
-                                            className={cx(
+                                            className={cn(
                                                 "group flex items-center justify-between w-full",
                                                 "rounded-xl px-3 py-2.5 text-[15px]",
                                                 "transition-all duration-150",
@@ -314,10 +303,13 @@ export default function Navbar() {
                                                     ? "bg-violet-100 text-violet-300 ring-1 ring-violet-200 shadow-inner dark:bg-violet-500/85 dark:text-white dark:ring-white/10"
                                                     : "hover:bg-slate-100 dark:hover:bg-white/5"
                                             )}
+                                            aria-current={
+                                                isActive ? "page" : undefined
+                                            }
                                         >
                                             <div className="flex items-center gap-2.5">
                                                 <span
-                                                    className={cx(
+                                                    className={cn(
                                                         "shrink-0 size-4",
                                                         isActive
                                                             ? "text-violet-300 dark:text-white/90"
@@ -325,7 +317,7 @@ export default function Navbar() {
                                                     )}
                                                 />
                                                 <span
-                                                    className={cx(
+                                                    className={cn(
                                                         "text-sm",
                                                         isActive
                                                             ? "font-semibold text-violet-300 dark:text-white"
@@ -337,7 +329,7 @@ export default function Navbar() {
                                             </div>
 
                                             <span
-                                                className={cx(
+                                                className={cn(
                                                     "ml-2 transition-opacity duration-150",
                                                     isActive
                                                         ? "opacity-100"

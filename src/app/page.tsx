@@ -36,7 +36,7 @@ function SectionSkeleton({ title }: { title: string }) {
 
 export default function Home() {
     return (
-        <main className="flex flex-col text-center justify-center overflow-x-hidden">
+        <div className="flex flex-col text-center justify-center overflow-x-hidden">
             <section id="home" className="scroll-mt-24 mb-10" aria-label="Home">
                 <HeroSection />
             </section>
@@ -76,6 +76,6 @@ export default function Home() {
             <section id="contact" className="scroll-mt-24" aria-label="Contact">
                 <Contact />
             </section>
-        </main>
+        </div>
     );
 }

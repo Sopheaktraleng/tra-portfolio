@@ -1,33 +1,26 @@
 import { Rocket, Zap } from "lucide-react";
-import React from "react";
 import Image from "next/image";
+import type { ExperienceItem } from "@/types";
 
 interface ExperienceCardProps {
-    exp: {
-        image: string;
-        role: string;
-        company: string;
-        date: string;
-        skills: string[];
-        description: string;
-    };
+    exp: ExperienceItem;
 }
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp }) => {
+const ExperienceCard = ({ exp }: ExperienceCardProps) => {
     return (
         <div className="w-96 glass-card glass-card-hover bg-white/60 dark:bg-white/5 p-5 focus-within:ring-2 focus-within:ring-black/10 dark:focus-within:ring-white/20">
             {/* Header */}
             <div className="flex items-center gap-4 mb-4">
                 <div className="media-tile">
-                    {exp.image ? (
+                    {exp.image && (
                         <Image
                             src={exp.image}
-                            alt="Experience"
+                            alt={`${exp.company} logo`}
                             width={48}
                             height={48}
-                            className="rounded-lg"
+                            className="rounded-lg object-contain"
                         />
-                    ) : null}
+                    )}
                 </div>
 
                 <div className="min-w-0">
@@ -48,29 +41,29 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ exp }) => {
                 {exp.description}
             </p>
 
-            {/* Divider */}
             <div className="divider mb-3" />
 
             {/* Responsibilities */}
             <p className="flex items-center gap-2 text-sm font-medium mb-2 text-slate-900 dark:text-white">
-                <Rocket className="w-4 h-4" />
+                <Rocket className="w-4 h-4" aria-hidden />
                 Key Responsibilities:
             </p>
 
-            <div className="space-y-2 text-sm">
-                {exp.skills.map((skill: string, index: number) => (
-                    <span key={index} className="flex items-start gap-2">
+            <ul className="space-y-2 text-sm">
+                {exp.skills.map((skill) => (
+                    <li key={skill} className="flex items-start gap-2">
                         <Zap
                             className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-slate-700 dark:text-white/90"
-                            aria-hidden="true"
+                            aria-hidden
                         />
                         <span className="text-slate-800 dark:text-white/90">
                             {skill}
                         </span>
-                    </span>
+                    </li>
                 ))}
-            </div>
+            </ul>
         </div>
     );
 };
+
 export default ExperienceCard;

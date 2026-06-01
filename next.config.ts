@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
     output: "standalone",
     images: {
+        formats: ["image/avif", "image/webp"],
         remotePatterns: [
             { protocol: "https", hostname: "upload.wikimedia.org" },
             {
@@ -20,6 +21,10 @@ const nextConfig: NextConfig = {
             { protocol: "https", hostname: "www.postgresql.org" },
             { protocol: "https", hostname: "pipedream.com" },
             { protocol: "https", hostname: "pbs.twimg.com" },
+            { protocol: "https", hostname: "miro.medium.com" },
+            { protocol: "https", hostname: "raw.githubusercontent.com" },
+            { protocol: "https", hostname: "www.vectorlogo.zone" },
+            { protocol: "https", hostname: "avatars.githubusercontent.com" },
             {
                 protocol: "https",
                 hostname: "cdn.prod.website-files.com",
@@ -37,14 +42,8 @@ const nextConfig: NextConfig = {
             },
             {
                 protocol: "https",
-                hostname: "avatars.githubusercontent.com",
-                pathname: "/u/**",
-            },
-            {
-                protocol: "https",
                 hostname: "jeancochrane.com",
-                pathname:
-                    "/static/images/blog/netlify-identity-dealbreakers/**",
+                pathname: "/static/images/blog/netlify-identity-dealbreakers/**",
             },
             {
                 protocol: "https",
@@ -64,15 +63,13 @@ const nextConfig: NextConfig = {
             {
                 protocol: "https",
                 hostname: "nuxt.com",
-                pathname: "/assets/design-kit/icon-green.svg",
+                pathname: "/assets/design-kit/**",
             },
             {
                 protocol: "https",
                 hostname: "assets.streamlinehq.com",
-                pathname:
-                    "/image/private/w_300,h_300,ar_1/f_auto/v1/icons/3/fastapi-icon-72blnc5ihz9c30ltfruvm.png/fastapi-icon-sv7hsd0o3donlq26es2lr.png",
+                pathname: "/image/private/**",
             },
-            { protocol: "https", hostname: "miro.medium.com" },
         ],
     },
 };

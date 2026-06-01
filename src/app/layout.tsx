@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import dynamic from "next/dynamic";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
-import Script from "next/script";
+import Analytics from "@/components/Analytics";
+import { Footer } from "@/components/Footer";
+import dynamic from "next/dynamic";
 
 const Navbar = dynamic(() => import("@/components/Navbar"), {
     ssr: true,
@@ -16,6 +17,7 @@ const spaceGrotesk = Space_Grotesk({
     display: "swap",
     weight: ["400", "500", "600", "700"],
 });
+
 const jetBrainsMono = JetBrains_Mono({
     variable: "--font-mono",
     subsets: ["latin"],
@@ -83,8 +85,6 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const year = new Date().getFullYear();
-
     return (
         <html
             lang="en"
@@ -92,28 +92,7 @@ export default function RootLayout({
             suppressHydrationWarning
             className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} antialiased h-full`}
         >
-            <Script
-                id="umami"
-                src="https://8e1a919935ba.ngrok-free.app/script.js"
-                data-website-id="d9ec3cba-3f7c-4309-8d2e-1e3e3ebed4a7"
-                strategy="afterInteractive"
-            />
-            <Script id="matomo" strategy="afterInteractive">
-                {`
-            var _paq = window._paq = window._paq || [];
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-              var u="//localhost:8080/";
-              _paq.push(['setTrackerUrl', u+'matomo.php']);
-              _paq.push(['setSiteId', '1']);
-              var d=document, g=d.createElement('script'), 
-                  s=d.getElementsByTagName('script')[0];
-              g.async=true; g.src=u+'matomo.js'; 
-              s.parentNode.insertBefore(g,s);
-            })();
-          `}
-            </Script>
+            <Analytics />
             <body className="min-h-screen flex flex-col bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
                 <ThemeProvider>
                     <a
@@ -132,9 +111,7 @@ export default function RootLayout({
                         {children}
                     </main>
 
-                    <footer className="py-6 text-center text-sm text-slate-500 dark:text-slate-400">
-                        © {year} Leng Sopheaktra. All rights reserved.
-                    </footer>
+                    <Footer />
                 </ThemeProvider>
             </body>
         </html>

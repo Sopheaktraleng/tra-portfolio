@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, Fragment, JSX } from "react";
+import { useEffect, useState, Fragment, type JSX } from "react";
 import {
     SunIcon,
     MoonIcon,
@@ -10,10 +10,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Listbox, Transition } from "@headlessui/react";
 import { useTheme } from "next-themes";
-
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-}
+import { cn } from "@/lib/cn";
 
 type ThemeId = "light" | "dark" | "system";
 
@@ -41,8 +38,7 @@ export default function DarkModeSelector() {
 
     useEffect(() => {
         if (!mounted) return;
-        const initial = (theme as ThemeId) ?? "system";
-        setValue(initial);
+        setValue((theme as ThemeId) ?? "system");
     }, [mounted, theme]);
 
     if (!mounted) return null;
@@ -69,7 +65,7 @@ export default function DarkModeSelector() {
             {({ open }) => (
                 <div className="relative">
                     <Listbox.Button
-                        className={classNames(
+                        className={cn(
                             "inline-flex items-center gap-2 rounded-full",
                             "px-3 py-1.5 text-sm font-medium",
                             "border border-black/10 dark:border-white/15",
@@ -101,7 +97,7 @@ export default function DarkModeSelector() {
                         leaveTo="opacity-0 translate-y-1"
                     >
                         <Listbox.Options
-                            className={classNames(
+                            className={cn(
                                 "absolute right-0 z-50 mt-2 w-44 overflow-hidden",
                                 "rounded-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur",
                                 "ring-1 ring-slate-900/10 dark:ring-white/10 shadow-lg p-1"
@@ -112,12 +108,11 @@ export default function DarkModeSelector() {
                                     key={opt.id}
                                     value={opt.id}
                                     className={({ active }) =>
-                                        classNames(
+                                        cn(
                                             "flex items-center justify-between gap-2 cursor-pointer select-none",
                                             "rounded-lg px-3 py-2",
-                                            active
-                                                ? "bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10"
-                                                : ""
+                                            active &&
+                                                "bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10"
                                         )
                                     }
                                 >
@@ -129,7 +124,7 @@ export default function DarkModeSelector() {
                                                 </span>
                                                 <div className="flex flex-col">
                                                     <span
-                                                        className={classNames(
+                                                        className={cn(
                                                             "text-sm",
                                                             selected
                                                                 ? "text-violet-700 dark:text-violet-300 font-semibold"
@@ -147,8 +142,8 @@ export default function DarkModeSelector() {
                                             </div>
 
                                             <span
-                                                className={classNames(
-                                                    "ml-3",
+                                                className={cn(
+                                                    "ml-3 transition-opacity duration-150",
                                                     selected
                                                         ? "opacity-100"
                                                         : "opacity-0"

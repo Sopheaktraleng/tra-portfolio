@@ -4,6 +4,34 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
+const FLOAT_TRANSITION = {
+    duration: 2,
+    repeat: Infinity,
+    repeatType: "loop" as const,
+    ease: "easeInOut",
+};
+
+/** Reusable floating badge chip shown around the profile image. */
+function FloatingBadge({
+    label,
+    className,
+}: {
+    label: string;
+    className: string;
+}) {
+    return (
+        <motion.div
+            animate={{ y: [-5, 5, -5] }}
+            transition={FLOAT_TRANSITION}
+            className={className}
+        >
+            <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white">
+                {label}
+            </span>
+        </motion.div>
+    );
+}
+
 const HeroSection = () => {
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -29,6 +57,7 @@ const HeroSection = () => {
         >
             <div className="w-full md:max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-12">
                 <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                    {/* Text column */}
                     <div className="flex flex-col items-center text-center md:items-start md:text-start">
                         <div className="glass-pill">
                             <span>👋</span>
@@ -44,13 +73,13 @@ const HeroSection = () => {
                         </h2>
 
                         <p className="mt-5 md:mt-6 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-white/80 max-w-2xl">
-                            I’m a software engineer with a passion for building
+                            I&apos;m a software engineer with a passion for building
                             dynamic, user-friendly web applications. My primary
                             expertise is in JavaScript, and I also work with
                             Python and PHP. I manage deployments and have solid
                             DevOps experience with Docker, Jenkins, GitHub
                             Actions, AWS, and Linux. I also leverage AI tools to
-                            boost productivity through prompt engineering. I’m
+                            boost productivity through prompt engineering. I&apos;m
                             an adaptable learner and thrive in collaborative
                             environments to build outstanding apps.
                         </p>
@@ -65,6 +94,7 @@ const HeroSection = () => {
                             }}
                             href="https://flowcv.com/resume/su0w02va2ho5"
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="btn-primary mt-7 md:mt-8 px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg w-full sm:w-auto md:w-[300px]"
                         >
                             <span className="text-lg font-bold">
@@ -73,52 +103,34 @@ const HeroSection = () => {
                         </motion.a>
                     </div>
 
+                    {/* Image column */}
                     <div className="relative order-first lg:order-last flex justify-center items-center">
                         <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md mx-auto">
                             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
                                 <Image
                                     src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/traaa.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHJhYWEuanBnIiwiaWF0IjoxNzc5MTgxMzYxLCJleHAiOjE4MTA3MTczNjF9.A9dQaP6roDYvH0mgNnsPtmD6YBqnM_JoIjxLt1WSsbc"
-                                    alt="Profile"
-                                    width={500}
-                                    height={500}
-                                    className="w-full h-full object-cover rounded-3xl"
+                                    alt="Leng Sopheaktra — Full-Stack Developer"
+                                    fill
+                                    sizes="(max-width: 640px) 280px, (max-width: 768px) 384px, 448px"
+                                    className="object-cover rounded-3xl"
+                                    priority
                                 />
                                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                             </div>
 
-                            <motion.div
-                                animate={{ y: [-5, 5, -5] }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    repeatType: "loop",
-                                    ease: "easeInOut",
-                                }}
+                            <FloatingBadge
+                                label="🚀 Open to Work"
                                 className="hidden sm:flex absolute -right-4 -top-4 md:-right-8 md:-top-6 glass-float"
-                            >
-                                <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white">
-                                    🚀 Open to Work
-                                </span>
-                            </motion.div>
-
-                            <motion.div
-                                animate={{ y: [-5, 5, -5] }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    repeatType: "loop",
-                                    ease: "easeInOut",
-                                }}
+                            />
+                            <FloatingBadge
+                                label="💻 Full-Stack Developer"
                                 className="hidden sm:flex absolute -left-4 -bottom-4 md:-left-10 md:-bottom-6 glass-float"
-                            >
-                                <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white whitespace-nowrap">
-                                    💻 Full-Stack Developer
-                                </span>
-                            </motion.div>
+                            />
                         </div>
                     </div>
                 </div>
 
+                {/* Scroll hint */}
                 <motion.button
                     type="button"
                     onClick={handleScrollHintClick}

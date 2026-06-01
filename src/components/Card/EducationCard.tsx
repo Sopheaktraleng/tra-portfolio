@@ -1,23 +1,12 @@
 import { BadgeCheck, ExternalLink, Flame } from "lucide-react";
-import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import type { EducationItem } from "@/types";
 
 interface EducationCardProps {
-    edu: {
-        img: string | StaticImageData;
-        degree: string;
-        school: string;
-        date: string;
-        highlights: string[];
-        description: string;
-        certificate?: {
-            url: string;
-            label?: string;
-        };
-    };
+    edu: EducationItem;
 }
 
-const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
+const EducationCard = ({ edu }: EducationCardProps) => {
     const hasCertificate = Boolean(edu.certificate?.url?.trim());
     const certificateLabel = edu.certificate?.label ?? "View Certificate";
 
@@ -28,10 +17,10 @@ const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
                 <div className="media-tile">
                     <Image
                         src={edu.img}
-                        alt="Education"
+                        alt={`${edu.school} logo`}
                         width={48}
                         height={48}
-                        className="rounded-lg"
+                        className="rounded-lg object-contain"
                     />
                 </div>
 
@@ -59,24 +48,24 @@ const EducationCard: React.FC<EducationCardProps> = ({ edu }) => {
                 {edu.description}
             </p>
 
-            {/* Divider */}
             <div className="divider mb-3" />
 
             {/* Highlights */}
-            <div className="space-y-2 text-sm">
-                {edu.highlights.map((highlight: string, index: number) => (
-                    <span key={index} className="flex items-start gap-2">
+            <ul className="space-y-2 text-sm">
+                {edu.highlights.map((highlight) => (
+                    <li key={highlight} className="flex items-start gap-2">
                         <Flame
                             className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-slate-700 dark:text-white/90"
-                            aria-hidden="true"
+                            aria-hidden
                         />
                         <span className="text-slate-800 dark:text-white/90">
                             {highlight}
                         </span>
-                    </span>
+                    </li>
                 ))}
-            </div>
+            </ul>
 
+            {/* Certificate */}
             {hasCertificate && (
                 <div className="mt-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
                     <div className="flex items-center justify-between gap-3">

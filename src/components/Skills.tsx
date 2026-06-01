@@ -2,6 +2,9 @@ import { SkillsData } from "@/data/constants";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
+/** Returns true if the src is a data URI (base64 encoded) */
+const isDataUri = (src: string) => src.startsWith("data:");
+
 const Skills = () => {
     return (
         <section className="md:py-16 flex flex-col items-center justify-center">
@@ -10,7 +13,7 @@ const Skills = () => {
                 <Reveal>
                     <h2 className="section-title">
                         <span className="section-title-gradient">
-                            Technique Skills
+                            Technical Skills
                         </span>
                     </h2>
                 </Reveal>
@@ -24,16 +27,7 @@ const Skills = () => {
             </div>
 
             {/* Grid */}
-            <div
-                className="
-          mt-8
-          grid gap-6
-          w-full max-w-[1100px]
-          px-4
-          grid-cols-1
-          md:grid-cols-2
-        "
-            >
+            <div className="mt-8 grid gap-6 w-full max-w-[1100px] px-4 grid-cols-1 md:grid-cols-2">
                 {SkillsData.map((category, index) => (
                     <Reveal
                         key={category.title}
@@ -46,40 +40,39 @@ const Skills = () => {
                                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white tracking-tight">
                                     {category.title}
                                 </h3>
-                                <span
-                                    className="
-                  text-xs px-2 py-1 rounded-full
-                  bg-violet-500/10 text-violet-700
-                  dark:bg-violet-400/10 dark:text-violet-300
-                  border border-violet-500/20 dark:border-violet-400/20
-                "
-                                >
-                                    {category.skills?.length || 0} items
+                                <span className="text-xs px-2 py-1 rounded-full bg-violet-500/10 text-violet-700 dark:bg-violet-400/10 dark:text-violet-300 border border-violet-500/20 dark:border-violet-400/20">
+                                    {category.skills.length} items
                                 </span>
                             </div>
 
                             {/* Skills chips */}
                             <div className="flex flex-wrap gap-3 items-center">
-                                {category.skills?.map((skill) => (
+                                {category.skills.map((skill) => (
                                     <div
                                         key={skill.name}
                                         className="skill-chip"
                                         title={skill.name}
                                     >
                                         {skill.image ? (
-                                            <Image
-                                                src={skill.image}
-                                                alt={skill.name}
-                                                width={20}
-                                                height={20}
-                                                unoptimized={
-                                                    typeof skill.image === "string" &&
-                                                    /^https?:\/\//i.test(
-                                                        skill.image
-                                                    )
-                                                }
-                                                className="h-5 w-5 rounded-sm object-contain"
-                                            />
+                                            isDataUri(skill.image) ? (
+                                                // Data URIs don't benefit from Next/Image optimisation
+                                                // eslint-disable-next-line @next/next/no-img-element
+                                                <img
+                                                    src={skill.image}
+                                                    alt={skill.name}
+                                                    width={20}
+                                                    height={20}
+                                                    className="h-5 w-5 rounded-sm object-contain"
+                                                />
+                                            ) : (
+                                                <Image
+                                                    src={skill.image}
+                                                    alt={skill.name}
+                                                    width={20}
+                                                    height={20}
+                                                    className="h-5 w-5 rounded-sm object-contain"
+                                                />
+                                            )
                                         ) : (
                                             <div className="h-5 w-5 rounded-sm bg-slate-200 dark:bg-white/10" />
                                         )}
