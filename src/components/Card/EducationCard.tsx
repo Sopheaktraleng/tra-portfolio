@@ -1,6 +1,53 @@
-import { BadgeCheck, ExternalLink, Flame } from "lucide-react";
+import { BadgeCheck, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import type { EducationItem } from "@/types";
+
+const AnimeFlameIcon = () => (
+    <span className="relative flex items-center justify-center w-5 h-5 flex-shrink-0">
+        {/* Flame SVG with crisp glowing drop-shadow */}
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className="w-4 h-4 transition-transform duration-300 group-hover:scale-125 group-hover:animate-bounce drop-shadow-[0_0_3px_rgba(249,115,22,0.4)] group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]"
+            aria-hidden
+        >
+            <defs>
+                <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#f97316" /> {/* Orange 500 */}
+                    <stop offset="50%" stopColor="#ef4444" /> {/* Red 500 */}
+                    <stop offset="100%" stopColor="#eab308" /> {/* Yellow 500 */}
+                </linearGradient>
+            </defs>
+            <path
+                d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
+                fill="url(#flame-gradient)"
+            />
+        </svg>
+    </span>
+);
+
+const AnimeSparkleBullet = () => (
+    <span className="relative flex-shrink-0 w-3.5 h-3.5 mt-0.5 flex items-center justify-center">
+        {/* 4-point Anime Sparkle with crisp glowing drop-shadow */}
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            className="w-3 h-3 transition-transform duration-500 group-hover:rotate-180 group-hover:scale-110 drop-shadow-[0_0_2px_rgba(236,72,153,0.3)] group-hover:drop-shadow-[0_0_6px_rgba(236,72,153,0.8)]"
+            aria-hidden
+        >
+            <defs>
+                <linearGradient id="bullet-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#ec4899" /> {/* Pink 500 */}
+                    <stop offset="100%" stopColor="#a855f7" /> {/* Purple 500 */}
+                </linearGradient>
+            </defs>
+            <path
+                d="M12 2C12 8.5 8.5 12 2 12C8.5 12 12 15.5 12 22C12 15.5 15.5 12 22 12C15.5 12 12 8.5 12 2Z"
+                fill="url(#bullet-gradient)"
+            />
+        </svg>
+    </span>
+);
 
 interface EducationCardProps {
     edu: EducationItem;
@@ -11,7 +58,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
     const certificateLabel = edu.certificate?.label ?? "View Certificate";
 
     return (
-        <div className="group w-96 glass-card glass-card-hover bg-gradient-to-b from-white/90 to-white/70 dark:from-white/10 dark:to-white/5 p-5 focus-within:ring-2 focus-within:ring-black/10 dark:focus-within:ring-white/20">
+        <div className="group w-96 glass-card glass-card-hover bg-gradient-to-b from-white/90 to-white/70 dark:from-white/10 dark:to-white/5 p-5 focus-within:ring-2 focus-within:ring-black/10 dark:focus-within:ring-white/20 text-left">
             {/* Header */}
             <div className="flex items-center gap-4 mb-4">
                 <div className="media-tile">
@@ -51,13 +98,15 @@ const EducationCard = ({ edu }: EducationCardProps) => {
             <div className="divider mb-3" />
 
             {/* Highlights */}
+            <p className="flex items-center gap-2 text-sm font-medium mb-2 text-slate-900 dark:text-white">
+                <AnimeFlameIcon />
+                Key Highlights:
+            </p>
+
             <ul className="space-y-2 text-sm">
                 {edu.highlights.map((highlight) => (
                     <li key={highlight} className="flex items-start gap-2">
-                        <Flame
-                            className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-slate-700 dark:text-white/90"
-                            aria-hidden
-                        />
+                        <AnimeSparkleBullet />
                         <span className="text-slate-800 dark:text-white/90">
                             {highlight}
                         </span>

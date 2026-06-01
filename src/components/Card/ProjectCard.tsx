@@ -77,7 +77,7 @@ const ProjectCard = ({ pro }: ProjectCardProps) => {
                     </div>
                 </div>
 
-                <div className="pointer-events-none absolute -inset-2 rounded-3xl bg-gradient-to-br from-violet-500/0 via-fuchsia-500/0 to-cyan-500/0 blur-2xl opacity-0 group-hover:opacity-30 transition" />
+                <div className="pointer-events-none absolute -inset-2 rounded-3xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-500 blur-2xl opacity-0 group-hover:opacity-20 dark:group-hover:opacity-35 transition duration-500" />
             </div>
         </div>
     );
