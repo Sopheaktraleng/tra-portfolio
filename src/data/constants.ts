@@ -197,14 +197,14 @@ export const EducationData: EducationItem[] = [
     date: "Sep 2025 - Oct 2025",
     degree: "DevOps Advance",
     description:
-      "I am studying DevOps Advance at Sunrise Institute, specializing in cloud technologies, CI/CD pipelines, AWS, container orchestration, GitOps, and Infrastructure as Code (IaC), with a strong focus on practical implementation and industry-relevant skills.",
+      "Advanced course at Sunrise Institute covering Configuration Management (Ansible), Kubernetes, GitOps (Argo CD & Helm), Log Management, and Infrastructure as Code (IaC) on AWS.",
     highlights: [
-      "Hands-on experience with Portainer for container management.",
-      "Configuration Management and automation with Jenkins.",
-      "Container Orchestration using Kubernetes.",
-      "GitOps practices with Argo CD and Helm Chart.",
-      "Log Management and monitoring for reliable systems.",
-      "Infrastructure as Code (IaC) for scalable deployments.",
+      "Ansible Configuration Management: Playbooks, Roles, Vault, and configuration automation.",
+      "Kubernetes Container Orchestration: Deployments, Services, Ingress, and Kubernetes Dashboard.",
+      "GitOps with Argo CD & Helm: Multi-master Kubernetes Cluster setup with Gitlab.",
+      "AWS Infrastructure as Code (IaC): AWS infrastructure provisioning and microservices deployment.",
+      "Log Management & Monitoring: Log collection tools and reliability practices.",
+      "Capstone Project: End-to-end CI/CD project pipelines integrated with modern DevOps toolchains.",
     ],
     certificate: {
       url: "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/devops-adv.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvZGV2b3BzLWFkdi5wZGYiLCJpYXQiOjE3NzEzMTQ1MTksImV4cCI6MTgwMjg1MDUxOX0.NlSAuqu2ylWWHlpwTVFOPV1I2gQazutPWgBcEv-1-Og",
