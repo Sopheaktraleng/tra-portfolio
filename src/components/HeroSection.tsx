@@ -92,7 +92,7 @@ const HeroSection = () => {
                                 repeatType: "loop",
                                 ease: "easeInOut",
                             }}
-                            href="https://flowcv.com/resume/su0w02va2ho5"
+                            href="https://flowcv.com/resume/tkwwsww93lh0"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn-primary mt-7 md:mt-8 px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg w-full sm:w-auto md:w-[300px]"

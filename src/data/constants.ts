@@ -22,7 +22,7 @@ export const SkillsData: SkillCategory[] = [
       {
         name: "TypeScript",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Typescript.svg/1920px-Typescript.svg.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
       },
       {
         name: "HTML",
@@ -31,22 +31,22 @@ export const SkillsData: SkillCategory[] = [
       {
         name: "CSS",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg",
       },
       {
         name: "Tailwind CSS",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2880px-Tailwind_CSS_Logo.svg.png",
+          "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
       },
       {
         name: "JavaScript",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
       },
       {
         name: "Vue Js",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1920px-Vue.js_Logo_2.svg.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg",
       },
       {
         name: "Nuxt Js",
@@ -60,7 +60,7 @@ export const SkillsData: SkillCategory[] = [
       {
         name: "Nest Js",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/NestJS.svg/1200px-NestJS.svg.png",
+          "https://www.vectorlogo.zone/logos/nestjs/nestjs-icon.svg",
       },
       {
         name: "Express Js",
@@ -90,12 +90,12 @@ export const SkillsData: SkillCategory[] = [
       {
         name: "Laravel",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1920px-Laravel.svg.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-original.svg",
       },
       {
         name: "MySQL",
         image:
-          "https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/1920px-MySQL_logo.svg.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg",
       },
       {
         name: "FastAPI",
@@ -110,7 +110,7 @@ export const SkillsData: SkillCategory[] = [
       {
         name: "AWS",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/2560px-Amazon_Web_Services_Logo.svg.png",
+          "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg",
       },
       {
         name: "Docker",
@@ -140,7 +140,7 @@ export const SkillsData: SkillCategory[] = [
       {
         name: "Kubernetes",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/2109px-Kubernetes_logo_without_workmark.svg.png",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg",
       },
       {
         name: "Argo CD",
@@ -169,12 +169,12 @@ export const SkillsData: SkillCategory[] = [
       {
         name: "VsCode",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+          "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg",
       },
       {
         name: "Notion",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/1920px-Notion-logo.svg.png",
+          "https://www.vectorlogo.zone/logos/notionso/notionso-icon.svg",
       },
       {
         name: "Netlify",
@@ -232,7 +232,7 @@ export const EducationData: EducationItem[] = [
   },
   {
     id: 2,
-    img: "https://upload.wikimedia.org/wikipedia/en/a/a2/RUPP_logo.PNG",
+    img: "/icons/rupp_logo.png",
     school: "Royal University of Phnom Penh",
     date: "Mar 2019 - Jun 2024",
     degree: "Computer Science",
