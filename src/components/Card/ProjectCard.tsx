@@ -1,12 +1,96 @@
+"use client";
+
 import Image from "next/image";
 import { Github, MonitorPlay } from "lucide-react";
 import type { ProjectItem } from "@/types";
+import { useStyleMode } from "@/components/StyleModeProvider";
 
 interface ProjectCardProps {
     pro: ProjectItem;
 }
 
 const ProjectCard = ({ pro }: ProjectCardProps) => {
+    const { styleMode } = useStyleMode();
+
+    if (styleMode === "scrapbook") {
+        return (
+            <div className="flex justify-center items-center select-none">
+                {/* Scrapbook brutalist project card */}
+                <div className="group relative w-[350px] md:w-full max-w-[500px] border-[3px] border-slate-900 dark:border-white bg-[#faf8f5] dark:bg-[#1a1a1c] p-4 text-left shadow-[5px_5px_0px_rgba(0,0,0,1)] dark:shadow-[5px_5px_0px_rgba(255,255,255,1)] hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[8px_8px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_rgba(255,255,255,1)] transition-all rounded-sm">
+                    {/* Top tape */}
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 scrapbook-washi scrapbook-washi-yellow text-[10px] scale-95 py-1 px-4 rotate-[-1deg] z-20">
+                        📁 Project
+                    </div>
+
+                    {/* Polaroid-style Image frame */}
+                    <div className="relative w-full h-[220px] bg-white dark:bg-slate-900 border-2 border-black dark:border-slate-800 p-2.5 pb-6 shadow-sm mt-3 rotate-[1deg] hover:rotate-0 transition-transform duration-300">
+                        <div className="relative w-full h-full overflow-hidden border border-black/10">
+                            {pro.image ? (
+                                <Image
+                                    src={pro.image}
+                                    alt={pro.title}
+                                    fill
+                                    sizes="(max-width: 768px) 350px, 520px"
+                                    className="object-cover"
+                                />
+                            ) : (
+                                <div className="w-full h-full grid place-items-center bg-slate-100 text-slate-500 font-bold text-sm">
+                                    No Preview 📸
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Title */}
+                    <div className="mt-4 px-1">
+                        <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+                            {pro.title}
+                        </h3>
+                        <p className="text-sm mt-2 text-slate-800 dark:text-slate-200 leading-relaxed font-sans font-medium line-clamp-3">
+                            {pro.description}
+                        </p>
+                    </div>
+
+                    <div className="divider bg-black/20 dark:bg-white/20 my-4" />
+
+                    {/* Tech stack marker highlights */}
+                    <div className="flex flex-wrap gap-2 mb-4 px-1 font-sans">
+                        {pro.technologies.map((tech) => (
+                            <span key={tech} className="text-xs font-bold text-slate-900 dark:text-slate-900 bg-cyan-200 dark:bg-cyan-300 py-0.5 px-2.5 rounded shadow-[1px_1px_0px_#000] rotate-[-1deg]">
+                                #{tech}
+                            </span>
+                        ))}
+                    </div>
+
+                    {/* Actions wobbly taped buttons */}
+                    <div className="flex items-center gap-3 px-1 mt-auto">
+                        <a
+                            href={pro.links}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 rounded bg-white hover:bg-slate-50 text-slate-950 font-bold border-2 border-black px-4 py-1.5 text-xs shadow-[3px_3px_0px_#000] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000] transition-all"
+                            aria-label={`View source code for ${pro.title}`}
+                        >
+                            <Github className="w-4 h-4" aria-hidden />
+                            Source Code
+                        </a>
+
+                        <a
+                            href={pro.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 rounded bg-yellow-300 hover:bg-yellow-400 text-slate-950 font-bold border-2 border-black px-4 py-1.5 text-xs shadow-[3px_3px_0px_#000] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000] transition-all"
+                            aria-label={`View live demo for ${pro.title}`}
+                        >
+                            <MonitorPlay className="w-4 h-4" aria-hidden />
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="flex justify-center items-center">
             <div className="group relative w-[350px] md:w-full max-w-[520px] h-[460px] glass-card dark:shadow-xl glass-card-hover-strong">

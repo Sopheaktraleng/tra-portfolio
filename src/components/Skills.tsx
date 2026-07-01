@@ -1,6 +1,11 @@
+"use client";
+
 import { SkillsData } from "@/data/constants";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { useStyleMode } from "@/components/StyleModeProvider";
+import { DoodlePaperclip, DoodleUnderline, DoodleStar } from "@/components/Doodles";
+import { cn } from "@/lib/cn";
 
 const AnimeCategoryIcon = ({ title }: { title: string }) => {
     if (title.toLowerCase() === "frontend") {
@@ -71,6 +76,120 @@ const AnimeCategoryIcon = ({ title }: { title: string }) => {
 const isDataUri = (src: string) => src.startsWith("data:");
 
 const Skills = () => {
+    const { styleMode } = useStyleMode();
+
+    if (styleMode === "scrapbook") {
+        const stickyColors = [
+            "sticky-note-yellow",
+            "sticky-note-pink",
+            "sticky-note-blue",
+            "sticky-note-green"
+        ];
+        const rotations = [
+            "rotate-[-1.5deg] hover:rotate-[-0.5deg]",
+            "rotate-[2deg] hover:rotate-[0.5deg]",
+            "rotate-[-1deg] hover:rotate-[0.5deg]",
+            "rotate-[1.5deg] hover:rotate-[0.5deg]"
+        ];
+
+        return (
+            <section className="py-12 md:py-16 flex flex-col items-center justify-center relative">
+                {/* Decorative background star */}
+                <div className="absolute right-10 text-yellow-400 opacity-60 pointer-events-none hidden md:block">
+                    <DoodleStar className="w-10 h-10 rotate-12" />
+                </div>
+
+                {/* Header */}
+                <div className="text-center max-w-3xl px-4">
+                    <Reveal>
+                        <div className="relative inline-block mb-3">
+                            <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+                                Technical Skills
+                            </h2>
+                            <DoodleUnderline className="w-full h-3 text-violet-500 dark:text-fuchsia-400 mt-1" />
+                        </div>
+                    </Reveal>
+                    <Reveal delay={0.08}>
+                        <p className="font-sans font-medium text-lg mt-2 text-slate-700 dark:text-slate-300">
+                            A comprehensive overview of my technical expertise and
+                            proficiency across different areas of software
+                            development.
+                        </p>
+                    </Reveal>
+                </div>
+
+                {/* Grid */}
+                <div className="mt-12 grid gap-8 w-full max-w-[1100px] px-6 grid-cols-1 md:grid-cols-2">
+                    {SkillsData.map((category, index) => (
+                        <Reveal
+                            key={category.title}
+                            delay={index * 0.06}
+                            className="h-full"
+                        >
+                            <div className={cn(
+                                "relative group p-6 shadow-md border-[3px] border-slate-900 dark:border-white transition-all duration-300 h-full",
+                                stickyColors[index % stickyColors.length],
+                                rotations[index % rotations.length]
+                            )}>
+                                {/* Paperclip in corner */}
+                                <DoodlePaperclip className="absolute -top-4.5 left-6 w-8 h-8 text-slate-800 dark:text-slate-950 rotate-[-15deg] drop-shadow-sm z-20" />
+
+                                {/* Card header */}
+                                <div className="flex items-center justify-between mb-5 mt-2">
+                                    <div className="flex items-center gap-2">
+                                        <AnimeCategoryIcon title={category.title} />
+                                        <h3 className="text-xl font-bold text-slate-900 dark:text-slate-950 tracking-tight font-sans">
+                                            {category.title}
+                                        </h3>
+                                    </div>
+                                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900/10 text-slate-900 border border-slate-900/20 font-bold font-sans">
+                                        {category.skills.length} items
+                                    </span>
+                                </div>
+
+                                {/* Skills chips */}
+                                <div className="flex flex-wrap gap-3 items-center">
+                                    {category.skills.map((skill) => (
+                                        <div
+                                            key={skill.name}
+                                            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white dark:bg-white border-2 border-slate-900 text-slate-900 rounded font-bold text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_rgba(0,0,0,1)] transition-all font-sans"
+                                            title={skill.name}
+                                        >
+                                            {skill.image ? (
+                                                isDataUri(skill.image) ? (
+                                                    <img
+                                                        src={skill.image}
+                                                        alt={skill.name}
+                                                        width={18}
+                                                        height={18}
+                                                        className="h-4.5 w-4.5 rounded-sm object-contain"
+                                                    />
+                                                ) : (
+                                                    <Image
+                                                        src={skill.image}
+                                                        alt={skill.name}
+                                                        width={18}
+                                                        height={18}
+                                                        className="h-4.5 w-4.5 rounded-sm object-contain"
+                                                    />
+                                                )
+                                            ) : (
+                                                <div className="h-4.5 w-4.5 rounded-sm bg-slate-200" />
+                                            )}
+                                            <span className="text-sm font-bold whitespace-nowrap">
+                                                {skill.name}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </Reveal>
+                    ))}
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className="md:py-16 flex flex-col items-center justify-center">
             {/* Header */}

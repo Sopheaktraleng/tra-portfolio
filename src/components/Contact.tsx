@@ -12,6 +12,9 @@ import {
     XCircle,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { useStyleMode } from "@/components/StyleModeProvider";
+import { DoodleUnderline } from "@/components/Doodles";
+import { cn } from "@/lib/cn";
 
 const MAX_SUBJECT = 120;
 const MAX_MESSAGE = 2000;
@@ -162,19 +165,31 @@ const Contact = () => {
     const StatusIcon = statusMeta?.Icon;
     const showSubmitErrors = submitted && !isValid;
 
+    const { styleMode } = useStyleMode();
+    const isScrapbook = styleMode === "scrapbook";
+
     return (
         <section className="py-10 flex justify-center items-center">
             <div className="w-full max-w-3xl px-4">
                 <div className="text-center mb-7 md:mb-8">
                     <Reveal>
-                        <h2 className="section-title">
-                            <span className="section-title-gradient">
-                                Contact
-                            </span>
-                        </h2>
+                        {isScrapbook ? (
+                            <div className="relative inline-block mb-3">
+                                <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+                                    Contact
+                                </h2>
+                                <DoodleUnderline className="w-full h-3 text-violet-500 dark:text-fuchsia-400 mt-1" />
+                            </div>
+                        ) : (
+                            <h2 className="section-title">
+                                <span className="section-title-gradient">
+                                    Contact
+                                </span>
+                            </h2>
+                        )}
                     </Reveal>
                     <Reveal delay={0.08}>
-                        <p className="section-subtitle">
+                        <p className={cn(isScrapbook ? "font-sans font-medium text-lg mt-2 text-slate-700 dark:text-slate-300" : "section-subtitle")}>
                             Have a question or opportunity? Let’s connect.
                         </p>
                     </Reveal>
@@ -184,8 +199,17 @@ const Contact = () => {
                         <form
                             onSubmit={handleSubmit}
                             noValidate
-                            className="glass-panel p-5 md:p-6 text-left"
+                            className={cn(
+                                isScrapbook
+                                    ? "bg-[#fcf9f2] dark:bg-[#1a1a1c] border-[3px] border-slate-900 dark:border-white p-6 md:p-8 shadow-[6px_6px_0px_#000] dark:shadow-[6px_6px_0px_#fff] rotate-[-1deg] rounded-sm relative text-left"
+                                    : "glass-panel p-5 md:p-6 text-left"
+                            )}
                         >
+                            {isScrapbook && (
+                                <div className="absolute -top-4.5 right-6 scrapbook-washi scrapbook-washi-lavender text-xs scale-90 rotate-[3deg]">
+                                    Postcard 📮
+                                </div>
+                            )}
                         <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-white/50">
                             <span>Fields marked with * are required.</span>
                             <span className="inline-flex items-center gap-1">
@@ -332,7 +356,11 @@ const Contact = () => {
                             id="contact-submit"
                             type="submit"
                             disabled={loading}
-                            className="mt-5 w-full btn-primary rounded-md px-3 py-2 text-sm font-semibold shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
+                            className={cn(
+                                isScrapbook
+                                    ? "mt-5 w-full bg-yellow-200 hover:bg-yellow-300 text-slate-955 dark:bg-yellow-300 dark:hover:bg-yellow-400 border-[3px] border-slate-900 font-bold text-base py-3 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] dark:hover:shadow-[6px_6px_0px_#fff] transition-all flex items-center justify-center gap-2 rounded select-none"
+                                    : "mt-5 w-full btn-primary rounded-md px-3 py-2 text-sm font-semibold shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
+                            )}
                         >
                             {loading ? (
                                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -418,6 +446,9 @@ function IconInput({
     ariaDescribedBy,
     invalid,
 }: IconInputProps) {
+    const { styleMode } = useStyleMode();
+    const isScrapbook = styleMode === "scrapbook";
+
     return (
         <div className="relative">
             <span className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400">
@@ -435,7 +466,11 @@ function IconInput({
                 aria-invalid={invalid}
                 aria-describedby={ariaDescribedBy}
                 data-invalid={invalid ? "true" : "false"}
-                className="form-input"
+                className={cn(
+                    isScrapbook
+                        ? "w-full pl-8 border-b-2 border-t-0 border-x-0 border-slate-900 dark:border-white bg-transparent text-slate-900 dark:text-white placeholder:text-slate-500 placeholder:opacity-50 text-base py-2 focus:outline-none focus:border-violet-500 transition font-sans font-bold"
+                        : "form-input"
+                )}
             />
         </div>
     );
@@ -466,6 +501,9 @@ function IconTextarea({
     ariaDescribedBy,
     invalid,
 }: IconTextareaProps) {
+    const { styleMode } = useStyleMode();
+    const isScrapbook = styleMode === "scrapbook";
+
     return (
         <div className="relative">
             <span className="pointer-events-none absolute left-2.5 top-2.5 text-slate-400">
@@ -483,7 +521,11 @@ function IconTextarea({
                 aria-invalid={invalid}
                 aria-describedby={ariaDescribedBy}
                 data-invalid={invalid ? "true" : "false"}
-                className="form-textarea"
+                className={cn(
+                    isScrapbook
+                        ? "w-full pl-8 border-b-2 border-t-0 border-x-0 border-slate-900 dark:border-white bg-transparent text-slate-900 dark:text-white placeholder:text-slate-500 placeholder:opacity-50 text-base py-2 focus:outline-none focus:border-violet-500 transition resize-y font-sans font-bold"
+                        : "form-textarea"
+                )}
             />
         </div>
     );

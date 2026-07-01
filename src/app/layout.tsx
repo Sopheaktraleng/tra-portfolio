@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk, Caveat } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Analytics from "@/components/Analytics";
 import { Footer } from "@/components/Footer";
 import dynamic from "next/dynamic";
+import { StyleModeProvider } from "@/components/StyleModeProvider";
+import LayoutContainer from "@/components/LayoutContainer";
 
 const Navbar = dynamic(() => import("@/components/Navbar"), {
     ssr: true,
@@ -22,6 +24,13 @@ const jetBrainsMono = JetBrains_Mono({
     variable: "--font-mono",
     subsets: ["latin"],
     display: "swap",
+});
+
+const caveat = Caveat({
+    variable: "--font-scrapbook",
+    subsets: ["latin"],
+    display: "swap",
+    weight: ["400", "700"],
 });
 
 const siteUrl =
@@ -90,28 +99,32 @@ export default function RootLayout({
             lang="en"
             dir="ltr"
             suppressHydrationWarning
-            className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} antialiased h-full`}
+            className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} ${caveat.variable} antialiased h-full`}
         >
             <Analytics />
             <body className="min-h-screen flex flex-col bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
                 <ThemeProvider>
-                    <a
-                        href="#main-content"
-                        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:rounded-lg focus:bg-black focus:text-white"
-                    >
-                        Skip to content
-                    </a>
+                    <StyleModeProvider>
+                        <LayoutContainer>
+                            <a
+                                href="#main-content"
+                                className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:rounded-lg focus:bg-black focus:text-white"
+                            >
+                                Skip to content
+                            </a>
 
-                    <Navbar />
+                            <Navbar />
 
-                    <main
-                        id="main-content"
-                        className="flex-1 px-4 py-6 md:px-6 lg:px-8"
-                    >
-                        {children}
-                    </main>
+                            <main
+                                id="main-content"
+                                className="flex-1 px-4 py-6 md:px-6 lg:px-8"
+                            >
+                                {children}
+                            </main>
 
-                    <Footer />
+                            <Footer />
+                        </LayoutContainer>
+                    </StyleModeProvider>
                 </ThemeProvider>
             </body>
         </html>

@@ -1,6 +1,10 @@
+"use client";
+
 import { BadgeCheck, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import type { EducationItem } from "@/types";
+import { DoodlePaperclip, DoodleStar } from "@/components/Doodles";
+import { useStyleMode } from "@/components/StyleModeProvider";
 
 const AnimeFlameIcon = () => (
     <span className="relative flex items-center justify-center w-5 h-5 flex-shrink-0">
@@ -54,8 +58,96 @@ interface EducationCardProps {
 }
 
 const EducationCard = ({ edu }: EducationCardProps) => {
+    const { styleMode } = useStyleMode();
     const hasCertificate = Boolean(edu.certificate?.url?.trim());
     const certificateLabel = edu.certificate?.label ?? "View Certificate";
+
+    if (styleMode === "scrapbook") {
+        return (
+            <div className="group w-96 p-5 border-[3px] border-slate-900 dark:border-white bg-[#faf8f5] dark:bg-[#1a1a1c] text-slate-900 dark:text-slate-100 shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_rgba(255,255,255,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_rgba(255,255,255,1)] transition-all text-left relative rounded-sm">
+                {/* Spiral notebook spine simulation paperclip */}
+                <DoodlePaperclip className="absolute -top-4 right-4 w-7 h-7 text-slate-700 dark:text-slate-900 rotate-[15deg] drop-shadow-sm z-20" />
+
+                {/* Header */}
+                <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-white dark:bg-white border-2 border-black rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center p-1">
+                        <Image
+                            src={edu.img}
+                            alt={`${edu.school} logo`}
+                            width={40}
+                            height={40}
+                            className="object-contain"
+                        />
+                    </div>
+
+                    <div className="min-w-0">
+                        <p className="text-lg font-bold leading-tight truncate text-slate-900 dark:text-white font-sans">
+                            {edu.degree}
+                        </p>
+                        <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            <span className="marker-highlight dark:text-slate-900 py-0.5 px-1.5">{edu.school}</span>
+                        </p>
+                    </div>
+                </div>
+
+                {/* Date tape sticker style */}
+                <div className="mb-4 flex flex-wrap items-center gap-2">
+                    <div className="scrapbook-washi scrapbook-washi-blue text-[11px] py-1 px-2.5 scale-95 rotate-[-1deg]">
+                        {edu.date}
+                    </div>
+                    {hasCertificate && (
+                        <div className="scrapbook-washi scrapbook-washi-green text-[11px] py-1 px-2.5 scale-95 rotate-[1.5deg]">
+                            ★ Certified
+                        </div>
+                    )}
+                </div>
+
+                <div className="divider bg-black/20 dark:bg-white/20 mb-3" />
+
+                {/* Description */}
+                <p className="text-sm leading-relaxed mb-4 font-sans font-medium text-slate-800 dark:text-slate-200">
+                    {edu.description}
+                </p>
+
+                {/* Highlights */}
+                <p className="flex items-center gap-1.5 text-sm font-bold mb-2 text-slate-900 dark:text-white">
+                    <DoodleStar className="w-4 h-4 text-amber-500" />
+                    Key Highlights:
+                </p>
+
+                <ul className="space-y-2 text-sm font-sans font-medium text-slate-800 dark:text-slate-200">
+                    {edu.highlights.map((highlight) => (
+                        <li key={highlight} className="flex items-start gap-2">
+                            <span className="text-slate-800 dark:text-slate-400 font-bold mt-0.5">▪</span>
+                            <span>{highlight}</span>
+                        </li>
+                    ))}
+                </ul>
+
+                {/* Certificate */}
+                {hasCertificate && (
+                    <div className="mt-4 rounded-lg border-2 border-dashed border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 p-3">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <span className="inline-flex items-center gap-2 text-xs font-bold text-emerald-800 dark:text-emerald-200">
+                                <BadgeCheck className="h-4 w-4" />
+                                Verified credential
+                            </span>
+                            <a
+                                href={edu.certificate?.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-1.5 rounded bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold border-2 border-black px-3 py-1 text-xs shadow-[2px_2px_0px_#000] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000] transition-all"
+                                aria-label={`${certificateLabel} for ${edu.degree}`}
+                            >
+                                <ExternalLink className="h-3.5 w-3.5" />
+                                {certificateLabel}
+                            </a>
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    }
 
     return (
         <div className="group w-96 glass-card glass-card-hover bg-gradient-to-b from-white/90 to-white/70 dark:from-white/10 dark:to-white/5 p-5 focus-within:ring-2 focus-within:ring-black/10 dark:focus-within:ring-white/20 text-left">

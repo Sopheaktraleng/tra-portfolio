@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import type { ExperienceItem } from "@/types";
+import { useStyleMode } from "@/components/StyleModeProvider";
+import { DoodlePaperclip, DoodleStar } from "@/components/Doodles";
 
 const AnimeShurikenIcon = () => (
     <span className="relative flex items-center justify-center w-5 h-5 flex-shrink-0">
@@ -59,6 +63,70 @@ interface ExperienceCardProps {
 }
 
 const ExperienceCard = ({ exp }: ExperienceCardProps) => {
+    const { styleMode } = useStyleMode();
+
+    if (styleMode === "scrapbook") {
+        return (
+            <div className="group w-96 p-5 border-[3px] border-slate-900 dark:border-white bg-[#fcf9f2] dark:bg-[#1a1a1c] text-slate-900 dark:text-slate-100 shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_rgba(255,255,255,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_rgba(255,255,255,1)] transition-all text-left relative rounded-sm">
+                {/* Spiral binding spine simulation paperclip */}
+                <DoodlePaperclip className="absolute -top-4 right-4 w-7 h-7 text-slate-700 dark:text-slate-900 rotate-[15deg] drop-shadow-sm z-20" />
+
+                {/* Header */}
+                <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-white dark:bg-white border-2 border-black rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center p-1">
+                        {exp.image && (
+                            <Image
+                                src={exp.image}
+                                alt={`${exp.company} logo`}
+                                width={40}
+                                height={40}
+                                className="object-contain"
+                            />
+                        )}
+                    </div>
+
+                    <div className="min-w-0">
+                        <p className="text-lg font-bold leading-tight truncate text-slate-900 dark:text-white font-sans">
+                            {exp.role}
+                        </p>
+                        <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            <span className="marker-highlight-cyan dark:text-slate-900 py-0.5 px-1.5">{exp.company}</span>
+                        </p>
+                    </div>
+                </div>
+
+                {/* Date tape sticker style */}
+                <div className="mb-4">
+                    <div className="scrapbook-washi scrapbook-washi-pink text-[11px] py-1 px-2.5 scale-95 rotate-[1.5deg]">
+                        {exp.date}
+                    </div>
+                </div>
+
+                <div className="divider bg-black/20 dark:bg-white/20 mb-3" />
+
+                {/* Description */}
+                <p className="text-sm leading-relaxed mb-4 font-sans font-medium text-slate-800 dark:text-slate-200">
+                    {exp.description}
+                </p>
+
+                {/* Key Responsibilities */}
+                <p className="flex items-center gap-1.5 text-sm font-bold mb-2 text-slate-900 dark:text-white">
+                    <DoodleStar className="w-4 h-4 text-cyan-500" />
+                    Key Responsibilities:
+                </p>
+
+                <ul className="space-y-2 text-sm font-sans font-medium text-slate-800 dark:text-slate-200">
+                    {exp.skills.map((skill) => (
+                        <li key={skill} className="flex items-start gap-2">
+                            <span className="text-slate-800 dark:text-slate-400 font-bold mt-0.5">▪</span>
+                            <span>{skill}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+    }
+
     return (
         <div className="group w-96 glass-card glass-card-hover bg-white/60 dark:bg-white/5 p-5 focus-within:ring-2 focus-within:ring-black/10 dark:focus-within:ring-white/20 text-left">
             {/* Header */}

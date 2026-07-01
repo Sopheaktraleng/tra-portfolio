@@ -3,6 +3,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import { useStyleMode } from "@/components/StyleModeProvider";
+import { DoodleArrow, DoodlePin, DoodleStar, DoodleUnderline } from "@/components/Doodles";
 
 const FLOAT_TRANSITION = {
     duration: 2,
@@ -34,6 +36,7 @@ function FloatingBadge({
 
 const HeroSection = () => {
     const sectionRef = useRef<HTMLElement>(null);
+    const { styleMode } = useStyleMode();
 
     const handleScrollHintClick = () => {
         const skills = document.getElementById("skills");
@@ -49,6 +52,111 @@ const HeroSection = () => {
         }
         window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
     };
+
+    if (styleMode === "scrapbook") {
+        return (
+            <section
+                ref={sectionRef}
+                className="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-10"
+            >
+                {/* Decorative background doodles */}
+                <div className="absolute top-10 left-10 text-slate-400 dark:text-white/10 hidden md:block">
+                    <DoodleStar className="w-16 h-16 rotate-[-12deg]" />
+                </div>
+                <div className="absolute bottom-20 right-16 text-slate-400 dark:text-white/10 hidden md:block">
+                    <DoodleStar className="w-12 h-12 rotate-[25deg]" />
+                </div>
+
+                <div className="w-full md:max-w-7xl mx-auto px-4 md:px-6">
+                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                        {/* Text column */}
+                        <div className="flex flex-col items-center text-center lg:items-start lg:text-start order-last lg:order-first">
+                            <div className="scrapbook-sticker scrapbook-sticker-hover rotate-[-2deg] text-sm mb-3">
+                                <span>🎨</span>
+                                <span>Welcome to my sketchbook!</span>
+                            </div>
+
+                            <div className="relative mt-2">
+                                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
+                                    Leng Sopheaktra
+                                </h1>
+                                <DoodleUnderline className="w-full h-4 text-violet-500/80 dark:text-fuchsia-400/80 mt-1" />
+                            </div>
+
+                            <h2 className="mt-4 text-xl sm:text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200">
+                                <span className="marker-highlight dark:text-slate-900">
+                                    Full-Stack Developer
+                                </span>
+                            </h2>
+
+                            <p className="mt-6 text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-200 max-w-2xl font-sans font-medium">
+                                I&apos;m a software engineer with a passion for building
+                                dynamic, user-friendly web applications. My primary
+                                expertise is in JavaScript, and I also work with
+                                Python and PHP. I manage deployments and have solid
+                                DevOps experience with Docker, Jenkins, GitHub
+                                Actions, AWS, and Linux. I also leverage AI tools to
+                                boost productivity through prompt engineering. I&apos;m
+                                an adaptable learner and thrive in collaborative
+                                environments to build outstanding apps.
+                            </p>
+
+                            <a
+                                href="https://flowcv.com/resume/tkwwsww93lh0"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-8 px-8 py-3 bg-yellow-200 dark:bg-yellow-300 text-slate-900 border-[3px] border-slate-900 font-bold text-lg rounded-md shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] active:translate-x-[0px] active:translate-y-[0px] active:shadow-[2px_2px_0px_#000] transition-all rotate-[-1deg] w-full sm:w-auto text-center"
+                            >
+                                Check Resume 📄
+                            </a>
+                        </div>
+
+                        {/* Image column */}
+                        <div className="relative flex justify-center items-center">
+                            <div className="relative rotate-[3deg] hover:rotate-[1deg] transition-transform duration-300">
+                                {/* Polaroid card frame */}
+                                <div className="polaroid-frame border-[3px] border-black bg-white dark:bg-slate-950 p-4 pb-10 shadow-[6px_6px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_rgba(255,255,255,1)]">
+                                    <div className="relative w-[240px] sm:w-[300px] aspect-square overflow-hidden border-2 border-black dark:border-slate-800">
+                                        <Image
+                                            src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/traaa.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHJhYWEuanBnIiwiaWF0IjoxNzc5MTgxMzYxLCJleHAiOjE4MTA3MTczNjF9.A9dQaP6roDYvH0mgNnsPtmD6YBqnM_JoIjxLt1WSsbc"
+                                            alt="Leng Sopheaktra"
+                                            fill
+                                            className="object-cover"
+                                            priority
+                                        />
+                                    </div>
+                                    <div className="mt-4 text-center font-sans font-bold text-lg text-slate-800 dark:text-slate-200">
+                                        Sopheaktra (Dev) 📸
+                                    </div>
+                                </div>
+
+                                {/* Red Pushpin overlay at the top */}
+                                <DoodlePin className="absolute -top-7 left-1/2 -translate-x-1/2 w-8 h-8 z-20" />
+
+                                {/* Floating Sticker: Open to Work */}
+                                <div className="absolute -right-6 -top-4 rotate-[12deg] bg-emerald-200 dark:bg-emerald-300 text-slate-900 border-2 border-black font-bold text-xs px-3 py-1 shadow-[2px_2px_0px_#000] rounded">
+                                    🚀 Open to Work
+                                </div>
+
+                                {/* Floating Sticker: DevOps automation */}
+                                <div className="absolute -left-6 -bottom-4 rotate-[-8deg] bg-cyan-200 dark:bg-cyan-300 text-slate-900 border-2 border-black font-bold text-xs px-3 py-1 shadow-[2px_2px_0px_#000] rounded">
+                                    💻 Full-Stack Dev
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Scroll Explore Arrow */}
+                    <div className="hidden lg:flex flex-col items-center absolute bottom-4 left-1/2 -translate-x-1/2 text-slate-600 dark:text-slate-400">
+                        <span className="font-sans font-bold text-sm rotate-[-3deg] mb-1">
+                            Scroll down to explore!
+                        </span>
+                        <DoodleArrow className="w-8 h-8 rotate-[90deg] text-slate-600 dark:text-slate-400 animate-bounce" />
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section

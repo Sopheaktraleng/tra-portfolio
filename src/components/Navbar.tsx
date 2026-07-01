@@ -7,6 +7,7 @@ import { Check, Menu, X } from "lucide-react";
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import DarkModeSelector from "@/components/DarkModeSelector";
 import { cn } from "@/lib/cn";
+import { useStyleMode } from "@/components/StyleModeProvider";
 
 const navLinks = [
     { href: "/home", label: "Home" },
@@ -92,6 +93,7 @@ function NavLink({
     urlHash?: string;
 }) {
     const pathname = usePathname();
+    const { styleMode } = useStyleMode();
 
     const isActive = useMemo(() => {
         if (href === "/" || href === "/home") return isHomePath(pathname);
@@ -117,6 +119,24 @@ function NavLink({
         },
         [href]
     );
+
+    if (styleMode === "scrapbook") {
+        return (
+            <Link
+                href={href}
+                onClick={handleClick}
+                className={cn(
+                    "relative inline-flex items-center justify-center px-4 py-1 text-sm font-bold transition-all duration-200 font-sans",
+                    isActive
+                        ? "text-black bg-yellow-200 dark:bg-yellow-300 border-2 border-black dark:border-white shadow-[2px_2px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_rgba(255,255,255,1)] rotate-[-2deg]"
+                        : "text-slate-800 dark:text-slate-200 hover:rotate-[1deg] hover:bg-black/5 dark:hover:bg-white/10 rounded-md"
+                )}
+                aria-current={isActive ? "page" : undefined}
+            >
+                {label}
+            </Link>
+        );
+    }
 
     return (
         <Link
@@ -180,6 +200,8 @@ export default function Navbar() {
     }, [close]);
 
     const [scrolled, setScrolled] = useState(false);
+    const { styleMode, toggleStyleMode } = useStyleMode();
+
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 2);
         onScroll();
@@ -187,18 +209,25 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    const isScrapbook = styleMode === "scrapbook";
+
     return (
         <header
             role="banner"
             className={cn(
                 "sticky top-0 z-50 w-full transition-all duration-300",
-                open
+                isScrapbook
+                    ? "bg-transparent"
+                    : open
                     ? "bg-transparent backdrop-blur-xl ring-0 shadow-none"
                     : "bg-white/50 dark:bg-black/40 backdrop-blur-xl ring-1 ring-white/30 dark:ring-white/10",
-                scrolled && !open && "shadow-sm"
+                scrolled && !open && !isScrapbook && "shadow-sm"
             )}
         >
-            <div className="mx-auto max-w-7xl px-3 sm:px-6">
+            <div className={cn(
+                "mx-auto max-w-7xl px-3 sm:px-6",
+                isScrapbook && "mt-2 rounded-xl bg-amber-50/90 dark:bg-[#1a1a1c]/90 border-[3px] border-slate-900 dark:border-white shadow-[4px_4px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_rgba(255,255,255,1)]"
+            )}>
                 <div className="flex h-14 items-center justify-between px-2 sm:px-4">
                     <Link
                         href="/"
@@ -210,14 +239,24 @@ export default function Navbar() {
                             alt="Logo"
                             width={28}
                             height={28}
-                            className="rounded"
+                            className={cn("rounded", isScrapbook && "rotate-[-3deg] border-2 border-black dark:border-white")}
                             priority
                         />
+                        {isScrapbook && (
+                            <span className="font-sans text-lg font-bold rotate-[-1deg] text-slate-900 dark:text-white">
+                                Sopheaktra
+                            </span>
+                        )}
                     </Link>
 
                     <nav
                         aria-label="Primary"
-                        className="hidden md:flex items-center gap-2 rounded-full px-2 py-1 bg-white/30 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10"
+                        className={cn(
+                            "hidden md:flex items-center gap-2",
+                            isScrapbook
+                                ? "bg-transparent px-0 py-0 ring-0"
+                                : "rounded-full px-2 py-1 bg-white/30 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10"
+                        )}
                     >
                         {navLinks.map((l) => (
                             <NavLink
@@ -229,14 +268,40 @@ export default function Navbar() {
                         ))}
                     </nav>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2.5">
+                        <button
+                            onClick={toggleStyleMode}
+                            className={cn(
+                                "transition-all duration-200 text-xs font-bold whitespace-nowrap",
+                                isScrapbook
+                                    ? "scrapbook-sticker scrapbook-sticker-hover text-[11px] py-1 px-3"
+                                    : "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 border border-black/10 dark:border-white/15 bg-white/60 dark:bg-white/10 text-slate-800 dark:text-white shadow-sm hover:shadow"
+                            )}
+                            aria-label={isScrapbook ? "Switch to Clean Mode" : "Switch to Scrapbook Mode"}
+                        >
+                            {isScrapbook ? (
+                                <>
+                                    <span>💻</span>
+                                    <span>Clean Mode</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span>🎨</span>
+                                    <span className="hidden sm:inline">Scrapbook Mode</span>
+                                </>
+                            )}
+                        </button>
+
                         <DarkModeSelector />
+
                         <button
                             onClick={toggle}
-                            className="md:hidden inline-flex items-center justify-center rounded-xl p-2.5
-              bg-white/60 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10
-              focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
-              focus-visible:ring-violet-300 dark:focus-visible:ring-fuchsia-400/40"
+                            className={cn(
+                                "md:hidden inline-flex items-center justify-center rounded-xl p-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-300 dark:focus-visible:ring-fuchsia-400/40",
+                                isScrapbook
+                                    ? "bg-yellow-100/50 dark:bg-white/5 border-2 border-black dark:border-white"
+                                    : "bg-white/60 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10"
+                            )}
                             aria-label={open ? "Close menu" : "Open menu"}
                             aria-expanded={open}
                             aria-controls="nav-mobile-menu"
@@ -265,7 +330,12 @@ export default function Navbar() {
                         aria-label="Navigation menu"
                         className="md:hidden fixed inset-x-5 top-16 z-[100] flex justify-end transition-transform duration-200"
                     >
-                        <div className="w-[60%] max-w-sm rounded-2xl bg-white/95 text-slate-900 ring-1 ring-black/10 shadow-2xl backdrop-blur-xl dark:bg-slate-900/85 dark:text-slate-100 dark:ring-white/10 p-2">
+                        <div className={cn(
+                            "w-[60%] max-w-sm p-2",
+                            isScrapbook
+                                ? "bg-amber-50 dark:bg-[#1a1a1c] border-[3px] border-slate-900 dark:border-white shadow-[6px_6px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_rgba(255,255,255,1)] rotate-[-1deg] rounded-lg"
+                                : "rounded-2xl bg-white/95 text-slate-900 ring-1 ring-black/10 shadow-2xl backdrop-blur-xl dark:bg-slate-900/85 dark:text-slate-100 dark:ring-white/10"
+                        )}>
                             <nav aria-label="Mobile navigation" className="space-y-1">
                                 {navLinks.map((l) => {
                                     const isActive = (() => {
@@ -300,8 +370,12 @@ export default function Navbar() {
                                                 "rounded-xl px-3 py-2.5 text-[15px]",
                                                 "transition-all duration-150",
                                                 isActive
-                                                    ? "bg-violet-100 text-violet-300 ring-1 ring-violet-200 shadow-inner dark:bg-violet-500/85 dark:text-white dark:ring-white/10"
-                                                    : "hover:bg-slate-100 dark:hover:bg-white/5"
+                                                    ? isScrapbook
+                                                        ? "bg-yellow-200 dark:bg-yellow-300 text-black border-2 border-black font-bold shadow-[2px_2px_0px_#000]"
+                                                        : "bg-violet-100 text-violet-300 ring-1 ring-violet-200 shadow-inner dark:bg-violet-500/85 dark:text-white dark:ring-white/10"
+                                                    : isScrapbook
+                                                        ? "hover:bg-black/5 dark:hover:bg-white/5 text-slate-900 dark:text-slate-100"
+                                                        : "hover:bg-slate-100 dark:hover:bg-white/5"
                                             )}
                                             aria-current={
                                                 isActive ? "page" : undefined
