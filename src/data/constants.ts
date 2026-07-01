@@ -287,12 +287,12 @@ export const ExperienceData: ExperienceItem[] = [
     company: "Ministry of Economy and Finance",
     date: "Oct 2025 - Now",
     description:
-      "I worked as a Full-stack Developer in GDDE department, developing, designing database, and deploying custom internal systems to automate workflows and enhance efficiency.",
+      "As a Full-stack Developer in the GDDE department, I design, build, and maintain the official MEF Open Data Portal (Data EF) along with custom internal systems to automate workflows and enhance efficiency.",
     skills: [
-      "System Development – Designed, built, and deployed internal applications to improve business operations.",
-      "Performance Optimization – Enhanced system efficiency to improve user experience and business processes.",
-      "Technology Stack – Worked with Vue.js, Spring boot, Express, PostgreSQL, and MongoDB for full-stack development.",
-      "DevOps & Deployment – Utilized Docker, GitHub Actions, and Linux to streamline deployments and improve system reliability.",
+      "Open Data Portal – Developed and optimized the Data EF platform to serve public economic, financial, and banking datasets.",
+      "Database & APIs – Architected robust database schemas and engineered scalable RESTful APIs to deliver data reliably.",
+      "Full-Stack Architecture – Built responsive UI components with Next.js and developed high-performance backend APIs using FastAPI.",
+      "DevOps & Deployment – Utilized Docker, GitHub Actions, and Linux to containerize, automate deployments, and ensure system reliability.",
     ],
   },
   {
