@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type RevealProps = {
     children: React.ReactNode;
@@ -23,21 +22,47 @@ export default function Reveal({
     once = true,
     className,
 }: RevealProps) {
-    const reduce = useReducedMotion();
+    const elementRef = useRef<HTMLDivElement>(null);
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        const element = elementRef.current;
+        if (!element) return;
+
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+            setVisible(true);
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) return;
+                setVisible(true);
+                if (once) observer.disconnect();
+            },
+            { rootMargin: "80px 0px", threshold: 0.12 }
+        );
+
+        observer.observe(element);
+        return () => observer.disconnect();
+    }, [once]);
 
     return (
-        <motion.div
-            className={cx(className)}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y }}
-            whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            viewport={{ once, amount: 0.2 }}
-            transition={{
-                duration: reduce ? 0.01 : duration,
-                delay: reduce ? 0 : delay,
-                ease: "easeOut",
-            }}
+        <div
+            ref={elementRef}
+            className={cx("reveal-lite", visible && "reveal-lite-visible", className)}
+            style={
+                {
+                    "--reveal-delay": `${delay}s`,
+                    "--reveal-duration": `${duration}s`,
+                    "--reveal-y": `${y}px`,
+                } as React.CSSProperties
+            }
         >
             {children}
-        </motion.div>
+        </div>
     );
 }

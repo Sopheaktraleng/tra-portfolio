@@ -242,7 +242,7 @@ export default function Navbar() {
                             width={28}
                             height={28}
                             className={cn("rounded", isScrapbook && "rotate-[-3deg] border-2 border-black dark:border-white")}
-                            priority
+                            sizes="28px"
                         />
                         {isScrapbook && (
                             <span className="font-sans text-lg font-bold rotate-[-1deg] text-slate-900 dark:text-white">

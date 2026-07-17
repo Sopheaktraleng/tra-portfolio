@@ -9,20 +9,12 @@ import {
     Github,
     MapPin,
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodleArrow, DoodlePin, DoodleStar, DoodleUnderline } from "@/components/Doodles";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const RESUME_URL = "https://flowcv.com/resume/tkwwsww93lh0";
 const GITHUB_URL = "https://github.com/Sopheaktraleng";
-
-const FLOAT_TRANSITION = {
-    duration: 2,
-    repeat: Infinity,
-    repeatType: "loop" as const,
-    ease: "easeInOut",
-};
 
 /** Reusable floating badge chip shown around the profile image. */
 function FloatingBadge({
@@ -33,15 +25,11 @@ function FloatingBadge({
     className: string;
 }) {
     return (
-        <motion.div
-            animate={{ y: [-5, 5, -5] }}
-            transition={FLOAT_TRANSITION}
-            className={className}
-        >
+        <div className={`${className} hero-float-badge`}>
             <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-white">
                 {label}
             </span>
-        </motion.div>
+        </div>
     );
 }
 
@@ -161,6 +149,8 @@ const HeroSection = () => {
                                             src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/traaa.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHJhYWEuanBnIiwiaWF0IjoxNzc5MTgxMzYxLCJleHAiOjE4MTA3MTczNjF9.A9dQaP6roDYvH0mgNnsPtmD6YBqnM_JoIjxLt1WSsbc"
                                             alt={t("hero.photoAlt")}
                                             fill
+                                            sizes="(max-width: 640px) 240px, 300px"
+                                            quality={78}
                                             className="object-cover"
                                             priority
                                         />
@@ -279,6 +269,7 @@ const HeroSection = () => {
                                     alt={t("hero.photoAlt")}
                                     fill
                                     sizes="(max-width: 640px) 280px, (max-width: 768px) 384px, 448px"
+                                    quality={78}
                                     className="object-cover rounded-3xl"
                                     priority
                                 />
@@ -298,18 +289,10 @@ const HeroSection = () => {
                 </div>
 
                 {/* Scroll hint */}
-                <motion.button
+                <button
                     type="button"
                     onClick={handleScrollHintClick}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: [0, -8, 0] }}
-                    transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: "mirror",
-                        ease: "easeInOut",
-                    }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center focus:outline-none"
+                    className="hero-scroll-hint absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center focus:outline-none"
                     aria-label={t("hero.scroll")}
                 >
                     <span className="text-sm tracking-wide uppercase text-slate-500 dark:text-white/50">
@@ -318,7 +301,7 @@ const HeroSection = () => {
                     <span className="glass-circle">
                         <ChevronDown className="w-6 h-6 text-slate-700 dark:text-white/70" />
                     </span>
-                </motion.button>
+                </button>
             </div>
         </section>
     );

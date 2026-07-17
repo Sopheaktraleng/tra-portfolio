@@ -43,7 +43,7 @@ export default function Home() {
 
             <section
                 id="skills"
-                className="scroll-mt-24 mb-10"
+                className="deferred-section scroll-mt-24 mb-10"
                 aria-label="Skills"
             >
                 <Skills />
@@ -51,7 +51,7 @@ export default function Home() {
 
             <section
                 id="education"
-                className="scroll-mt-24 mb-10"
+                className="deferred-section scroll-mt-24 mb-10"
                 aria-label="Education"
             >
                 <Education />
@@ -59,7 +59,7 @@ export default function Home() {
 
             <section
                 id="experience"
-                className="scroll-mt-24 mb-10"
+                className="deferred-section scroll-mt-24 mb-10"
                 aria-label="Experience"
             >
                 <Experience />
@@ -67,13 +67,13 @@ export default function Home() {
 
             <section
                 id="projects"
-                className="scroll-mt-24 mb-10"
+                className="deferred-section scroll-mt-24 mb-10"
                 aria-label="Projects"
             >
                 <Projects />
             </section>
 
-            <section id="contact" className="scroll-mt-24" aria-label="Contact">
+            <section id="contact" className="deferred-section scroll-mt-24" aria-label="Contact">
                 <Contact />
             </section>
         </div>

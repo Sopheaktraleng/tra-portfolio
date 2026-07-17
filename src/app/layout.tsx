@@ -26,12 +26,14 @@ const jetBrainsMono = JetBrains_Mono({
     variable: "--font-mono",
     subsets: ["latin"],
     display: "swap",
+    preload: false,
 });
 
 const caveat = Caveat({
     variable: "--font-scrapbook",
     subsets: ["latin"],
     display: "swap",
+    preload: false,
     weight: ["400", "700"],
 });
 
@@ -39,6 +41,7 @@ const notoSansKhmer = Noto_Sans_Khmer({
     variable: "--font-khmer",
     subsets: ["khmer"],
     display: "swap",
+    preload: false,
     weight: ["400", "500", "600", "700"],
 });
 
