@@ -5,9 +5,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Check, Menu, X } from "lucide-react";
 import React, { useState, useCallback, useEffect, useMemo } from "react";
-import DarkModeSelector from "@/components/DarkModeSelector";
-import LanguageSelector from "@/components/LanguageSelector";
 import { useLanguage } from "@/components/LanguageProvider";
+import DisplayPreferences from "@/components/DisplayPreferences";
 import { cn } from "@/lib/cn";
 import { useStyleMode } from "@/components/StyleModeProvider";
 
@@ -203,7 +202,7 @@ export default function Navbar() {
     }, [close]);
 
     const [scrolled, setScrolled] = useState(false);
-    const { styleMode, toggleStyleMode } = useStyleMode();
+    const { styleMode } = useStyleMode();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 2);
@@ -272,32 +271,8 @@ export default function Navbar() {
                         ))}
                     </nav>
 
-                    <div className="flex items-center gap-2.5">
-                        <LanguageSelector className="hidden sm:inline-flex" />
-                        <button
-                            onClick={toggleStyleMode}
-                            className={cn(
-                                "transition-all duration-200 text-xs font-bold whitespace-nowrap",
-                                isScrapbook
-                                    ? "scrapbook-sticker scrapbook-sticker-hover text-[11px] py-1 px-3"
-                                    : "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 border border-black/10 dark:border-white/15 bg-white/60 dark:bg-white/10 text-slate-800 dark:text-white shadow-sm hover:shadow"
-                            )}
-                            aria-label={isScrapbook ? t("mode.toStudio") : t("mode.toScrapbook")}
-                        >
-                            {isScrapbook ? (
-                                <>
-                                    <span>💻</span>
-                                    <span>{t("mode.studio")}</span>
-                                </>
-                            ) : (
-                                <>
-                                    <span>🎨</span>
-                                    <span className="hidden sm:inline">{t("mode.scrapbook")}</span>
-                                </>
-                            )}
-                        </button>
-
-                        <DarkModeSelector />
+                    <div className="flex items-center gap-2">
+                        <DisplayPreferences />
 
                         <button
                             onClick={toggle}
@@ -336,12 +311,11 @@ export default function Navbar() {
                         className="lg:hidden fixed inset-x-5 top-16 z-[100] flex justify-end transition-transform duration-200"
                     >
                         <div className={cn(
-                            "w-[60%] max-w-sm p-2",
+                            "w-full max-w-sm p-3",
                             isScrapbook
                                 ? "bg-amber-50 dark:bg-[#1a1a1c] border-[3px] border-slate-900 dark:border-white shadow-[6px_6px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_rgba(255,255,255,1)] rotate-[-1deg] rounded-lg"
                                 : "rounded-2xl bg-white/95 text-slate-900 ring-1 ring-black/10 shadow-2xl backdrop-blur-xl dark:bg-slate-900/85 dark:text-slate-100 dark:ring-white/10"
                         )}>
-                            <LanguageSelector className="mb-2 w-full justify-center sm:hidden" />
                             <nav aria-label={t("nav.mobile")} className="space-y-1">
                                 {navLinks.map((l) => {
                                     const isActive = (() => {
