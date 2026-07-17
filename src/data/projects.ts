@@ -1,4 +1,5 @@
 import type { ProjectItem } from "@/types";
+import type { Language } from "@/i18n/messages";
 
 export const projectsData: ProjectItem[] = [
   {
@@ -77,3 +78,38 @@ export const projectsData: ProjectItem[] = [
     note: "Training capstone · temporary infrastructure",
   },
 ];
+
+const khmerProjectCopy: Record<number, Partial<ProjectItem>> = {
+  1: {
+    category: "វេទិកាទិន្នន័យសាធារណៈ",
+    description: "វេទិកាសាធារណៈសម្រាប់ស្វែងរកសំណុំទិន្នន័យសេដ្ឋកិច្ច និងហិរញ្ញវត្ថុកម្ពុជាដែលអាចទុកចិត្តបាន ប្រភពទិន្នន័យ ការទាញយក និង API ជាក់ស្តែង។",
+    liveLabel: "ចូលមើលវេទិកា",
+    note: "គម្រោងសាធារណៈ · កូដប្រភពមិនបើកជាសាធារណៈ",
+    imageAlt: "រូបភាពវេទិកាទិន្នន័យសាធារណៈ Data EF",
+  },
+  2: {
+    category: "ប្រតិបត្តិការអាជីវកម្ម",
+    description: "ប្រព័ន្ធស្តុកផ្ទៃក្នុងសម្រាប់គ្រប់គ្រងឧបករណ៍បណ្តាញ បរិមាណស្តុក ទីតាំងផ្ទុក អ្នកផ្គត់ផ្គង់ ប្រតិបត្តិការ អ្នកប្រើប្រាស់ និងសិទ្ធិប្រើប្រាស់។",
+    liveLabel: "បើកប្រព័ន្ធ",
+    note: "ប្រព័ន្ធអាជីវកម្មផ្ទៃក្នុង · កូដប្រភពមិនបើកជាសាធារណៈ",
+    imageAlt: "ផ្ទាំងគ្រប់គ្រងស្តុកឧបករណ៍បណ្តាញ",
+  },
+  3: {
+    category: "ផលិតផល Serverless",
+    description: "កម្មវិធីកត់ត្រាចំណាយដ៏សាមញ្ញក្នុង Telegram ដែលអាចបញ្ចូលទិន្នន័យបានលឿន មើលប្រវត្តិប្រតិបត្តិការ សង្ខេបប្រចាំថ្ងៃ និងប្រចាំខែ ព្រមទាំងបែងចែកតាមប្រភេទ។",
+    liveLabel: "បើក Bot",
+    note: "ស្ថាបត្យកម្ម Serverless Webhook",
+    imageAlt: "ការសន្ទនាជាមួយ Telegram Bot សម្រាប់កត់ត្រាចំណាយ",
+  },
+  4: {
+    category: "គម្រោងបញ្ចប់ DevOps",
+    description: "គម្រោងបណ្តុះបណ្តាលពេញលេញដែលភ្ជាប់ការគ្រប់គ្រង Configuration, CI/CD, GitOps ជាមួយ Helm, Kubernetes, AWS និងការត្រួតពិនិត្យប្រតិបត្តិការ។",
+    note: "គម្រោងបណ្តុះបណ្តាល · ហេដ្ឋារចនាសម្ព័ន្ធបណ្តោះអាសន្ន",
+    imageAlt: "រូបភាពស្ថាបត្យកម្ម GitOps Delivery Pipeline",
+  },
+};
+
+export const getProjectsData = (language: Language): ProjectItem[] =>
+  language === "km"
+    ? projectsData.map((project) => ({ ...project, ...khmerProjectCopy[project.id] }))
+    : projectsData;

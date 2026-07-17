@@ -90,6 +90,14 @@ html {
         -apple-system, sans-serif;
 }
 
+html.lang-km {
+    font-family: var(--font-khmer), "Noto Sans Khmer", "Khmer OS System", sans-serif;
+}
+
+html.lang-km.style-scrapbook {
+    --font-sans: var(--font-khmer), "Noto Sans Khmer", "Khmer OS System", sans-serif;
+}
+
 code,
 pre,
 kbd,

@@ -15,6 +15,7 @@ import Reveal from "@/components/Reveal";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodleUnderline } from "@/components/Doodles";
 import { cn } from "@/lib/cn";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const MAX_SUBJECT = 120;
 const MAX_MESSAGE = 2000;
@@ -44,6 +45,7 @@ type StatusType = keyof typeof STATUS_META;
 type Status = { type: StatusType; message: string };
 
 const Contact = () => {
+    const { t } = useLanguage();
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
@@ -71,16 +73,16 @@ const Contact = () => {
 
     const errors = useMemo(() => {
         const e: Record<string, string> = {};
-        if (!emailTrim) e.email = "Email is required.";
+        if (!emailTrim) e.email = t("contact.emailRequired");
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTrim))
-            e.email = "Enter a valid email.";
-        if (!messageTrim) e.message = "Message is required.";
+            e.email = t("contact.emailInvalid");
+        if (!messageTrim) e.message = t("contact.messageRequired");
         else if (messageTrim.length > MAX_MESSAGE)
-            e.message = `Message ≤ ${MAX_MESSAGE} chars.`;
+            e.message = t("contact.messageTooLong");
         if (subjectTrim.length > MAX_SUBJECT)
-            e.subject = `Subject ≤ ${MAX_SUBJECT} chars.`;
+            e.subject = t("contact.subjectTooLong");
         return e;
-    }, [emailTrim, subjectTrim, messageTrim]);
+    }, [emailTrim, subjectTrim, messageTrim, t]);
 
     const isValid = Object.keys(errors).length === 0;
 
@@ -98,7 +100,7 @@ const Contact = () => {
         if (!isValid || company) {
             setStatus({
                 type: "warning",
-                message: "Please fix the highlighted fields and try again.",
+                message: t("contact.fixFields"),
             });
             topErrorRef.current?.focus();
             return;
@@ -120,7 +122,7 @@ const Contact = () => {
             if (res.ok) {
                 setStatus({
                     type: "success",
-                    message: "Thanks! Your message has been sent.",
+                    message: t("contact.sent"),
                 });
                 setEmail("");
                 setSubject("");
@@ -135,7 +137,7 @@ const Contact = () => {
                         result?.error ??
                         (res.statusText
                             ? `Failed to send: ${res.statusText}`
-                            : "Failed to send. Please try again."),
+                            : t("contact.failed")),
                 });
             }
         } catch (err) {
@@ -144,7 +146,7 @@ const Contact = () => {
                 message:
                     err instanceof Error
                         ? err.message
-                        : "Something went wrong. Please try again.",
+                        : t("contact.wrong"),
             });
         } finally {
             setLoading(false);
@@ -176,21 +178,21 @@ const Contact = () => {
                         {isScrapbook ? (
                             <div className="relative inline-block mb-3">
                                 <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
-                                    Contact
+                                    {t("contact.title")}
                                 </h2>
                                 <DoodleUnderline className="w-full h-3 text-violet-500 dark:text-fuchsia-400 mt-1" />
                             </div>
                         ) : (
                             <h2 className="section-title">
                                 <span className="section-title-gradient">
-                                    Contact
+                                    {t("contact.title")}
                                 </span>
                             </h2>
                         )}
                     </Reveal>
                     <Reveal delay={0.08}>
                         <p className={cn(isScrapbook ? "font-sans font-medium text-lg mt-2 text-slate-700 dark:text-slate-300" : "section-subtitle")}>
-                            Have a question or opportunity? Let’s connect.
+                            {t("contact.subtitle")}
                         </p>
                     </Reveal>
                 </div>
@@ -207,17 +209,17 @@ const Contact = () => {
                         >
                             {isScrapbook && (
                                 <div className="absolute -top-4.5 right-6 scrapbook-washi scrapbook-washi-lavender text-xs scale-90 rotate-[3deg]">
-                                    Postcard 📮
+                                    {t("contact.postcard")} 📮
                                 </div>
                             )}
                         <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-white/50">
-                            <span>Fields marked with * are required.</span>
+                            <span>{t("contact.required")}</span>
                             <span className="inline-flex items-center gap-1">
                                 <MessageSquare
                                     className="h-3 w-3"
                                     aria-hidden
                                 />
-                                Share as much context as you can.
+                                {t("contact.context")}
                             </span>
                         </div>
 
@@ -229,17 +231,17 @@ const Contact = () => {
                                 className="mt-4 rounded-lg border border-rose-200/70 dark:border-rose-400/20 bg-rose-50/80 dark:bg-rose-900/20 p-3 text-xs text-rose-700 dark:text-rose-200"
                             >
                                 <p className="font-semibold mb-1">
-                                    Please fix the following:
+                                    {t("contact.fixFollowing")}
                                 </p>
                                 <ul className="list-disc ml-4">
                                     {errors.email && (
-                                        <li>Email — {errors.email}</li>
+                                        <li>{t("contact.email")} — {errors.email}</li>
                                     )}
                                     {errors.subject && (
-                                        <li>Subject — {errors.subject}</li>
+                                        <li>{t("contact.subject")} — {errors.subject}</li>
                                     )}
                                     {errors.message && (
-                                        <li>Message — {errors.message}</li>
+                                        <li>{t("contact.message")} — {errors.message}</li>
                                     )}
                                 </ul>
                             </div>
@@ -260,7 +262,7 @@ const Contact = () => {
                                 id="email"
                                 label={
                                     <>
-                                        Email{" "}
+                                        {t("contact.email")}{" "}
                                         <span className="text-rose-600">*</span>
                                     </>
                                 }
@@ -282,7 +284,7 @@ const Contact = () => {
 
                             <Field
                                 id="subject"
-                                label="Subject"
+                                label={t("contact.subject")}
                                 error={subjectError}
                                 errorId={subjectErrorId}
                             >
@@ -291,7 +293,7 @@ const Contact = () => {
                                     type="text"
                                     value={subject}
                                     onChange={(v) => setSubject(v)}
-                                    placeholder="How can I help?"
+                                    placeholder={t("contact.subjectPlaceholder")}
                                     maxLength={MAX_SUBJECT}
                                     icon={
                                         <TypeIcon
@@ -304,7 +306,7 @@ const Contact = () => {
                                     invalid={Boolean(subjectError)}
                                 />
                                 <div className="mt-1 flex justify-between text-[11px] text-slate-500 dark:text-white/50">
-                                    <span>Keep it short & clear.</span>
+                                    <span>{t("contact.subjectHint")}</span>
                                     <span className="text-slate-400 dark:text-white/40">
                                         {subject.length}/{MAX_SUBJECT}
                                     </span>
@@ -317,7 +319,7 @@ const Contact = () => {
                                 id="message"
                                 label={
                                     <>
-                                        Message{" "}
+                                        {t("contact.message")}{" "}
                                         <span className="text-rose-600">*</span>
                                     </>
                                 }
@@ -328,7 +330,7 @@ const Contact = () => {
                                     id="message"
                                     value={message}
                                     onChange={(v) => setMessage(v)}
-                                    placeholder="Write your message…"
+                                    placeholder={t("contact.messagePlaceholder")}
                                     rows={5}
                                     maxLength={MAX_MESSAGE}
                                     icon={
@@ -343,7 +345,7 @@ const Contact = () => {
                                 />
                                 <div className="mt-1 flex justify-between text-[11px] text-slate-500 dark:text-white/50">
                                     <span>
-                                        Include links or context if needed.
+                                        {t("contact.messageHint")}
                                     </span>
                                     <span className="text-slate-400 dark:text-white/40">
                                         {message.length}/{MAX_MESSAGE}
@@ -367,7 +369,7 @@ const Contact = () => {
                             ) : (
                                 <Send className="w-4 h-4" />
                             )}
-                            {loading ? "Sending..." : "Send Message"}
+                            {loading ? t("contact.sending") : t("contact.send")}
                         </button>
 
                         {status && statusMeta && StatusIcon && (

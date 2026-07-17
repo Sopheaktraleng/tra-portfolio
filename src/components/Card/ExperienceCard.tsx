@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { ExperienceItem } from "@/types";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodlePaperclip, DoodleStar } from "@/components/Doodles";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const AnimeShurikenIcon = () => (
     <span className="relative flex items-center justify-center w-5 h-5 flex-shrink-0">
@@ -64,6 +65,7 @@ interface ExperienceCardProps {
 
 const ExperienceCard = ({ exp }: ExperienceCardProps) => {
     const { styleMode } = useStyleMode();
+    const { t } = useLanguage();
 
     if (styleMode === "scrapbook") {
         return (
@@ -112,7 +114,7 @@ const ExperienceCard = ({ exp }: ExperienceCardProps) => {
                 {/* Key Responsibilities */}
                 <p className="flex items-center gap-1.5 text-sm font-bold mb-2 text-slate-900 dark:text-white">
                     <DoodleStar className="w-4 h-4 text-cyan-500" />
-                    Key Responsibilities:
+                    {t("experience.responsibilities")}
                 </p>
 
                 <ul className="space-y-2 text-sm font-sans font-medium text-slate-800 dark:text-slate-200">
@@ -166,7 +168,7 @@ const ExperienceCard = ({ exp }: ExperienceCardProps) => {
             {/* Responsibilities */}
             <p className="flex items-center gap-2 text-sm font-medium mb-2 text-slate-900 dark:text-white">
                 <AnimeShurikenIcon />
-                Key Responsibilities:
+                {t("experience.responsibilities")}
             </p>
 
             <ul className="space-y-2 text-sm">

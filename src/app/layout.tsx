@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Space_Grotesk, Caveat } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk, Caveat, Noto_Sans_Khmer } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Analytics from "@/components/Analytics";
@@ -7,6 +7,8 @@ import { Footer } from "@/components/Footer";
 import dynamic from "next/dynamic";
 import { StyleModeProvider } from "@/components/StyleModeProvider";
 import LayoutContainer from "@/components/LayoutContainer";
+import { LanguageProvider } from "@/components/LanguageProvider";
+import SkipLink from "@/components/SkipLink";
 
 const Navbar = dynamic(() => import("@/components/Navbar"), {
     ssr: true,
@@ -31,6 +33,13 @@ const caveat = Caveat({
     subsets: ["latin"],
     display: "swap",
     weight: ["400", "700"],
+});
+
+const notoSansKhmer = Noto_Sans_Khmer({
+    variable: "--font-khmer",
+    subsets: ["khmer"],
+    display: "swap",
+    weight: ["400", "500", "600", "700"],
 });
 
 const siteUrl =
@@ -99,19 +108,15 @@ export default function RootLayout({
             lang="en"
             dir="ltr"
             suppressHydrationWarning
-            className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} ${caveat.variable} antialiased h-full`}
+            className={`${spaceGrotesk.variable} ${jetBrainsMono.variable} ${caveat.variable} ${notoSansKhmer.variable} antialiased h-full`}
         >
             <Analytics />
             <body className="min-h-screen flex flex-col bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
                 <ThemeProvider>
-                    <StyleModeProvider>
+                    <LanguageProvider>
+                      <StyleModeProvider>
                         <LayoutContainer>
-                            <a
-                                href="#main-content"
-                                className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:rounded-lg focus:bg-black focus:text-white"
-                            >
-                                Skip to content
-                            </a>
+                            <SkipLink />
 
                             <Navbar />
 
@@ -124,7 +129,8 @@ export default function RootLayout({
 
                             <Footer />
                         </LayoutContainer>
-                    </StyleModeProvider>
+                      </StyleModeProvider>
+                    </LanguageProvider>
                 </ThemeProvider>
             </body>
         </html>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import type { ProjectItem } from "@/types";
 import { useStyleMode } from "@/components/StyleModeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 
 interface ProjectCardProps {
     pro: ProjectItem;
@@ -11,13 +12,14 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ pro }: ProjectCardProps) => {
     const { styleMode } = useStyleMode();
+    const { t } = useLanguage();
 
     if (styleMode === "scrapbook") {
         return (
             <div className="flex h-full w-full justify-center">
                 <div className="group relative flex h-full w-full max-w-[520px] flex-col rounded-sm border-[3px] border-slate-900 bg-[#faf8f5] p-4 text-left shadow-[5px_5px_0px_rgba(0,0,0,1)] transition-all hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[8px_8px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-[#1a1a1c] dark:shadow-[5px_5px_0px_rgba(255,255,255,1)] dark:hover:shadow-[8px_8px_0px_rgba(255,255,255,1)]">
                     <div className="scrapbook-washi scrapbook-washi-yellow absolute -top-3 left-1/2 z-20 -translate-x-1/2 rotate-[-1deg] px-3 py-0.5 text-[9px] tracking-[0.14em]">
-                        PROJECT
+                        {t("projects.project")}
                     </div>
 
                     <div className="relative mt-3 h-[220px] w-full rotate-[1deg] border-2 border-black bg-white p-2.5 pb-6 shadow-sm transition-transform duration-300 hover:rotate-0 dark:border-slate-800 dark:bg-slate-900">
@@ -72,7 +74,7 @@ const ProjectCard = ({ pro }: ProjectCardProps) => {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-1.5 rounded border-2 border-black bg-yellow-300 px-4 py-1.5 text-xs font-bold text-slate-950 shadow-[3px_3px_0px_#000] transition-all hover:bg-yellow-400 active:translate-y-[1px] active:shadow-[1px_1px_0px_#000]"
                                 >
-                                    {pro.liveLabel ?? "View Project"}
+                                    {pro.liveLabel ?? t("projects.live")}
                                     <ExternalLink className="h-4 w-4" aria-hidden />
                                 </a>
                             )}
@@ -85,7 +87,7 @@ const ProjectCard = ({ pro }: ProjectCardProps) => {
                                     className="inline-flex items-center gap-1.5 rounded border-2 border-black bg-white px-3 py-1.5 text-xs font-bold text-slate-950 shadow-[3px_3px_0px_#000] transition-all hover:bg-slate-50 active:translate-y-[1px] active:shadow-[1px_1px_0px_#000]"
                                 >
                                     <Github className="h-4 w-4" aria-hidden />
-                                    Source
+                                    {t("projects.source")}
                                 </a>
                             )}
                         </div>
@@ -148,7 +150,7 @@ const ProjectCard = ({ pro }: ProjectCardProps) => {
                                         rel="noopener noreferrer"
                                         className="btn-primary rounded-lg px-3 py-2 text-sm font-medium shadow-md hover:shadow-lg"
                                     >
-                                        {pro.liveLabel ?? "View Project"}
+                                        {pro.liveLabel ?? t("projects.live")}
                                         <ExternalLink className="h-4 w-4" aria-hidden />
                                     </a>
                                 )}
@@ -161,7 +163,7 @@ const ProjectCard = ({ pro }: ProjectCardProps) => {
                                         className="btn-secondary"
                                     >
                                         <Github className="h-4 w-4" aria-hidden />
-                                        Source
+                                        {t("projects.source")}
                                     </a>
                                 )}
                             </div>

@@ -12,6 +12,7 @@ import {
 import { motion } from "framer-motion";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodleArrow, DoodlePin, DoodleStar, DoodleUnderline } from "@/components/Doodles";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const RESUME_URL = "https://flowcv.com/resume/tkwwsww93lh0";
 const GITHUB_URL = "https://github.com/Sopheaktraleng";
@@ -45,6 +46,7 @@ function FloatingBadge({
 }
 
 const HeroSection = () => {
+    const { t } = useLanguage();
     const sectionRef = useRef<HTMLElement>(null);
     const { styleMode } = useStyleMode();
 
@@ -83,7 +85,7 @@ const HeroSection = () => {
                         <div className="flex flex-col items-center text-center lg:items-start lg:text-start order-last lg:order-first">
                             <div className="scrapbook-sticker scrapbook-sticker-hover rotate-[-2deg] text-sm mb-3">
                                 <span>🎨</span>
-                                <span>Welcome to my sketchbook!</span>
+                                <span>{t("hero.scrapbookWelcome")}</span>
                             </div>
 
                             <div className="relative mt-2">
@@ -95,15 +97,12 @@ const HeroSection = () => {
 
                             <h2 className="mt-4 text-xl sm:text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200">
                                 <span className="marker-highlight dark:text-slate-900">
-                                    Full-Stack Developer
+                                    {t("hero.role")}
                                 </span>
                             </h2>
 
                             <p className="mt-6 text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-200 max-w-2xl font-sans font-medium">
-                                Full-stack developer building reliable public-data
-                                platforms and internal business systems—from responsive
-                                interfaces and scalable APIs to cloud deployment and
-                                DevOps automation.
+                                {t("hero.description")}
                             </p>
 
                             <div className="mt-7 flex w-full flex-col sm:w-auto sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-3">
@@ -111,7 +110,7 @@ const HeroSection = () => {
                                     href="#projects"
                                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-yellow-200 dark:bg-yellow-300 text-slate-900 border-[3px] border-slate-900 font-bold rounded-md shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0px_#000] transition-all rotate-[-1deg]"
                                 >
-                                    View My Work
+                                    {t("hero.work")}
                                     <ArrowRight className="h-4 w-4" aria-hidden />
                                 </a>
                                 <a
@@ -121,7 +120,7 @@ const HeroSection = () => {
                                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white dark:bg-slate-100 text-slate-900 border-[3px] border-slate-900 font-bold rounded-md shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] transition-all rotate-[1deg]"
                                 >
                                     <Download className="h-4 w-4" aria-hidden />
-                                    Download Résumé
+                                    {t("hero.resume")}
                                 </a>
                                 <a
                                     href={GITHUB_URL}
@@ -137,17 +136,17 @@ const HeroSection = () => {
                             <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-sm font-bold text-slate-700 dark:text-slate-300 font-sans">
                                 <span className="inline-flex items-center gap-1.5">
                                     <MapPin className="h-4 w-4 text-rose-500" aria-hidden />
-                                    Phnom Penh, Cambodia
+                                    {t("hero.location")}
                                 </span>
                                 <span className="hidden sm:inline" aria-hidden>·</span>
                                 <span className="inline-flex items-center gap-1.5">
                                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-500/15" aria-hidden />
-                                    Available for opportunities
+                                    {t("hero.available")}
                                 </span>
                                 <span className="hidden sm:inline" aria-hidden>·</span>
                                 <span className="inline-flex items-center gap-1.5">
                                     <BriefcaseBusiness className="h-4 w-4 text-violet-500" aria-hidden />
-                                    Full-stack &amp; DevOps
+                                    {t("hero.focus")}
                                 </span>
                             </div>
                         </div>
@@ -160,7 +159,7 @@ const HeroSection = () => {
                                     <div className="relative w-[240px] sm:w-[300px] aspect-square overflow-hidden border-2 border-black dark:border-slate-800">
                                         <Image
                                             src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/traaa.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHJhYWEuanBnIiwiaWF0IjoxNzc5MTgxMzYxLCJleHAiOjE4MTA3MTczNjF9.A9dQaP6roDYvH0mgNnsPtmD6YBqnM_JoIjxLt1WSsbc"
-                                            alt="Leng Sopheaktra"
+                                            alt={t("hero.photoAlt")}
                                             fill
                                             className="object-cover"
                                             priority
@@ -176,12 +175,12 @@ const HeroSection = () => {
 
                                 {/* Floating Sticker: Open to Work */}
                                 <div className="absolute -right-6 -top-4 rotate-[12deg] bg-emerald-200 dark:bg-emerald-300 text-slate-900 border-2 border-black font-bold text-xs px-3 py-1 shadow-[2px_2px_0px_#000] rounded">
-                                    🚀 Open to Work
+                                    🚀 {t("hero.openToWork")}
                                 </div>
 
                                 {/* Floating Sticker: DevOps automation */}
                                 <div className="absolute -left-6 -bottom-4 rotate-[-8deg] bg-cyan-200 dark:bg-cyan-300 text-slate-900 border-2 border-black font-bold text-xs px-3 py-1 shadow-[2px_2px_0px_#000] rounded">
-                                    💻 Full-Stack Dev
+                                    💻 {t("hero.role")}
                                 </div>
                             </div>
                         </div>
@@ -190,7 +189,7 @@ const HeroSection = () => {
                     {/* Scroll Explore Arrow */}
                     <div className="hidden lg:flex flex-col items-center absolute bottom-4 left-1/2 -translate-x-1/2 text-slate-600 dark:text-slate-400">
                         <span className="font-sans font-bold text-sm rotate-[-3deg] mb-1">
-                            Scroll down to explore!
+                            {t("hero.scroll")}
                         </span>
                         <DoodleArrow className="w-8 h-8 rotate-[90deg] text-slate-600 dark:text-slate-400 animate-bounce" />
                     </div>
@@ -210,7 +209,7 @@ const HeroSection = () => {
                     <div className="flex flex-col items-center text-center md:items-start md:text-start">
                         <div className="glass-pill">
                             <span>👋</span>
-                            <span>Welcome to my portfolio</span>
+                            <span>{t("hero.portfolioWelcome")}</span>
                         </div>
 
                         <h1 className="mt-3 md:mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -218,14 +217,11 @@ const HeroSection = () => {
                         </h1>
 
                         <h2 className="mt-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-slate-800 dark:text-white/90">
-                            Full-Stack Developer
+                            {t("hero.role")}
                         </h2>
 
                         <p className="mt-5 md:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-slate-700 dark:text-white/80 max-w-2xl">
-                            Full-stack developer building reliable public-data
-                            platforms and internal business systems—from responsive
-                            interfaces and scalable APIs to cloud deployment and
-                            DevOps automation.
+                            {t("hero.description")}
                         </p>
 
                         <div className="mt-7 md:mt-8 flex w-full flex-col sm:w-auto sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center md:justify-start gap-3">
@@ -233,7 +229,7 @@ const HeroSection = () => {
                                 href="#projects"
                                 className="btn-primary px-5 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg"
                             >
-                                View My Work
+                                {t("hero.work")}
                                 <ArrowRight className="h-4 w-4" aria-hidden />
                             </a>
                             <a
@@ -243,7 +239,7 @@ const HeroSection = () => {
                                 className="btn-secondary justify-center px-5 py-3 rounded-xl"
                             >
                                 <Download className="h-4 w-4" aria-hidden />
-                                Download Résumé
+                                {t("hero.resume")}
                             </a>
                             <a
                                 href={GITHUB_URL}
@@ -259,17 +255,17 @@ const HeroSection = () => {
                         <div className="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-white/65">
                             <span className="inline-flex items-center gap-1.5">
                                 <MapPin className="h-4 w-4 text-violet-500 dark:text-fuchsia-400" aria-hidden />
-                                Phnom Penh, Cambodia
+                                {t("hero.location")}
                             </span>
                             <span className="hidden sm:inline" aria-hidden>·</span>
                             <span className="inline-flex items-center gap-1.5">
                                 <span className="h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/10" aria-hidden />
-                                Available for opportunities
+                                {t("hero.available")}
                             </span>
                             <span className="hidden sm:inline" aria-hidden>·</span>
                             <span className="inline-flex items-center gap-1.5">
                                 <BriefcaseBusiness className="h-4 w-4 text-violet-500 dark:text-fuchsia-400" aria-hidden />
-                                Full-stack &amp; DevOps
+                                {t("hero.focus")}
                             </span>
                         </div>
                     </div>
@@ -280,7 +276,7 @@ const HeroSection = () => {
                             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
                                 <Image
                                     src="https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/traaa.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvdHJhYWEuanBnIiwiaWF0IjoxNzc5MTgxMzYxLCJleHAiOjE4MTA3MTczNjF9.A9dQaP6roDYvH0mgNnsPtmD6YBqnM_JoIjxLt1WSsbc"
-                                    alt="Leng Sopheaktra — Full-Stack Developer"
+                                    alt={t("hero.photoAlt")}
                                     fill
                                     sizes="(max-width: 640px) 280px, (max-width: 768px) 384px, 448px"
                                     className="object-cover rounded-3xl"
@@ -290,11 +286,11 @@ const HeroSection = () => {
                             </div>
 
                             <FloatingBadge
-                                label="🚀 Open to Work"
+                                label={`🚀 ${t("hero.openToWork")}`}
                                 className="hidden sm:flex absolute -right-4 -top-4 md:-right-8 md:-top-6 glass-float"
                             />
                             <FloatingBadge
-                                label="💻 Full-Stack Developer"
+                                label={`💻 ${t("hero.role")}`}
                                 className="hidden sm:flex absolute -left-4 -bottom-4 md:-left-10 md:-bottom-6 glass-float"
                             />
                         </div>
@@ -314,10 +310,10 @@ const HeroSection = () => {
                         ease: "easeInOut",
                     }}
                     className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center focus:outline-none"
-                    aria-label="Scroll to next section"
+                    aria-label={t("hero.scroll")}
                 >
                     <span className="text-sm tracking-wide uppercase text-slate-500 dark:text-white/50">
-                        Scroll to Explore
+                        {t("hero.scroll")}
                     </span>
                     <span className="glass-circle">
                         <ChevronDown className="w-6 h-6 text-slate-700 dark:text-white/70" />

@@ -1,14 +1,17 @@
 "use client";
 
-import { ExperienceData } from "@/data/constants";
+import { getExperienceData } from "@/data/localized";
 import ExperienceCard from "./Card/ExperienceCard";
 import Reveal from "@/components/Reveal";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodleUnderline } from "@/components/Doodles";
 import { cn } from "@/lib/cn";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const Experience = () => {
     const { styleMode } = useStyleMode();
+    const { language, t } = useLanguage();
+    const ExperienceData = getExperienceData(language);
 
     if (styleMode === "scrapbook") {
         return (
@@ -18,15 +21,14 @@ const Experience = () => {
                     <Reveal>
                         <div className="relative inline-block mb-3">
                             <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
-                                Experience
+                                {t("experience.title")}
                             </h2>
                             <DoodleUnderline className="w-full h-3 text-violet-500 dark:text-fuchsia-400 mt-1" />
                         </div>
                     </Reveal>
                     <Reveal delay={0.08}>
                         <p className="font-sans font-medium text-lg mx-auto max-w-3xl text-slate-700 dark:text-slate-300 mt-2">
-                            Building digital solutions and continuously growing
-                            through real-world engineering challenges.
+                            {t("experience.subtitle")}
                         </p>
                     </Reveal>
                 </div>
@@ -98,13 +100,12 @@ const Experience = () => {
             <div className="mx-auto max-w-6xl px-6 text-center">
                 <Reveal>
                     <h2 className="section-title">
-                        <span className="section-title-gradient">Experience</span>
+                        <span className="section-title-gradient">{t("experience.title")}</span>
                     </h2>
                 </Reveal>
                 <Reveal delay={0.08}>
                     <p className="section-subtitle-lg mx-auto max-w-3xl">
-                        Building digital solutions and continuously growing
-                        through real-world engineering challenges.
+                        {t("experience.subtitle")}
                     </p>
                 </Reveal>
             </div>

@@ -1,14 +1,17 @@
 "use client";
 
-import { projectsData } from "@/data/projects";
+import { getProjectsData } from "@/data/projects";
 import ProjectCard from "./Card/ProjectCard";
 import Reveal from "@/components/Reveal";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodleUnderline } from "@/components/Doodles";
 import { cn } from "@/lib/cn";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const Projects = () => {
     const { styleMode } = useStyleMode();
+    const { language, t } = useLanguage();
+    const projectsData = getProjectsData(language);
 
     if (styleMode === "scrapbook") {
         return (
@@ -18,15 +21,14 @@ const Projects = () => {
                     <Reveal>
                         <div className="relative inline-block mb-3">
                             <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
-                                Featured Projects
+                                {t("projects.title")}
                             </h2>
                             <DoodleUnderline className="w-full h-3 text-violet-500 dark:text-fuchsia-400 mt-1" />
                         </div>
                     </Reveal>
                     <Reveal delay={0.08}>
                         <p className="font-sans font-medium text-lg mx-auto max-w-3xl text-slate-700 dark:text-slate-300 mt-2">
-                            Detailed case studies across public platforms, internal
-                            systems, serverless products, and DevOps automation.
+                            {t("projects.subtitle")}
                         </p>
                     </Reveal>
                 </div>
@@ -58,14 +60,13 @@ const Projects = () => {
                 <Reveal>
                     <h2 className="section-title">
                         <span className="section-title-gradient">
-                            Featured Projects
+                            {t("projects.title")}
                         </span>
                     </h2>
                 </Reveal>
                 <Reveal delay={0.08}>
                     <p className="section-subtitle-lg mx-auto max-w-3xl">
-                        Detailed case studies across public platforms, internal
-                        systems, serverless products, and DevOps automation.
+                        {t("projects.subtitle")}
                     </p>
                 </Reveal>
             </div>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { EducationItem } from "@/types";
 import { DoodlePaperclip, DoodleStar } from "@/components/Doodles";
 import { useStyleMode } from "@/components/StyleModeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const AnimeFlameIcon = () => (
     <span className="relative flex items-center justify-center w-5 h-5 flex-shrink-0">
@@ -59,8 +60,9 @@ interface EducationCardProps {
 
 const EducationCard = ({ edu }: EducationCardProps) => {
     const { styleMode } = useStyleMode();
+    const { t } = useLanguage();
     const hasCertificate = Boolean(edu.certificate?.url?.trim());
-    const certificateLabel = edu.certificate?.label ?? "View Certificate";
+    const certificateLabel = edu.certificate?.label ?? t("education.viewCertificate");
 
     if (styleMode === "scrapbook") {
         return (
@@ -97,7 +99,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                     </div>
                     {hasCertificate && (
                         <div className="scrapbook-washi scrapbook-washi-green text-[11px] py-1 px-2.5 scale-95 rotate-[1.5deg]">
-                            ★ Certified
+                            ★ {t("education.certified")}
                         </div>
                     )}
                 </div>
@@ -112,7 +114,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                 {/* Highlights */}
                 <p className="flex items-center gap-1.5 text-sm font-bold mb-2 text-slate-900 dark:text-white">
                     <DoodleStar className="w-4 h-4 text-amber-500" />
-                    Key Highlights:
+                    {t("education.highlights")}
                 </p>
 
                 <ul className="space-y-2 text-sm font-sans font-medium text-slate-800 dark:text-slate-200">
@@ -130,7 +132,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             <span className="inline-flex items-center gap-2 text-xs font-bold text-emerald-800 dark:text-emerald-200">
                                 <BadgeCheck className="h-4 w-4" />
-                                Verified credential
+                                {t("education.verified")}
                             </span>
                             <a
                                 href={edu.certificate?.url}
@@ -175,7 +177,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                         {hasCertificate && (
                             <span className="inline-flex flex-shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-medium text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200 whitespace-nowrap">
                                 <BadgeCheck className="h-3.5 w-3.5" />
-                                Certified
+                                {t("education.certified")}
                             </span>
                         )}
                     </div>
@@ -192,7 +194,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
             {/* Highlights */}
             <p className="flex items-center gap-2 text-sm font-medium mb-2 text-slate-900 dark:text-white">
                 <AnimeFlameIcon />
-                Key Highlights:
+                {t("education.highlights")}
             </p>
 
             <ul className="space-y-2 text-sm">
@@ -212,7 +214,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                     <div className="flex items-center justify-between gap-3">
                         <span className="inline-flex items-center gap-2 text-xs font-medium text-emerald-700 dark:text-emerald-200">
                             <BadgeCheck className="h-4 w-4" />
-                            Verified credential
+                            {t("education.verified")}
                         </span>
                         <a
                             href={edu.certificate?.url}

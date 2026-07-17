@@ -6,16 +6,18 @@ import { usePathname } from "next/navigation";
 import { Check, Menu, X } from "lucide-react";
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import DarkModeSelector from "@/components/DarkModeSelector";
+import LanguageSelector from "@/components/LanguageSelector";
+import { useLanguage } from "@/components/LanguageProvider";
 import { cn } from "@/lib/cn";
 import { useStyleMode } from "@/components/StyleModeProvider";
 
 const navLinks = [
-    { href: "/home", label: "Home" },
-    { href: "/skills", label: "Skills" },
-    { href: "/education", label: "Education" },
-    { href: "/experience", label: "Experience" },
-    { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
+    { href: "/home", labelKey: "nav.home" },
+    { href: "/skills", labelKey: "nav.skills" },
+    { href: "/education", labelKey: "nav.education" },
+    { href: "/experience", labelKey: "nav.experience" },
+    { href: "/projects", labelKey: "nav.projects" },
+    { href: "/contact", labelKey: "nav.contact" },
 ] as const;
 
 const isHashLink = (href: string) => href.startsWith("/#");
@@ -158,6 +160,7 @@ function NavLink({
 }
 
 export default function Navbar() {
+    const { t } = useLanguage();
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
     const toggle = useCallback(() => setOpen((v) => !v), []);
@@ -193,7 +196,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const onResize = () => {
-            if (window.matchMedia("(min-width: 768px)").matches) close();
+            if (window.matchMedia("(min-width: 1024px)").matches) close();
         };
         window.addEventListener("resize", onResize);
         return () => window.removeEventListener("resize", onResize);
@@ -232,7 +235,7 @@ export default function Navbar() {
                     <Link
                         href="/"
                         className="flex items-center gap-2 min-w-0"
-                        aria-label="Go to home"
+                        aria-label={t("nav.homeAria")}
                     >
                         <Image
                             src="/icons/superhero.png"
@@ -250,9 +253,9 @@ export default function Navbar() {
                     </Link>
 
                     <nav
-                        aria-label="Primary"
+                        aria-label={t("nav.primary")}
                         className={cn(
-                            "hidden md:flex items-center gap-2",
+                            "hidden lg:flex items-center gap-2",
                             isScrapbook
                                 ? "bg-transparent px-0 py-0 ring-0"
                                 : "rounded-full px-2 py-1 bg-white/30 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10"
@@ -261,7 +264,8 @@ export default function Navbar() {
                         {navLinks.map((l) => (
                             <NavLink
                                 key={l.href}
-                                {...l}
+                                href={l.href}
+                                label={t(l.labelKey)}
                                 currentHash={spy}
                                 urlHash={urlHash}
                             />
@@ -269,6 +273,7 @@ export default function Navbar() {
                     </nav>
 
                     <div className="flex items-center gap-2.5">
+                        <LanguageSelector className="hidden sm:inline-flex" />
                         <button
                             onClick={toggleStyleMode}
                             className={cn(
@@ -277,17 +282,17 @@ export default function Navbar() {
                                     ? "scrapbook-sticker scrapbook-sticker-hover text-[11px] py-1 px-3"
                                     : "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 border border-black/10 dark:border-white/15 bg-white/60 dark:bg-white/10 text-slate-800 dark:text-white shadow-sm hover:shadow"
                             )}
-                            aria-label={isScrapbook ? "Switch to Studio Mode" : "Switch to Scrapbook Mode"}
+                            aria-label={isScrapbook ? t("mode.toStudio") : t("mode.toScrapbook")}
                         >
                             {isScrapbook ? (
                                 <>
                                     <span>💻</span>
-                                    <span>Studio Mode</span>
+                                    <span>{t("mode.studio")}</span>
                                 </>
                             ) : (
                                 <>
                                     <span>🎨</span>
-                                    <span className="hidden sm:inline">Scrapbook Mode</span>
+                                    <span className="hidden sm:inline">{t("mode.scrapbook")}</span>
                                 </>
                             )}
                         </button>
@@ -297,12 +302,12 @@ export default function Navbar() {
                         <button
                             onClick={toggle}
                             className={cn(
-                                "md:hidden inline-flex items-center justify-center rounded-xl p-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-300 dark:focus-visible:ring-fuchsia-400/40",
+                                "lg:hidden inline-flex items-center justify-center rounded-xl p-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-300 dark:focus-visible:ring-fuchsia-400/40",
                                 isScrapbook
                                     ? "bg-yellow-100/50 dark:bg-white/5 border-2 border-black dark:border-white"
                                     : "bg-white/60 dark:bg-white/10 ring-1 ring-white/30 dark:ring-white/10"
                             )}
-                            aria-label={open ? "Close menu" : "Open menu"}
+                            aria-label={open ? t("nav.close") : t("nav.open")}
                             aria-expanded={open}
                             aria-controls="nav-mobile-menu"
                         >
@@ -319,7 +324,7 @@ export default function Navbar() {
             {open && (
                 <>
                     <div
-                        className="md:hidden fixed inset-0 z-40 pointer-events-auto transition-opacity duration-200"
+                        className="lg:hidden fixed inset-0 z-40 pointer-events-auto transition-opacity duration-200"
                         aria-hidden
                         onClick={close}
                     />
@@ -327,8 +332,8 @@ export default function Navbar() {
                         id="nav-mobile-menu"
                         role="dialog"
                         aria-modal="true"
-                        aria-label="Navigation menu"
-                        className="md:hidden fixed inset-x-5 top-16 z-[100] flex justify-end transition-transform duration-200"
+                        aria-label={t("nav.menu")}
+                        className="lg:hidden fixed inset-x-5 top-16 z-[100] flex justify-end transition-transform duration-200"
                     >
                         <div className={cn(
                             "w-[60%] max-w-sm p-2",
@@ -336,7 +341,8 @@ export default function Navbar() {
                                 ? "bg-amber-50 dark:bg-[#1a1a1c] border-[3px] border-slate-900 dark:border-white shadow-[6px_6px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_rgba(255,255,255,1)] rotate-[-1deg] rounded-lg"
                                 : "rounded-2xl bg-white/95 text-slate-900 ring-1 ring-black/10 shadow-2xl backdrop-blur-xl dark:bg-slate-900/85 dark:text-slate-100 dark:ring-white/10"
                         )}>
-                            <nav aria-label="Mobile navigation" className="space-y-1">
+                            <LanguageSelector className="mb-2 w-full justify-center sm:hidden" />
+                            <nav aria-label={t("nav.mobile")} className="space-y-1">
                                 {navLinks.map((l) => {
                                     const isActive = (() => {
                                         if (l.href === "/home")
@@ -398,7 +404,7 @@ export default function Navbar() {
                                                             : "text-slate-900 dark:text-slate-100"
                                                     )}
                                                 >
-                                                    {l.label}
+                                                    {t(l.labelKey)}
                                                 </span>
                                             </div>
 

@@ -11,25 +11,22 @@ import {
 import { Listbox, Transition } from "@headlessui/react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/cn";
+import { useLanguage } from "@/components/LanguageProvider";
 
 type ThemeId = "light" | "dark" | "system";
 
-const OPTIONS: {
-    id: ThemeId;
-    name: string;
-    icon: JSX.Element;
-    hint?: string;
-}[] = [
-    { id: "light", name: "Light", icon: <SunIcon className="size-5" /> },
-    { id: "dark", name: "Dark", icon: <MoonIcon className="size-5" /> },
-    {
-        id: "system",
-        name: "System",
-        icon: <ComputerDesktopIcon className="size-5" />,
-    },
-];
-
 export default function DarkModeSelector() {
+    const { t } = useLanguage();
+    const options: {
+        id: ThemeId;
+        name: string;
+        icon: JSX.Element;
+        hint?: string;
+    }[] = [
+        { id: "light", name: t("theme.light"), icon: <SunIcon className="size-5" /> },
+        { id: "dark", name: t("theme.dark"), icon: <MoonIcon className="size-5" /> },
+        { id: "system", name: t("theme.system"), icon: <ComputerDesktopIcon className="size-5" /> },
+    ];
     const { theme, resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const [value, setValue] = useState<ThemeId>("system");
@@ -44,8 +41,8 @@ export default function DarkModeSelector() {
     if (!mounted) return null;
 
     const current =
-        OPTIONS.find((o) => o.id === value) ??
-        OPTIONS.find((o) => o.id === "system")!;
+        options.find((o) => o.id === value) ??
+        options.find((o) => o.id === "system")!;
 
     const ActiveIcon =
         resolvedTheme === "dark" ? (
@@ -74,7 +71,7 @@ export default function DarkModeSelector() {
                             "shadow-sm hover:shadow transition",
                             "focus:outline-none focus:ring-2 focus:ring-violet-300/60 dark:focus:ring-fuchsia-400/40"
                         )}
-                        aria-label={`Theme: ${current.name}`}
+                        aria-label={`${t("theme.label")}: ${current.name}`}
                     >
                         <span className="grid place-items-center">
                             {ActiveIcon}
@@ -103,7 +100,7 @@ export default function DarkModeSelector() {
                                 "ring-1 ring-slate-900/10 dark:ring-white/10 shadow-lg p-1"
                             )}
                         >
-                            {OPTIONS.map((opt) => (
+                            {options.map((opt) => (
                                 <Listbox.Option
                                     key={opt.id}
                                     value={opt.id}

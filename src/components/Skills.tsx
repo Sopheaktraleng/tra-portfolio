@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodlePaperclip, DoodleUnderline, DoodleStar } from "@/components/Doodles";
 import { cn } from "@/lib/cn";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const AnimeCategoryIcon = ({ title }: { title: string }) => {
     if (title.toLowerCase() === "frontend") {
@@ -77,6 +78,14 @@ const isDataUri = (src: string) => src.startsWith("data:");
 
 const Skills = () => {
     const { styleMode } = useStyleMode();
+    const { t } = useLanguage();
+    const categoryLabel = (title: string) => {
+        const key = title.toLowerCase();
+        if (key === "frontend") return t("skills.frontend");
+        if (key === "backend") return t("skills.backend");
+        if (key === "devops") return t("skills.devops");
+        return t("skills.tools");
+    };
 
     if (styleMode === "scrapbook") {
         const stickyColors = [
@@ -104,16 +113,14 @@ const Skills = () => {
                     <Reveal>
                         <div className="relative inline-block mb-3">
                             <h2 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white font-sans">
-                                Technical Skills
+                                {t("skills.title")}
                             </h2>
                             <DoodleUnderline className="w-full h-3 text-violet-500 dark:text-fuchsia-400 mt-1" />
                         </div>
                     </Reveal>
                     <Reveal delay={0.08}>
                         <p className="font-sans font-medium text-lg mt-2 text-slate-700 dark:text-slate-300">
-                            A comprehensive overview of my technical expertise and
-                            proficiency across different areas of software
-                            development.
+                            {t("skills.subtitle")}
                         </p>
                     </Reveal>
                 </div>
@@ -139,11 +146,11 @@ const Skills = () => {
                                     <div className="flex items-center gap-2">
                                         <AnimeCategoryIcon title={category.title} />
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-slate-950 tracking-tight font-sans">
-                                            {category.title}
+                                            {categoryLabel(category.title)}
                                         </h3>
                                     </div>
                                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-900/10 text-slate-900 border border-slate-900/20 font-bold font-sans">
-                                        {category.skills.length} items
+                                        {category.skills.length} {t("skills.items")}
                                     </span>
                                 </div>
 
@@ -197,15 +204,13 @@ const Skills = () => {
                 <Reveal>
                     <h2 className="section-title">
                         <span className="section-title-gradient">
-                            Technical Skills
+                            {t("skills.title")}
                         </span>
                     </h2>
                 </Reveal>
                 <Reveal delay={0.08}>
                     <p className="section-subtitle-lg">
-                        A comprehensive overview of my technical expertise and
-                        proficiency across different areas of software
-                        development.
+                        {t("skills.subtitle")}
                     </p>
                 </Reveal>
             </div>
@@ -224,11 +229,11 @@ const Skills = () => {
                                 <div className="flex items-center gap-2">
                                     <AnimeCategoryIcon title={category.title} />
                                     <h3 className="text-xl font-semibold text-slate-900 dark:text-white tracking-tight">
-                                        {category.title}
+                                        {categoryLabel(category.title)}
                                     </h3>
                                 </div>
                                 <span className="text-xs px-2 py-1 rounded-full bg-violet-500/10 text-violet-700 dark:bg-violet-400/10 dark:text-violet-300 border border-violet-500/20 dark:border-violet-400/20">
-                                    {category.skills.length} items
+                                    {category.skills.length} {t("skills.items")}
                                 </span>
                             </div>
 

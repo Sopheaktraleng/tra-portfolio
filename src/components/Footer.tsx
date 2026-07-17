@@ -4,13 +4,15 @@ import Link from "next/link";
 import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { cn } from "@/lib/cn";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export const Footer = () => {
     const { styleMode } = useStyleMode();
+    const { t } = useLanguage();
     const isScrapbook = styleMode === "scrapbook";
 
     return (
-        <footer role="contentinfo" aria-label="Site footer" className="w-full select-none">
+        <footer role="contentinfo" aria-label={t("footer.label")} className="w-full select-none">
             {isScrapbook ? (
                 <div className="w-full border-t-[3px] border-dashed border-slate-900 dark:border-white opacity-40" />
             ) : (
@@ -41,7 +43,7 @@ export const Footer = () => {
                                 Leng Sopheaktra
                             </span>
                             <span className="block text-[11px] text-slate-500 dark:text-slate-400">
-                                Full-Stack Developer
+                                {t("hero.role")}
                             </span>
                         </div>
                     </div>
@@ -78,7 +80,7 @@ export const Footer = () => {
 
                 <div className="mt-4 flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-between">
                     <nav
-                        aria-label="Footer navigation"
+                        aria-label={t("footer.navigation")}
                         className={cn(
                             "flex items-center gap-1.5",
                             isScrapbook
@@ -86,11 +88,11 @@ export const Footer = () => {
                                 : "text-xs font-medium text-slate-500 dark:text-slate-400"
                         )}
                     >
-                        <FooterLink href="/projects">Projects</FooterLink>
+                        <FooterLink href="/projects">{t("nav.projects")}</FooterLink>
                         <Dot />
-                        <FooterLink href="/experience">Experience</FooterLink>
+                        <FooterLink href="/experience">{t("nav.experience")}</FooterLink>
                         <Dot />
-                        <FooterLink href="/contact">Contact</FooterLink>
+                        <FooterLink href="/contact">{t("nav.contact")}</FooterLink>
                     </nav>
 
                     <p className={cn(
@@ -98,7 +100,7 @@ export const Footer = () => {
                             ? "text-sm font-bold text-slate-700 dark:text-slate-400"
                             : "text-[11px] leading-tight text-slate-400 dark:text-slate-500"
                     )}>
-                        © {new Date().getFullYear()} Leng Sopheaktra. Made with ♥ All rights reserved.
+                        © {new Date().getFullYear()} Leng Sopheaktra. {t("footer.rights")}
                     </p>
                 </div>
             </div>
