@@ -107,6 +107,48 @@ samp {
     --font-sans: var(--font-scrapbook), "Caveat", "Space Grotesk", cursive, sans-serif;
 }
 
+/* Hand-drawn cursor treatment for precise pointing devices only. */
+@media (hover: hover) and (pointer: fine) {
+    .style-scrapbook {
+        cursor: url("/cursors/scrapbook-arrow.svg") 3 3, auto;
+    }
+
+    .style-scrapbook :is(
+        a,
+        button,
+        select,
+        summary,
+        label[for],
+        [role="button"],
+        input[type="button"],
+        input[type="checkbox"],
+        input[type="radio"],
+        input[type="reset"],
+        input[type="submit"]
+    ) {
+        cursor: url("/cursors/scrapbook-pointer.svg") 3 3, pointer;
+    }
+
+    .style-scrapbook :is(
+        input:not([type]),
+        input[type="email"],
+        input[type="number"],
+        input[type="password"],
+        input[type="search"],
+        input[type="tel"],
+        input[type="text"],
+        input[type="url"],
+        textarea,
+        [contenteditable="true"]
+    ) {
+        cursor: text;
+    }
+
+    .style-scrapbook :is(button, input, select, textarea):disabled {
+        cursor: not-allowed;
+    }
+}
+
 .style-scrapbook body {
     background-color: #faf6f0;
     color: #1e1e24;
@@ -399,4 +441,3 @@ samp {
     position: relative;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
-
