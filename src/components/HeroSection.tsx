@@ -1,10 +1,20 @@
 "use client";
 import { useRef } from "react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import {
+    ArrowRight,
+    BriefcaseBusiness,
+    ChevronDown,
+    Download,
+    Github,
+    MapPin,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodleArrow, DoodlePin, DoodleStar, DoodleUnderline } from "@/components/Doodles";
+
+const RESUME_URL = "https://flowcv.com/resume/tkwwsww93lh0";
+const GITHUB_URL = "https://github.com/Sopheaktraleng";
 
 const FLOAT_TRANSITION = {
     duration: 2,
@@ -90,25 +100,56 @@ const HeroSection = () => {
                             </h2>
 
                             <p className="mt-6 text-base sm:text-lg leading-relaxed text-slate-800 dark:text-slate-200 max-w-2xl font-sans font-medium">
-                                I&apos;m a software engineer with a passion for building
-                                dynamic, user-friendly web applications. My primary
-                                expertise is in JavaScript, and I also work with
-                                Python and PHP. I manage deployments and have solid
-                                DevOps experience with Docker, Jenkins, GitHub
-                                Actions, AWS, and Linux. I also leverage AI tools to
-                                boost productivity through prompt engineering. I&apos;m
-                                an adaptable learner and thrive in collaborative
-                                environments to build outstanding apps.
+                                Full-stack developer building reliable public-data
+                                platforms and internal business systems—from responsive
+                                interfaces and scalable APIs to cloud deployment and
+                                DevOps automation.
                             </p>
 
-                            <a
-                                href="https://flowcv.com/resume/tkwwsww93lh0"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mt-8 px-8 py-3 bg-yellow-200 dark:bg-yellow-300 text-slate-900 border-[3px] border-slate-900 font-bold text-lg rounded-md shadow-[4px_4px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] active:translate-x-[0px] active:translate-y-[0px] active:shadow-[2px_2px_0px_#000] transition-all rotate-[-1deg] w-full sm:w-auto text-center"
-                            >
-                                Check Resume 📄
-                            </a>
+                            <div className="mt-7 flex w-full flex-col sm:w-auto sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-3">
+                                <a
+                                    href="#projects"
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-yellow-200 dark:bg-yellow-300 text-slate-900 border-[3px] border-slate-900 font-bold rounded-md shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0px_#000] transition-all rotate-[-1deg]"
+                                >
+                                    View My Work
+                                    <ArrowRight className="h-4 w-4" aria-hidden />
+                                </a>
+                                <a
+                                    href={RESUME_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white dark:bg-slate-100 text-slate-900 border-[3px] border-slate-900 font-bold rounded-md shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] transition-all rotate-[1deg]"
+                                >
+                                    <Download className="h-4 w-4" aria-hidden />
+                                    Download Résumé
+                                </a>
+                                <a
+                                    href={GITHUB_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-200 dark:bg-cyan-300 text-slate-900 border-[3px] border-slate-900 font-bold rounded-md shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] transition-all rotate-[-0.5deg]"
+                                >
+                                    <Github className="h-4 w-4" aria-hidden />
+                                    GitHub
+                                </a>
+                            </div>
+
+                            <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-sm font-bold text-slate-700 dark:text-slate-300 font-sans">
+                                <span className="inline-flex items-center gap-1.5">
+                                    <MapPin className="h-4 w-4 text-rose-500" aria-hidden />
+                                    Phnom Penh, Cambodia
+                                </span>
+                                <span className="hidden sm:inline" aria-hidden>·</span>
+                                <span className="inline-flex items-center gap-1.5">
+                                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-500/15" aria-hidden />
+                                    Available for opportunities
+                                </span>
+                                <span className="hidden sm:inline" aria-hidden>·</span>
+                                <span className="inline-flex items-center gap-1.5">
+                                    <BriefcaseBusiness className="h-4 w-4 text-violet-500" aria-hidden />
+                                    Full-stack &amp; DevOps
+                                </span>
+                            </div>
                         </div>
 
                         {/* Image column */}
@@ -180,35 +221,57 @@ const HeroSection = () => {
                             Full-Stack Developer
                         </h2>
 
-                        <p className="mt-5 md:mt-6 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-white/80 max-w-2xl">
-                            I&apos;m a software engineer with a passion for building
-                            dynamic, user-friendly web applications. My primary
-                            expertise is in JavaScript, and I also work with
-                            Python and PHP. I manage deployments and have solid
-                            DevOps experience with Docker, Jenkins, GitHub
-                            Actions, AWS, and Linux. I also leverage AI tools to
-                            boost productivity through prompt engineering. I&apos;m
-                            an adaptable learner and thrive in collaborative
-                            environments to build outstanding apps.
+                        <p className="mt-5 md:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-slate-700 dark:text-white/80 max-w-2xl">
+                            Full-stack developer building reliable public-data
+                            platforms and internal business systems—from responsive
+                            interfaces and scalable APIs to cloud deployment and
+                            DevOps automation.
                         </p>
 
-                        <motion.a
-                            animate={{ y: [-10, 10, -10] }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                repeatType: "loop",
-                                ease: "easeInOut",
-                            }}
-                            href="https://flowcv.com/resume/tkwwsww93lh0"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-primary mt-7 md:mt-8 px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg w-full sm:w-auto md:w-[300px]"
-                        >
-                            <span className="text-lg font-bold">
-                                Check Resume
+                        <div className="mt-7 md:mt-8 flex w-full flex-col sm:w-auto sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center md:justify-start gap-3">
+                            <a
+                                href="#projects"
+                                className="btn-primary px-5 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg"
+                            >
+                                View My Work
+                                <ArrowRight className="h-4 w-4" aria-hidden />
+                            </a>
+                            <a
+                                href={RESUME_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary justify-center px-5 py-3 rounded-xl"
+                            >
+                                <Download className="h-4 w-4" aria-hidden />
+                                Download Résumé
+                            </a>
+                            <a
+                                href={GITHUB_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary justify-center px-5 py-3 rounded-xl"
+                            >
+                                <Github className="h-4 w-4" aria-hidden />
+                                GitHub
+                            </a>
+                        </div>
+
+                        <div className="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-white/65">
+                            <span className="inline-flex items-center gap-1.5">
+                                <MapPin className="h-4 w-4 text-violet-500 dark:text-fuchsia-400" aria-hidden />
+                                Phnom Penh, Cambodia
                             </span>
-                        </motion.a>
+                            <span className="hidden sm:inline" aria-hidden>·</span>
+                            <span className="inline-flex items-center gap-1.5">
+                                <span className="h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/10" aria-hidden />
+                                Available for opportunities
+                            </span>
+                            <span className="hidden sm:inline" aria-hidden>·</span>
+                            <span className="inline-flex items-center gap-1.5">
+                                <BriefcaseBusiness className="h-4 w-4 text-violet-500 dark:text-fuchsia-400" aria-hidden />
+                                Full-stack &amp; DevOps
+                            </span>
+                        </div>
                     </div>
 
                     {/* Image column */}
