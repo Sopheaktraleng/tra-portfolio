@@ -2,7 +2,6 @@ import type {
   SkillCategory,
   EducationItem,
   ExperienceItem,
-  ProjectItem,
 } from "@/types";
 
 export const SkillsData: SkillCategory[] = [
@@ -310,19 +309,5 @@ export const ExperienceData: ExperienceItem[] = [
       "Technology Stack – Worked with React, Node.js, Express, Laravel, MySQL, and MongoDB for full-stack development.",
       "DevOps & Deployment – Utilized Docker, GitHub Actions, and Linux to streamline deployments and improve system reliability.",
     ],
-  },
-];
-
-export const projectsData: ProjectItem[] = [
-  {
-    id: 1,
-    title: "Stock Management System",
-    description:
-      "A stock management system project featuring product management, order tracking, and inventory control, built with Laravel, Bootstrap, Filament, MySQL.",
-    image:
-      "https://mgdkganjyiweabxtetiv.supabase.co/storage/v1/object/sign/assets/stocksystem.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNzE4OTg1YS02NjQxLTQ5YWUtYjZjNi0wYTk5NGVjNjUxZDgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJhc3NldHMvc3RvY2tzeXN0ZW0ucG5nIiwiaWF0IjoxNzYyMTU0MTA3LCJleHAiOjE3OTM2OTAxMDd9.cmBoZptgHy5csuIE14jSu0xHAdqOgpPM3DU3bV6M6ic",
-    links: "https://github.com/Sopheaktraleng/money-tracking-bot",
-    technologies: ["Laravel", "MySQL", "Filament", "Bootstrap5"],
-    demo: "https://nss.today.com.kh/",
   },
 ];

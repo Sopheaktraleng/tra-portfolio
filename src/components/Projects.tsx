@@ -1,6 +1,6 @@
 "use client";
 
-import { projectsData } from "@/data/constants";
+import { projectsData } from "@/data/projects";
 import ProjectCard from "./Card/ProjectCard";
 import Reveal from "@/components/Reveal";
 import { useStyleMode } from "@/components/StyleModeProvider";
@@ -25,20 +25,20 @@ const Projects = () => {
                     </Reveal>
                     <Reveal delay={0.08}>
                         <p className="font-sans font-medium text-lg mx-auto max-w-3xl text-slate-700 dark:text-slate-300 mt-2">
-                            A selection of projects I&apos;ve built — from internal
-                            management systems to full-stack web applications.
+                            Detailed case studies across public platforms, internal
+                            systems, serverless products, and DevOps automation.
                         </p>
                     </Reveal>
                 </div>
 
                 <div className="flex justify-center items-center pt-10">
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center max-w-6xl px-6">
+                    <ul className="grid w-full max-w-6xl grid-cols-1 place-items-stretch gap-8 px-6 md:grid-cols-2">
                         {projectsData.map((pro, index) => {
                             const rotateDeg = index % 2 === 0 ? "rotate-[-1.5deg]" : "rotate-[1.5deg]";
                             return (
                                 <li
                                     key={pro.id}
-                                    className="flex justify-center items-center"
+                                    className="flex w-full justify-center items-stretch"
                                 >
                                     <Reveal className={cn("w-full", rotateDeg)}>
                                         <ProjectCard pro={pro} />
@@ -64,18 +64,18 @@ const Projects = () => {
                 </Reveal>
                 <Reveal delay={0.08}>
                     <p className="section-subtitle-lg mx-auto max-w-3xl">
-                        A selection of projects I&apos;ve built — from internal
-                        management systems to full-stack web applications.
+                        Detailed case studies across public platforms, internal
+                        systems, serverless products, and DevOps automation.
                     </p>
                 </Reveal>
             </div>
 
             <div className="flex justify-center items-center pt-6">
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center max-w-6xl px-6">
+                <ul className="grid w-full max-w-6xl grid-cols-1 place-items-stretch gap-6 px-6 md:grid-cols-2">
                     {projectsData.map((pro) => (
                         <li
                             key={pro.id}
-                            className="flex justify-center items-center"
+                            className="flex w-full justify-center items-stretch"
                         >
                             <Reveal className="w-full">
                                 <ProjectCard pro={pro} />

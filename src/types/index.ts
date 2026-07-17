@@ -41,10 +41,15 @@ export interface ExperienceItem {
 
 export interface ProjectItem {
   id: number;
+  category: string;
   title: string;
   description: string;
   image: string;
-  links: string;
+  imageAlt: string;
   technologies: string[];
-  demo: string;
+  year: string;
+  liveUrl?: string;
+  liveLabel?: string;
+  sourceUrl?: string;
+  note?: string;
 }
