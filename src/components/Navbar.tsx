@@ -277,12 +277,12 @@ export default function Navbar() {
                                     ? "scrapbook-sticker scrapbook-sticker-hover text-[11px] py-1 px-3"
                                     : "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 border border-black/10 dark:border-white/15 bg-white/60 dark:bg-white/10 text-slate-800 dark:text-white shadow-sm hover:shadow"
                             )}
-                            aria-label={isScrapbook ? "Switch to Clean Mode" : "Switch to Scrapbook Mode"}
+                            aria-label={isScrapbook ? "Switch to Studio Mode" : "Switch to Scrapbook Mode"}
                         >
                             {isScrapbook ? (
                                 <>
                                     <span>💻</span>
-                                    <span>Clean Mode</span>
+                                    <span>Studio Mode</span>
                                 </>
                             ) : (
                                 <>
