@@ -1,6 +1,7 @@
 "use client";
 
 import { BadgeCheck, ExternalLink } from "lucide-react";
+import { AnimatedIcon, AnimatedButtonIcon } from "@/components/AnimatedIcon";
 import Image from "next/image";
 import type { EducationItem } from "@/types";
 import { DoodlePaperclip, DoodleStar } from "@/components/Doodles";
@@ -131,7 +132,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                     <div className="mt-4 rounded-lg border-2 border-dashed border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 p-3">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             <span className="inline-flex items-center gap-2 text-xs font-bold text-emerald-800 dark:text-emerald-200">
-                                <BadgeCheck className="h-4 w-4" />
+                                <AnimatedIcon icon={BadgeCheck} animation="pulse" trigger="hover" className="h-4 w-4" />
                                 {t("education.verified")}
                             </span>
                             <a
@@ -141,7 +142,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                                 className="inline-flex items-center justify-center gap-1.5 rounded bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold border-2 border-black px-3 py-1 text-xs shadow-[2px_2px_0px_#000] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000] transition-all"
                                 aria-label={`${certificateLabel} for ${edu.degree}`}
                             >
-                                <ExternalLink className="h-3.5 w-3.5" />
+                                <AnimatedButtonIcon icon={ExternalLink} direction="right" className="h-3.5 w-3.5" />
                                 {certificateLabel}
                             </a>
                         </div>
@@ -176,7 +177,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                         <span className="min-w-0 truncate">{edu.date}</span>
                         {hasCertificate && (
                             <span className="inline-flex flex-shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-medium text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-200 whitespace-nowrap">
-                                <BadgeCheck className="h-3.5 w-3.5" />
+                                <AnimatedIcon icon={BadgeCheck} animation="pulse" trigger="hover" className="h-3.5 w-3.5" />
                                 {t("education.certified")}
                             </span>
                         )}
@@ -213,7 +214,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                 <div className="mt-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
                     <div className="flex items-center justify-between gap-3">
                         <span className="inline-flex items-center gap-2 text-xs font-medium text-emerald-700 dark:text-emerald-200">
-                            <BadgeCheck className="h-4 w-4" />
+                            <AnimatedIcon icon={BadgeCheck} animation="pulse" trigger="hover" className="h-4 w-4" />
                             {t("education.verified")}
                         </span>
                         <a
@@ -223,7 +224,7 @@ const EducationCard = ({ edu }: EducationCardProps) => {
                             className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 shadow-sm transition hover:from-emerald-600 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-emerald-300 dark:focus:ring-emerald-400/40"
                             aria-label={`${certificateLabel} for ${edu.degree}`}
                         >
-                            <ExternalLink className="h-4 w-4" />
+                            <AnimatedButtonIcon icon={ExternalLink} direction="right" className="h-4 w-4" />
                             {certificateLabel}
                         </a>
                     </div>

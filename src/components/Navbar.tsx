@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Check, Menu, X } from "lucide-react";
+import { AnimatedIcon } from "@/components/AnimatedIcon";
 import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import DisplayPreferences from "@/components/DisplayPreferences";
@@ -287,21 +288,18 @@ export default function Navbar() {
                             aria-controls="nav-mobile-menu"
                         >
                             {open ? (
-                                <X className="h-5 w-5" />
+                                <AnimatedIcon icon={X} animation="spin" trigger="tap" className="h-5 w-5" />
                             ) : (
-                                <Menu className="h-5 w-5" />
+                                <AnimatedIcon icon={Menu} animation="scale" trigger="hover" className="h-5 w-5" />
                             )}
                         </button>
                     </div>
                 </div>
             </div>
-
             {open && (
                 <>
                     <div
                         className="lg:hidden fixed inset-0 z-40 pointer-events-auto transition-opacity duration-200"
-                        aria-hidden
-                        onClick={close}
                     />
                     <div
                         id="nav-mobile-menu"

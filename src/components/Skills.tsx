@@ -2,6 +2,7 @@
 
 import { SkillsData } from "@/data/constants";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodlePaperclip, DoodleUnderline, DoodleStar } from "@/components/Doodles";
@@ -157,9 +158,12 @@ const Skills = () => {
                                 {/* Skills chips */}
                                 <div className="flex flex-wrap gap-3 items-center">
                                     {category.skills.map((skill) => (
-                                        <div
+                                        <motion.div
                                             key={skill.name}
-                                            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white dark:bg-white border-2 border-slate-900 text-slate-900 rounded font-bold text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_rgba(0,0,0,1)] transition-all font-sans"
+                                            whileHover={{ scale: 1.08, y: -2 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                                            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white dark:bg-white border-2 border-slate-900 text-slate-900 rounded font-bold text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-shadow font-sans cursor-pointer"
                                             title={skill.name}
                                         >
                                             {skill.image ? (
@@ -186,7 +190,7 @@ const Skills = () => {
                                             <span className="text-sm font-bold whitespace-nowrap">
                                                 {skill.name}
                                             </span>
-                                        </div>
+                                        </motion.div>
                                     ))}
                                 </div>
                             </div>
@@ -240,9 +244,12 @@ const Skills = () => {
                             {/* Skills chips */}
                             <div className="flex flex-wrap gap-3 items-center">
                                 {category.skills.map((skill) => (
-                                    <div
+                                    <motion.div
                                         key={skill.name}
-                                        className="skill-chip"
+                                        whileHover={{ scale: 1.08, y: -2 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                                        className="skill-chip cursor-pointer"
                                         title={skill.name}
                                     >
                                         {skill.image ? (
@@ -271,7 +278,7 @@ const Skills = () => {
                                         <span className="text-sm font-medium whitespace-nowrap">
                                             {skill.name}
                                         </span>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>

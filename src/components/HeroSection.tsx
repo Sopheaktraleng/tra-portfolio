@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodleArrow, DoodlePin, DoodleStar, DoodleUnderline } from "@/components/Doodles";
+import { AnimatedIcon, AnimatedButtonIcon } from "@/components/AnimatedIcon";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const RESUME_URL = "https://flowcv.com/resume/tkwwsww93lh0";
@@ -99,7 +100,7 @@ const HeroSection = () => {
                                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-yellow-200 dark:bg-yellow-300 text-slate-900 border-[3px] border-slate-900 font-bold rounded-md shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] active:translate-x-0 active:translate-y-0 active:shadow-[2px_2px_0px_#000] transition-all rotate-[-1deg]"
                                 >
                                     {t("hero.work")}
-                                    <ArrowRight className="h-4 w-4" aria-hidden />
+                                    <AnimatedButtonIcon icon={ArrowRight} direction="right" />
                                 </a>
                                 <a
                                     href={RESUME_URL}
@@ -107,7 +108,7 @@ const HeroSection = () => {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white dark:bg-slate-100 text-slate-900 border-[3px] border-slate-900 font-bold rounded-md shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] transition-all rotate-[1deg]"
                                 >
-                                    <Download className="h-4 w-4" aria-hidden />
+                                    <AnimatedButtonIcon icon={Download} direction="down" />
                                     {t("hero.resume")}
                                 </a>
                                 <a
@@ -116,24 +117,24 @@ const HeroSection = () => {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-200 dark:bg-cyan-300 text-slate-900 border-[3px] border-slate-900 font-bold rounded-md shadow-[4px_4px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#000] transition-all rotate-[-0.5deg]"
                                 >
-                                    <Github className="h-4 w-4" aria-hidden />
+                                    <AnimatedIcon icon={Github} animation="wiggle" className="h-4 w-4" />
                                     GitHub
                                 </a>
                             </div>
 
                             <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-sm font-bold text-slate-700 dark:text-slate-300 font-sans">
                                 <span className="inline-flex items-center gap-1.5">
-                                    <MapPin className="h-4 w-4 text-rose-500" aria-hidden />
+                                    <AnimatedIcon icon={MapPin} animation="bounce" trigger="loop" className="h-4 w-4 text-rose-500" />
                                     {t("hero.location")}
                                 </span>
                                 <span className="hidden sm:inline" aria-hidden>·</span>
                                 <span className="inline-flex items-center gap-1.5">
-                                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-500/15" aria-hidden />
+                                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-500/15 animate-pulse" aria-hidden />
                                     {t("hero.available")}
                                 </span>
                                 <span className="hidden sm:inline" aria-hidden>·</span>
                                 <span className="inline-flex items-center gap-1.5">
-                                    <BriefcaseBusiness className="h-4 w-4 text-violet-500" aria-hidden />
+                                    <AnimatedIcon icon={BriefcaseBusiness} animation="pulse" trigger="hover" className="h-4 w-4 text-violet-500" />
                                     {t("hero.focus")}
                                 </span>
                             </div>
@@ -220,7 +221,7 @@ const HeroSection = () => {
                                 className="btn-primary px-5 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg"
                             >
                                 {t("hero.work")}
-                                <ArrowRight className="h-4 w-4" aria-hidden />
+                                <AnimatedButtonIcon icon={ArrowRight} direction="right" />
                             </a>
                             <a
                                 href={RESUME_URL}
@@ -228,7 +229,7 @@ const HeroSection = () => {
                                 rel="noopener noreferrer"
                                 className="btn-secondary justify-center px-5 py-3 rounded-xl"
                             >
-                                <Download className="h-4 w-4" aria-hidden />
+                                <AnimatedButtonIcon icon={Download} direction="down" />
                                 {t("hero.resume")}
                             </a>
                             <a
@@ -237,24 +238,24 @@ const HeroSection = () => {
                                 rel="noopener noreferrer"
                                 className="btn-secondary justify-center px-5 py-3 rounded-xl"
                             >
-                                <Github className="h-4 w-4" aria-hidden />
+                                <AnimatedIcon icon={Github} animation="wiggle" className="h-4 w-4" />
                                 GitHub
                             </a>
                         </div>
 
                         <div className="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-white/65">
                             <span className="inline-flex items-center gap-1.5">
-                                <MapPin className="h-4 w-4 text-violet-500 dark:text-fuchsia-400" aria-hidden />
+                                <AnimatedIcon icon={MapPin} animation="bounce" trigger="loop" className="h-4 w-4 text-violet-500 dark:text-fuchsia-400" />
                                 {t("hero.location")}
                             </span>
                             <span className="hidden sm:inline" aria-hidden>·</span>
                             <span className="inline-flex items-center gap-1.5">
-                                <span className="h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/10" aria-hidden />
+                                <span className="h-2 w-2 rounded-full bg-emerald-500 ring-4 ring-emerald-500/10 animate-pulse" aria-hidden />
                                 {t("hero.available")}
                             </span>
                             <span className="hidden sm:inline" aria-hidden>·</span>
                             <span className="inline-flex items-center gap-1.5">
-                                <BriefcaseBusiness className="h-4 w-4 text-violet-500 dark:text-fuchsia-400" aria-hidden />
+                                <AnimatedIcon icon={BriefcaseBusiness} animation="pulse" trigger="hover" className="h-4 w-4 text-violet-500 dark:text-fuchsia-400" />
                                 {t("hero.focus")}
                             </span>
                         </div>
@@ -299,7 +300,7 @@ const HeroSection = () => {
                         {t("hero.scroll")}
                     </span>
                     <span className="glass-circle">
-                        <ChevronDown className="w-6 h-6 text-slate-700 dark:text-white/70" />
+                        <AnimatedIcon icon={ChevronDown} animation="bounce" trigger="loop" className="w-6 h-6 text-slate-700 dark:text-white/70" />
                     </span>
                 </button>
             </div>

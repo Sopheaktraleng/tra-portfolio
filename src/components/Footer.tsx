@@ -5,6 +5,7 @@ import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { cn } from "@/lib/cn";
 import { useLanguage } from "@/components/LanguageProvider";
+import { AnimatedIcon } from "@/components/AnimatedIcon";
 
 export const Footer = () => {
     const { styleMode } = useStyleMode();
@@ -124,6 +125,12 @@ function Social({
         ? "inline-flex items-center justify-center size-9 border-2 border-black dark:border-white bg-white dark:bg-slate-900 text-slate-800 dark:text-white rounded shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_#fff] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_#000] dark:hover:shadow-[3px_3px_0px_#fff] transition-all"
         : "social-icon-btn text-slate-600 dark:text-slate-400 hover:text-violet-600 dark:hover:text-fuchsia-400 hover:border-violet-500/30 dark:hover:border-fuchsia-400/30 transition-colors";
 
+    const content = (
+        <AnimatedIcon animation="wiggle" trigger="hover">
+            {children}
+        </AnimatedIcon>
+    );
+
     return external ? (
         <a
             href={href}
@@ -132,12 +139,12 @@ function Social({
             aria-label={label}
             className={cls}
         >
-            {children}
+            {content}
             <span className="sr-only">{label}</span>
         </a>
     ) : (
         <Link href={href} className={cls} aria-label={label}>
-            {children}
+            {content}
             <span className="sr-only">{label}</span>
         </Link>
     );

@@ -12,6 +12,7 @@ import {
     XCircle,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { AnimatedIcon, AnimatedButtonIcon } from "@/components/AnimatedIcon";
 import { useStyleMode } from "@/components/StyleModeProvider";
 import { DoodleUnderline } from "@/components/Doodles";
 import { cn } from "@/lib/cn";
@@ -365,9 +366,9 @@ const Contact = () => {
                             )}
                         >
                             {loading ? (
-                                <Loader2 className="w-4 h-4 animate-spin" />
+                                <AnimatedIcon icon={Loader2} animation="spin" trigger="loop" className="w-4 h-4" />
                             ) : (
-                                <Send className="w-4 h-4" />
+                                <AnimatedButtonIcon icon={Send} direction="right" className="w-4 h-4" />
                             )}
                             {loading ? t("contact.sending") : t("contact.send")}
                         </button>

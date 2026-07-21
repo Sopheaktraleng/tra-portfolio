@@ -12,6 +12,7 @@ import {
     Sun,
 } from "lucide-react";
 import { useTheme } from "next-themes";
+import { AnimatedIcon } from "@/components/AnimatedIcon";
 import { useLanguage } from "@/components/LanguageProvider";
 import { useStyleMode, type StyleMode } from "@/components/StyleModeProvider";
 import { cn } from "@/lib/cn";
@@ -96,7 +97,7 @@ export default function DisplayPreferences() {
                 aria-expanded={open}
                 aria-controls="display-preferences-panel"
             >
-                <SlidersHorizontal className="size-4" aria-hidden />
+                <AnimatedIcon icon={SlidersHorizontal} animation="wiggle" className="size-4" />
                 <span className="hidden xl:inline">{t("display.button")}</span>
                 <span
                     className={cn(
