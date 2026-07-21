@@ -1,20 +1,23 @@
 /**
- * Analytics — environment-gated tracking scripts.
+ * Analytics — tracking scripts with deployment-configurable settings.
  *
- * Scripts only render when the corresponding env vars are set,
- * so they are automatically skipped in development and CI.
+ * Umami uses the portfolio's Cloud Umami site by default. Environment
+ * variables can override those defaults for another deployment.
  *
- * Required env vars (add to .env.local / deployment settings):
- *   NEXT_PUBLIC_UMAMI_URL         – full URL to your Umami script.js
- *   NEXT_PUBLIC_UMAMI_WEBSITE_ID  – Umami website ID
+ * Optional env vars (add to .env.local / deployment settings):
+ *   NEXT_PUBLIC_UMAMI_URL         – override the Umami script.js URL
+ *   NEXT_PUBLIC_UMAMI_WEBSITE_ID  – override the Umami website ID
  *   NEXT_PUBLIC_MATOMO_URL        – base URL of your Matomo instance (with trailing slash)
  *   NEXT_PUBLIC_MATOMO_SITE_ID    – Matomo site ID (number as string)
  */
 
 import Script from "next/script";
 
-const umamiUrl = process.env.NEXT_PUBLIC_UMAMI_URL;
-const umamiId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+const umamiUrl =
+    process.env.NEXT_PUBLIC_UMAMI_URL ?? "https://cloud.umami.is/script.js";
+const umamiId =
+    process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ??
+    "9ef7d197-aa4f-49f5-8943-6336a0d6a951";
 const matomoUrl = process.env.NEXT_PUBLIC_MATOMO_URL;
 const matomoSiteId = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
 
